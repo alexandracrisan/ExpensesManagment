@@ -1,18 +1,22 @@
 //here will reside the main component that will include all others
-var Details = require('Dashboard/details.js')
+
 var React = require('react');
+ 
+//var LoginForm = require('../components/LoginForm/loginForm.js');
 
-console.log('app.js');
-console.log('app.js');
-
+/*  App component contains the Header and the rest of the app body
+    owns the LoginForm component
+ */ 
 var App = React.createClass({
-    render: function() {
-      return (
-          <div id="main">
-            <Details />
-          </div>
-      )
-    }
+	render: function(){
+    return (
+      <div id="todosApp">
+        <h1 id="header">Helloooovsdkjbvkaj</h1>
+        
+      </div>
+    );
+  }
 });
 
 module.exports = App;
+
