@@ -1,3 +1,5 @@
+var React = require('react');
+
 var LoginForm = React.createClass({
   getInitialState: function(){
     return{
@@ -16,8 +18,8 @@ var LoginForm = React.createClass({
     return (
       <form role="form">
       <div className="form-group">
-        <input type="text" valueLink={this.linkState('user')} placeholder="Username"/>
-        <input type="text" valueLink={this.linkState('password')} placeholder="Password"/>
+        <input type="text" ref="username" defaultValue={this.state.username} placeholder="Username"/>
+        <input type="text" ref="password" defaultValue={this.state.password} placeholder="Password"/>
       </div>
       <button type="submit" onClick={this.login}>Login</button>
       </form>
@@ -25,4 +27,4 @@ var LoginForm = React.createClass({
   },
 });
 
-reactMixin(LoginForm.prototype, React.addons.LinkedStateMixin);
+module.exports=LoginForm;
