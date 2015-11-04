@@ -19,10 +19,10 @@ var BudgetDetailsBoard = React.createClass({
         return BudgetDetails();
     },
     componentWillMount: function() {
-        DashboardStore.addChangeListener(this._onChange());  // imi trebuie si in store
+        DashboardStore.addChangeListener(this._onChange());
     },
     componentWillUnmount: function() {
-        DashboardStore.removeChangeListener()(this._onChange());  //imi trebui si in store
+        DashboardStore.removeChangeListener()(this._onChange());
     },
     _onChange: function() {
         this.setState(BudgetDetails());
