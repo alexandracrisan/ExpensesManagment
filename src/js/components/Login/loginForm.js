@@ -1,4 +1,6 @@
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var LoginForm = React.createClass({
   getInitialState: function(){
@@ -22,6 +24,7 @@ var LoginForm = React.createClass({
         <input type="text" ref="password" defaultValue={this.state.password} placeholder="Password"/>
       </div>
       <button type="submit" onClick={this.login}>Login</button>
+      <Link to="dashboard">Login</Link>
       </form>
     );
   }
