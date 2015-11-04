@@ -7,7 +7,6 @@ var SidebarBox = React.createClass({
 		return (
 			<div>
 			<Link to="viewAll">View All</Link>
-			
 			</div>
 		);
 	}

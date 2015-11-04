@@ -1,4 +1,4 @@
-var AuthService = require('../components/Login/authentication.js');
+//var AuthService = require('../components/Login/authentication.js');
 var LoginConstants = require('../components/Login/login-constants.js');
 var AppDisptacher = require('../dispatchers/app-dispatcher');
 

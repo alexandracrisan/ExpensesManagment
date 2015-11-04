@@ -6,6 +6,7 @@ var App = require('./components/app.js');
 
 var ViewAll = require('./components/ViewAll/viewAll.js');
 var LoginForm = require('./components/Login/loginForm.js');
+var Dashboard = require('./components/Dashboard/dashboard.js');
 
 var Router = require('react-router'),
     DefaultRoute = Router.DefaultRoute,
@@ -15,6 +16,7 @@ var Router = require('react-router'),
 var routes = (
 	<Route handler={App}>
 		<DefaultRoute handler={LoginForm}/>
+		<Route name="dashboard" path="dashboard" handler={Dashboard}></Route>
 		<Route name="viewAll" path="view-all" handler={ViewAll}></Route>
 	</Route>
 );
