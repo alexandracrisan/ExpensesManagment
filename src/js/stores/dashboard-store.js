@@ -4,7 +4,7 @@
 var Constants = require("../constants/dashboard-constants.js")
 var Dispatcher = require('../dispatchers/app.dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
-//var MemberListActions = require("../actions/dashboard-actions.js");
+var MemberListActions = require("../actions/dashboard-actions.js");
 //var assign = require('object-assign');
 //
 //var CHANGE_EVENT = 'change';

@@ -13,11 +13,15 @@ var React = require('react');
 //    }
 //}
 
+
+
+
 //var BudgetDetailsBoard = React.createClass({
 //    getInitialState: function() {
 //        return BudgetDetails();
 //    },
 //    componentWillMount: function() {
+
 //        //DashboardStore.addChangeListener(this._onChange());
 //    },
 //    componentWillUnmount: function() {
@@ -40,8 +44,33 @@ var React = require('react');
         //
         //    </div>
         //)
+
 //    }
 //
 //});
 
+
 //module.exports = BudgetDetailsBoard;
+
+var BudgetDetailsBoard = React.createClass({
+
+    render: function() {
+        return (
+            <div>
+                <label>Income: </label>
+                <label>300</label>
+                <br/>
+                <label>Expenses: </label>
+                <label>30</label>
+                <br/>
+                <label>Left: </label>
+                <label>40</label>
+
+            </div>
+        )
+    }
+
+});
+
+module.exports = BudgetDetailsBoard;
+

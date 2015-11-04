@@ -13,7 +13,7 @@ var ViewAll = React.createClass({
 					<li>
 						<ExpenseItem/>
 						<ModifyBtn index={i} type={ExpenseActions.editExpense}/>
-						<Delete
+						<Delete />
 					</li>
 				</ul>
 			</div>
