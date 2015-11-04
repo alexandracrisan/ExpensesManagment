@@ -13,15 +13,16 @@ var LoginForm = React.createClass({
       username: this.refs.username.getDOMNode().value,
       password: this.refs.password.getDOMNode().value,
     }
+    console.log(data);
   },
   render: function(){
     return (
-      <form role="form">
+      <form role="form" onSubmit={this.login}>
       <div className="form-group">
         <input type="text" ref="username" defaultValue={this.state.username} placeholder="Username"/>
         <input type="text" ref="password" defaultValue={this.state.password} placeholder="Password"/>
       </div>
-      <button type="submit" onClick={this.login}>Login</button>
+      <button type="submit">Login</button>
       </form>
     );
   },
