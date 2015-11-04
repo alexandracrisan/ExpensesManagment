@@ -1,7 +1,6 @@
 // dummy comments
 // here we'll render the component from app.js
 
-
 var React = require('react');
 var ReactDOM = require('react-dom');
 var App = require('./components/app.js');
