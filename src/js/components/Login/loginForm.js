@@ -24,8 +24,7 @@ var LoginForm = React.createClass({
     if(this.state.error)
       return (
         <div className={"alert alert-notice"}>Invalid login</div>
-
-        )
+      )
     return "";
   },
   render: function(){
