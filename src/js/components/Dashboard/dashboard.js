@@ -15,8 +15,7 @@ var Dashboard = React.createClass({
        return (
          <div>
              <SidebarBox />
-             <BudgetDetails />
-             <Header />
+
          </div>
        );
    }
