@@ -1,7 +1,7 @@
 /**
  * Created by alinaoros on 11/3/2015.
  */
-var DashboardStore = require('../stores/dashboard-store.js');
+var DashboardStore = require('../../stores/dashboard-store.js');
 
 var React = require('react');
 console.log('details.js');
