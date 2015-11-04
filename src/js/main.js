@@ -1,7 +1,31 @@
-// here we'll render the component from app.js
+
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var App = require('./components/app.js');
 
-//renders the whole app
-React.render(<App />, document.getElementById('expensesApp'));
+var ViewAll = require('./components/ViewAll/viewAll.js');
+var LoginForm = require('./components/Login/loginForm.js');
+
+var Router = require('react-router'),
+    DefaultRoute = Router.DefaultRoute,
+    Route = Router.Route,
+    RouteHandler = Router.RouteHandler;
+
+var routes = (
+	<Route handler={App}>
+		<DefaultRoute handler={LoginForm}/>
+		<Route name="viewAll" path="view-all" handler={ViewAll}></Route>
+	</Route>
+);
+
+Router.run(routes, function (Handler) {
+	ReactDOM.render(<Handler />, document.getElementById('expensesApp'));
+});
+
+
+
+
+
+
+

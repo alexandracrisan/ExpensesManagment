@@ -8,10 +8,10 @@ var LoginForm = React.createClass({
     }
   },
   login: function(e) {
-    e.preventDefault()
+    e.preventDefault();
     var data = {
       username: this.refs.username.getDOMNode().value,
-      password: this.refs.password.getDOMNode().value,
+      password: this.refs.password.getDOMNode().value
     }
     console.log(data);
   },
@@ -25,7 +25,7 @@ var LoginForm = React.createClass({
       <button type="submit">Login</button>
       </form>
     );
-  },
+  }
 });
 
-module.exports=LoginForm;
+module.exports = LoginForm;
