@@ -9,11 +9,19 @@ var BudgetDetails = React.createClass({
     render: function() {
         return (
             <div>
-                <p> Hello World!!! </p>
+                <label>Income: </label>
+                <label> 2000 </label>
+                <br/>
+                <label>Expenses: </label>
+                <label> 300 </label>
+                <br/>
+                <label>Left: </label>
+                <label> 700 </label>
+
             </div>
         )
     }
 
-})
+});
 
-React.render(<BudgetDetails></BudgetDetails>, document.body);
+module.exports = BudgetDetails;
