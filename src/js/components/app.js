@@ -10,12 +10,11 @@ var App = React.createClass({
 	render: function(){
     return (
       <div id="todosApp">
-        <h1 id="header">Helloooovsdkjbvkaj</h1>
-        
+        <h1 id="header">Helloooo</h1>
+
       </div>
     );
   }
 });
 
 module.exports = App;
-
