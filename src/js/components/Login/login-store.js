@@ -4,4 +4,9 @@ var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 
-var _
+function() {
+	this.dispatchToken = AppDisptacher.register(this._registerToActions.bind(this));
+	this._user = null;
+	this._jwt = null;
+}
+
