@@ -1,22 +1,43 @@
 /**
  * Created by alinaoros on 11/3/2015.
  */
-var React = require('react');
+var DashboardStore = require('../stores/dashboard-store.js');
 
+var React = require('react');
 console.log('details.js');
 
-var BudgetDetails = React.createClass({
+function BudgetDetails() {
+    return {
+        budget: DashboardStore.getCurrentMonthBudget(),
+        expenses: DashboardStore.getCurrentMonthExpenses(),
+        left: DashboardStore.getCurrentMonthLeftBudget()
+    }
+}
+
+var BudgetDetailsBoard = React.createClass({
+    getInitialState: function() {
+        return BudgetDetails();
+    },
+    componentWillMount: function() {
+        DashboardStore.addChangeListener(this._onChange());  // imi trebuie si in store
+    },
+    componentWillUnmount: function() {
+        DashboardStore.removeChangeListener()(this._onChange());  //imi trebui si in store
+    },
+    _onChange: function() {
+        this.setState(BudgetDetails());
+    },
     render: function() {
         return (
             <div>
                 <label>Income: </label>
-                <label> 2000 </label>
+                <label>{this.state.budget}</label>
                 <br/>
                 <label>Expenses: </label>
-                <label> 300 </label>
+                <label>{this.state.expenses}</label>
                 <br/>
                 <label>Left: </label>
-                <label> 700 </label>
+                <label>{this.state.left}</label>
 
             </div>
         )
@@ -24,4 +45,4 @@ var BudgetDetails = React.createClass({
 
 });
 
-module.exports = BudgetDetails;
+module.exports = BudgetDetailsBoard;
