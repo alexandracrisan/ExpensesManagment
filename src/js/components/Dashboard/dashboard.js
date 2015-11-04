@@ -1,16 +1,19 @@
-
 /**
  * Created by alinaoros on 11/3/2015.
  */
-var BudgetDetails = require('./details.js');
+var BudgetDetails = require('./details.js'),
+    SidebarBox = require('../../components/Sidebar/sidebarBox.js');
 
-var React = require('react');
+var React = require('react'),
+    Router = require('react-router'),
+    RouteHandler = Router.RouteHandler;
+
 
 var Dashboard = React.createClass({
    render: function() {
        return (
          <div>
-             <p>div 1</p>
+             <SidebarBox/>
              <BudgetDetails />
              <p>div 2</p>
          </div>
