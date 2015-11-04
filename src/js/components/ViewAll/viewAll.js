@@ -4,7 +4,11 @@ var ViewAll = React.createClass({
 
 	render: function(){
 		return (
-			<p>Heloooooefafdev</p>
+			<div>
+				<ul>
+					
+				</ul>
+			</div>
 		);
 	}
 });
