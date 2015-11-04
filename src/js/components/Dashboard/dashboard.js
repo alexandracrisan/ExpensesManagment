@@ -16,10 +16,12 @@ var Dashboard = React.createClass({
          <div>
              <SidebarBox />
              <BudgetDetails />
-             <Header />
+
          </div>
        );
    }
 });
 
 module.exports = Dashboard;
+//<BudgetDetails />
+// <Header />

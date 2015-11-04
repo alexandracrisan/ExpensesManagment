@@ -20,7 +20,7 @@ var Router = require('react-router'),
     RouteHandler = Router.RouteHandler;
 
 var routes = (
-	<Route handler={Expense}>
+	<Route handler={App}>
 		<DefaultRoute handler={LoginForm}/>
 		<Route name="dashboard" path="dashboard" handler={Dashboard}></Route>
 		<Route name="viewAll" path="view-all" handler={ViewAll}></Route>
