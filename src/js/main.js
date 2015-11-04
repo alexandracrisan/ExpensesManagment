@@ -3,6 +3,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var App = require('./components/app.js');
+
 var ViewAll = require('./components/ViewAll/viewAll.js');
 var LoginForm = require('./components/Login/loginForm.js');
 var Dashboard = require('./components/Dashboard/dashboard.js');
@@ -22,10 +23,11 @@ var routes = (
 
 Router.run(routes, function (Handler) {
 	ReactDOM.render(<Handler />, document.getElementById('expensesApp'));
-})
+});
 
 
 
-//renders the whole app
+
+
 
 
