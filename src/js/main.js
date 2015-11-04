@@ -1,3 +1,5 @@
+// dummy comments
+// here we'll render the component from app.js
 
 
 var React = require('react');
@@ -32,10 +34,5 @@ var routes = (
 Router.run(routes, function (Handler) {
 	ReactDOM.render(<Handler />, document.getElementById('expensesApp'));
 });
-
-
-
-
-
 
 
