@@ -1,4 +1,4 @@
 module.exports = {
 		EDIT_EXPENSE: 'EDIT_EXPENSE',
 		REMOVE_EXPENSE: 'REMOVE_EXPENSE'
-}
+};
