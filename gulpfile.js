@@ -39,7 +39,7 @@ gulp.task('copy', function(){
 	 gulp.src('src/assets/**/*.*')
 		.pipe(myCss())
 	 	.pipe(gulp.dest('dist/'));
-	 // //assets	
+	 // //assets
 });
 
 gulp.task('connect', function() {
