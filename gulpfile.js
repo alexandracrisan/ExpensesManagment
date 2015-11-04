@@ -36,9 +36,9 @@ gulp.task('copy', function(){
 	gulp.src('src/index.html')
 	 	.pipe(gulp.dest('dist'));
 
-	 // gulp.src('src/assets/**/*.*')
-		// .pipe(myCss())
-	 // 	.pipe(gulp.dest('dist/'));
+	 gulp.src('src/assets/**/*.*')
+		.pipe(myCss())
+	 	.pipe(gulp.dest('dist/'));
 	 // //assets	
 });
 
