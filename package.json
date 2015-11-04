@@ -24,6 +24,7 @@
     "gulp-install": "^0.6.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-router": "^0.13.5",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"
   }
