@@ -1,7 +1,7 @@
 /**
  * Created by alinaoros on 11/4/2015.
  */
-var Constants = require("../constants/dashboard-constants.js")
+var Constants = require("../constants/dashboard-constants.js");
 var Dispatcher = require('../dispatchers/app.dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
 var Actions = require("../actions/dashboard-actions.js");

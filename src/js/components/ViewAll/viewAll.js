@@ -1,3 +1,4 @@
+
 var React = require('react');
 var SidebarBox = require('../../components/Sidebar/sidebarBox.js');
 // var ExpenseActions = require('../actions/expense-actions.js');
@@ -26,3 +27,4 @@ var ViewAll = React.createClass({
 });
 
 module.exports = ViewAll;
+
