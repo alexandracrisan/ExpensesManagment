@@ -16,6 +16,7 @@ var LoginForm = React.createClass({
       username: this.refs.username.value,
       password: this.refs.password.value
     }
+
     this.setState({error: true});
 
     console.log(data); 

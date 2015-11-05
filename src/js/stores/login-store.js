@@ -6,12 +6,6 @@ var jwt_decode = require('jwt_decode');
 
 var CHANGE_EVENT = 'change';
 
-function() {
-	this.dispatchToken = AppDisptacher.register(this._registerToActions.bind(this));
-	this._user = null;
-	this._jwt = null;
-}
-
 var LoginStore = objectAssign({}, EventEmitter.prototype, {
 	emitChange: function () {
 		this.emit(CHANGE_EVENT);
@@ -33,7 +27,8 @@ var LoginStore = objectAssign({}, EventEmitter.prototype, {
 	}
 })
 
-var _registerToActions = function(action) {
+AppDispather.register(function(payload) {
+	var action = payload.action;
 	switch(action.actionType) {
 		case LoginConstants.LOGIN_USER:
 			//we get the jwt from the action and save it locally
@@ -43,6 +38,9 @@ var _registerToActions = function(action) {
 			//we emit a change to all components that are listening
 			this.emitChange();
 			break;
-
-	}
+		default:
+			break;
+	};
 }
+
+module.exports=LoginStore;
