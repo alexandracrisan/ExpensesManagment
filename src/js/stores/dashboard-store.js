@@ -4,11 +4,13 @@
 var Constants = require("../constants/dashboard-constants.js")
 var Dispatcher = require('../dispatchers/app.dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
-var MemberListActions = require("../actions/dashboard-actions.js");
+var Actions = require("../actions/dashboard-actions.js");
 var assign = require('react/lib/Object.assign');
 
 var CHANGE_EVENT = 'change';
-
+function add() {
+  return 100;
+}
 var DashboardStore = assign(EventEmitter.prototype, {
     //emitChange: function () {
     //    this.emit(CHANGE_EVENT);
@@ -28,7 +30,8 @@ var DashboardStore = assign(EventEmitter.prototype, {
     //},
 
     getCurrentMonthBudget: function() {
-        return 1000;
+        return 100;
+
     } ,
 
      getCurrentMonthExpenses: function() {
@@ -37,7 +40,21 @@ var DashboardStore = assign(EventEmitter.prototype, {
 
      getCurrentMonthLeftBudget: function(){
         return 500;
-     }
+     },
+    dispatcherIndex: Dispatcher.register(function(payload){
+
+        var action = payload.action; //this is our action from handleViewAction
+
+        //depending on what value is in payload.action.actionType the corresponding function will be called
+        switch(action.actionType){
+            case Constants.GET_CURRENT_MONTH_BUDGET:
+                add();
+                break;
+
+        }
+
+        return true; //return true so it can actually resolve to the dispatcher so it can move onto the next action
+    })
 });
 
 module.exports = DashboardStore;

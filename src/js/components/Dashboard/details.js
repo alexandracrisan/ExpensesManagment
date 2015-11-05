@@ -2,6 +2,7 @@
  * Created by alinaoros on 11/3/2015.
  */
 var DashboardStore = require('../../stores/dashboard-store.js');
+var Actions = require("../../actions/dashboard-actions.js");
 
 var React = require('react');
 
@@ -14,6 +15,12 @@ function BudgetDetails() {
 }
 
 var BudgetDetailsBoard = React.createClass({
+    handleSubmit: function(e){
+        e.preventDefault();
+
+        Actions.GET_CURRENT_MONTH_BUDGET();
+
+    },
     getInitialState: function() {
         return BudgetDetails();
     },
@@ -32,6 +39,7 @@ var BudgetDetailsBoard = React.createClass({
                             <br/>
                             <label>Left: </label>
                             <label>{this.state.left}</label>
+                            <button onSubmit={this.handleSubmit}>A </button>
                         </div>
                     </div>
                 </div>
