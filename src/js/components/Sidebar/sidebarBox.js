@@ -5,14 +5,33 @@ var SidebarBox = React.createClass({
 
 	render: function(){
 		return (
-			<div>
-				<Link to="viewAll">View All</Link>
-				<Link to="categories">Categories</Link>
-				<Link to="calendar">Calendar</Link>
-				<Link to="balance">Balance</Link>
-			</div>
+			
+			<div id="sidebar-wrapper">
+	            <ul className="sidebar-nav">
+	                <li className="sidebar-brand">
+	                    <a href="#">
+	                        Expenses Manager
+	                    </a>
+	                </li>
+	                <li>
+	                   <Link to="viewAll">View All</Link>
+	                </li>
+	                <li>
+	                    <Link to="categories">Categories</Link>
+	                </li>
+	                <li>
+	                   <Link to="calendar">Calendar</Link>
+	                </li>
+	                <li>
+	                    <Link to="balance">Balance</Link>
+	                </li>
+	            </ul>
+        	</div>	
 		);
 	}
 });
 
 module.exports = SidebarBox;
+
+
+    

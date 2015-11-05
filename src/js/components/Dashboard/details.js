@@ -13,43 +13,6 @@ function BudgetDetails() {
     }
 }
 
-//var BudgetDetailsBoard = React.createClass({
-//    getInitialState: function() {
-//        return BudgetDetails();
-//    },
-//    componentWillMount: function() {
-
-//        //DashboardStore.addChangeListener(this._onChange());
-//    },
-//    componentWillUnmount: function() {
-//        //DashboardStore.removeChangeListener()(this._onChange());
-//    },
-//    _onChange: function() {
-//        //this.setState(BudgetDetails());
-//    },
-//    render: function() {
-        //return (
-        //    <div>
-        //        <label>Income: </label>
-        //        <label>{this.state.budget}</label>
-        //        <br/>
-        //        <label>Expenses: </label>
-        //        <label>{this.state.expenses}</label>
-        //        <br/>
-        //        <label>Left: </label>
-        //        <label>{this.state.left}</label>
-        //
-        //    </div>
-        //)
-
-//    }
-//
-//});
-
-
-
-//module.exports = BudgetDetailsBoard;
-
 var BudgetDetailsBoard = React.createClass({
     getInitialState: function() {
         return BudgetDetails();
@@ -57,18 +20,23 @@ var BudgetDetailsBoard = React.createClass({
 
     render: function() {
         return (
-            <div>
-                <label>Income: </label>
-              <label>{this.state.budget}</label>
-                <br/>
-                <label>Expenses: </label>
-                <label>{this.state.expenses}</label>
-                <br/>
-                <label>Left: </label>
-                <label>{this.state.left}</label>
-
+            <div id="page-content-wrapper">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <label>Income: </label>
+                            <label>{this.state.budget}</label>
+                            <br/>
+                            <label>Expenses: </label>
+                            <label>{this.state.expenses}</label>
+                            <br/>
+                            <label>Left: </label>
+                            <label>{this.state.left}</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-        )
+        );
     }
 
 });
