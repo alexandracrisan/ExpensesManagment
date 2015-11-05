@@ -7,6 +7,8 @@ var Bootstrap = require('react-bootstrap');
 var Input = Bootstrap.Input;
 var ButtonInput  = Bootstrap.ButtonInput;
 
+//TODO: move the income list in the view all module
+
 function incomesList(){
 	return {incomes: IncomeStore.getAll()}
 	
