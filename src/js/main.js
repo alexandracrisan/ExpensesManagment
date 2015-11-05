@@ -3,6 +3,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var ajax = require('jquery');
 var App = require('./components/app.js');
 
 var LoginForm = require('./components/Login/loginForm.js'),
@@ -12,6 +13,7 @@ var LoginForm = require('./components/Login/loginForm.js'),
     Calendar = require('./components/Calendar/calendar.js'),
     Balance = require('./components/Balance/balance.js'),
 	Expense = require('./components/Expenses/expense.js');
+
 
 
 var Router = require('react-router'),
@@ -28,6 +30,8 @@ var routes = (
 		<Route name="calendar" path="calendar" handler={Calendar}></Route>
 		<Route name="balance" path="balance" handler={Balance}></Route>
 		<Route name="addCategory" path="add-category" handler={Expense}></Route>
+		<Route name="income" path="income" handler={Income}></Route>
+
 	</Route>
 );
 

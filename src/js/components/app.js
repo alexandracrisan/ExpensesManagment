@@ -15,7 +15,8 @@ var Router = require('react-router'),
 var App = React.createClass({
 	render: function(){
     return (
-    	<div>
+
+    	<div id="wrapper">
        		<RouteHandler/>
        </div>
     );
