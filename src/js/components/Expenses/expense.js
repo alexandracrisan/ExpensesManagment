@@ -5,13 +5,16 @@
 var React = require('react');
 
 var AddExpense = require('../Expenses/addExpense.js'),
-    SidebarBox = require('../../components/Sidebar/sidebarBox.js');
+    SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
+    Header = require('../Header/header.js');
 
 var Expense = React.createClass({
+
     render: function() {
         return (
           <div>
               <SidebarBox />
+
               <AddExpense />
           </div>
         );

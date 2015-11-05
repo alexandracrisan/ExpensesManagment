@@ -14,37 +14,37 @@ var AddExpense = React.createClass({
     getInitialState: function() {
         return {
             suma: 0,
-            category: '',
-            date: new Date(),
+            //categories: this.props.categories,
+            date: '2015-02-01',
             description: ''
         }
     },
 
     addExpense: function(e) {
         e.preventDefault();
-        if(e.keyCode === 13) {
-            var expenseData = {
-                suma: this.refs.suma.getDOMNode().value,
-                category: this.refs.category.getDOMNode().value,
-                date: this.refs.date.getDOMNode().value,
-                description: this.refs.description.getDOMNode().value
+        var expenseData = {
+            suma: this.refs.suma.value,
+            //category: this.refs.category.value,
+            date: this.refs.date.value,
+            description: this.refs.description.value
             };
-            //ExpenseAction.addItem(expenseData);
-        }
+        console.log(expenseData);
+        ExpenseAction.addItem(expenseData);
+    },
+
+    handleChange: function(e) {
+        return e.target.value;
     },
 
     render: function() {
         return (
-            <form>
-                <Input type="text" ref="suma" label="Enter amount" defaultValue={this.state.suma} placeholder="Amount" />
-                <Input type="select" ref="category" label="Choose category" defaultValue={this.state.category} placeholder="select">
-                    <option value="select">select</option>
-                    <option value="other">...</option>
-                </Input>
-                <Input type="text" ref="date" label="Enter data" defaultValue={this.state.date} placeholder="Data" />
-                <Input type="textarea" ref="description" label="Enter description" defaultValue={this.state.description} placeholder="description" />
-                <ButtonInput type="submit" value="Add Expense" onClick={this.addExpense}/>
+            <form onSubmit={this.addExpense}>
+                <input type="text" ref="suma" label="Enter amount" defaultValue={this.state.suma} placeholder="Amount" />
+                <input type="date" ref="date" label="Enter data" defaultValue={this.state.date} placeholder="Data" />
+                <input type="textarea" ref="description" label="Enter description" defaultValue={this.state.description} placeholder="description" />
+                <button type="submit" onClick={this.addExpense}>Add Expense</button>
             </form>
+
         );
     }
 });
