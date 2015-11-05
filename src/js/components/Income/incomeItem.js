@@ -1,5 +1,5 @@
 var React = require('react');
-var AppActions = require('../../actions/app-actions');
+
 
 /*  ownee of TodosList
     creates a input of type checkbox that will be updated according to the 
@@ -11,10 +11,10 @@ var Income = React.createClass({
   render: function(){
    
     return (
-      <span>
+      <div>
         {this.props.sum}
         {this.props.date}
-      </span>
+      </div>
     );
   }
 });

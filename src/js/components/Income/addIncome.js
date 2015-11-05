@@ -7,16 +7,10 @@ var Bootstrap = require('react-bootstrap');
 var Input = Bootstrap.Input;
 var ButtonInput  = Bootstrap.ButtonInput;
 
-var default = {
-	data: {
-		suma:'',
-		dataTime: new Date()
-	};
-}
 function incomesList(){
 	return {incomes: IncomeStore.getAll()}
 	
-}
+};
 
 var AddIncome = React.createClass({
 	getInitialState: function(){
@@ -48,18 +42,18 @@ var AddIncome = React.createClass({
 		IncomeActions.batchLoaded(income);
 
 		console.log(income);
-		$.ajax({
-			url: "https://api.github.com/users/defunkt",
-			type: 'GET',
-			success: function(res) {
-				console.log(res);
-			}
-		});
+		// $.ajax({
+		// 	url: "https://api.github.com/users/defunkt",
+		// 	type: 'GET',
+		// 	success: function(res) {
+		// 		console.log(res);
+		// 	}
+		// });
 	},
 
 	render: function(){
 
-		var incomes = this.state.todos.map(function(item, i){
+		var incomeList = this.state.incomes.map(function(item, i){
       		return (
         	<Income key={item.id} sum={item.sum} date={item.date}/>
       		);
@@ -76,7 +70,7 @@ var AddIncome = React.createClass({
 				</div>
 				<div>
 			        <ul id="myList" className="list_wrapper">
-			          {incomes.map(function (income, i){
+			          {incomeList.map(function (income, i){
 			            return (
 			                <li id="elem">
 			                  {income}

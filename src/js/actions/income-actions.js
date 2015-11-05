@@ -1,5 +1,5 @@
-var IncomeConstants = require('../../constants/income-constants.js');
-var Dispatcher = require('../../dispatchers/dispatcher');
+var IncomeConstants = require('../constants/income-constants.js');
+var Dispatcher = require('../dispatchers/app.dispatcher.js');
 
 var ActionTypes = IncomeConstants.ActionTypes;
 
