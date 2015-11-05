@@ -3,15 +3,17 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var ajax = require('jquery');
 var App = require('./components/app.js');
-
 
 var LoginForm = require('./components/Login/loginForm.js'),
     Dashboard = require('./components/Dashboard/dashboard.js'),
     ViewAll = require('./components/ViewAll/viewAll.js'),
     Categories = require('./components/Categories/categories.js'),
     Calendar = require('./components/Calendar/calendar.js'),
-    Balance = require('./components/Balance/balance.js');
+    Balance = require('./components/Balance/balance.js'),
+	Expense = require('./components/Expenses/expense.js');
+
 
 
 var Router = require('react-router'),
@@ -27,6 +29,9 @@ var routes = (
 		<Route name="categories" path="categories" handler={Categories}></Route>
 		<Route name="calendar" path="calendar" handler={Calendar}></Route>
 		<Route name="balance" path="balance" handler={Balance}></Route>
+		<Route name="addCategory" path="add-category" handler={Expense}></Route>
+		<Route name="income" path="income" handler={Income}></Route>
+
 	</Route>
 );
 
