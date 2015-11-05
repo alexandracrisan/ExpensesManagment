@@ -48,7 +48,7 @@ var AddExpense = React.createClass({
                                 <label htmlFor="date">Enter Date</label>
                                 <input type="date" ref="date" label="Enter data" className="form-control" defaultValue={this.state.date} id="date" placeholder="Data" />
                                 <label htmlFor="description">Enter Description</label>
-                                <input type="textarea" ref="description" className="form-control" label="Enter description" defaultValue={this.state.description} id="description" placeholder="description" />
+                                <textarea ref="description" rows="4" className="form-control" label="Enter description" defaultValue={this.state.description} id="description" placeholder="description"></textarea>
                                 <button type="submit" className="btn btn-primary col-lg-3" onClick={this.addExpense}>Add Expense</button>
                             </form>
                         </div>

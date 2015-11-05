@@ -27,7 +27,14 @@ var mockExpensesList = [
     }
 ];
 
-function _addTask(item){
+function _addItem(item){
+    //$.post(url, {
+    //    suma: item.suma,
+    //    date: item.data,
+    //    description: item.description
+    //},function(status){
+    //    alert(status);
+    //});
 
     mockExpensesList.push({
         suma: item.suma,
@@ -45,28 +52,28 @@ var ExpenseStore = assign(EventEmitter.prototype, {
 
     getMockData: function() {
         return mockExpensesList;
-    },
-
-    //this is a way to reference our store if we have multiple stores
-    dispatcherIndex: AppDispatcher.register(function(payload){
-
-        var action = payload.action; //this is our action from handleViewAction
-
-        //depending on what value is in payload.action.actionType the corresponding function will be called
-
-        switch(action.actionType){
-            case ExpenseConstants.ADD_EXPENSE:
-                _addTask(action.item);
-                ExpenseStore.emitChange();
-                console.log(action.item + 'aaaaaaaStore');
-                break;
-            //default:
-            //    return true;
-        }
-
-        ExpenseStore.emitChange();
-        return true; //return true so it can actually resolve to the dispatcher so it can move onto the next action
-    })
+    }
 });
+    //this is a way to reference our store if we have multiple stores
+AppDispatcher.register(function(payload){
+
+    var action = payload.action; //this is our action from handleViewAction
+
+    //depending on what value is in payload.action.actionType the corresponding function will be called
+
+    switch(action.actionType){
+        case ExpenseConstants.ADD_EXPENSE:
+            _addItem(action.item);
+            ExpenseStore.emitChange();
+            console.log(action.item + 'aaaaaaaStore');
+            break;
+        //default:
+        //    return true;
+    }
+
+    ExpenseStore.emitChange();
+    return true; //return true so it can actually resolve to the dispatcher so it can move onto the next action
+});
+
 
 module.exports = ExpenseStore;
