@@ -1,4 +1,4 @@
-
+// dummy comment
 var Dispatcher = require('flux').Dispatcher;
 // var assign = require('react/lib/Object.assign');
 

@@ -12,7 +12,8 @@ var LoginForm = require('./components/Login/loginForm.js'),
     Categories = require('./components/Categories/categories.js'),
     Calendar = require('./components/Calendar/calendar.js'),
     Balance = require('./components/Balance/balance.js'),
-	Expense = require('./components/Expenses/expense.js');
+	Expense = require('./components/Expenses/expense.js'),
+    Income = require('./components/Income/addIncome.js');
 
 
 
