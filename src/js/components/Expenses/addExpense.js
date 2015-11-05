@@ -38,12 +38,23 @@ var AddExpense = React.createClass({
 
     render: function() {
         return (
-            <form onSubmit={this.addExpense}>
-                <input type="text" ref="suma" label="Enter amount" defaultValue={this.state.suma} placeholder="Amount" />
-                <input type="date" ref="date" label="Enter data" defaultValue={this.state.date} placeholder="Data" />
-                <input type="textarea" ref="description" label="Enter description" defaultValue={this.state.description} placeholder="description" />
-                <button type="submit" onClick={this.addExpense}>Add Expense</button>
-            </form>
+            <div id="page-content-wrapper">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-6 col-lg-offset-2 centered">
+                            <form onSubmit={this.addExpense}>
+                                <label htmlFor="suma">Enter Amount</label>
+                                <input type="text" ref="suma" label="Enter amount" className="form-control" defaultValue={this.state.suma} id="suma" placeholder="Amount" />
+                                <label htmlFor="date">Enter Date</label>
+                                <input type="date" ref="date" label="Enter data" className="form-control" defaultValue={this.state.date} id="date" placeholder="Data" />
+                                <label htmlFor="description">Enter Description</label>
+                                <input type="textarea" ref="description" className="form-control" label="Enter description" defaultValue={this.state.description} id="description" placeholder="description" />
+                                <button type="submit" className="btn btn-primary col-lg-3" onClick={this.addExpense}>Add Expense</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         );
     }

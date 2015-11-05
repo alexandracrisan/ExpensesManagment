@@ -37,7 +37,7 @@ function _addTask(item){
     console.log(mockExpensesList);
 }
 
-var ExpenseStore = assign({}, EventEmitter.prototype, {
+var ExpenseStore = assign(EventEmitter.prototype, {
 
     emitChange: function () {
         this.emit(CHANGE_EVENT);
