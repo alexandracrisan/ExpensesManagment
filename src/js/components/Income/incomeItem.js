@@ -12,8 +12,8 @@ var Income = React.createClass({
    
     return (
       <div>
-        {this.props.sum}
-        {this.props.date}
+        <div>Suma: {this.props.sum} </div>
+        <div>Data: {this.props.date}</div>
       </div>
     );
   }
