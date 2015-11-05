@@ -15,12 +15,6 @@ function BudgetDetails() {
 }
 
 var BudgetDetailsBoard = React.createClass({
-    handleSubmit: function(e){
-        e.preventDefault();
-
-        Actions.GET_CURRENT_MONTH_BUDGET();
-
-    },
     getInitialState: function() {
         return BudgetDetails();
     },
@@ -31,15 +25,25 @@ var BudgetDetailsBoard = React.createClass({
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-12">
-                            <label>Income: </label>
-                            <label>{this.state.budget}</label>
-                            <br/>
-                            <label>Expenses: </label>
-                            <label>{this.state.expenses}</label>
-                            <br/>
-                            <label>Left: </label>
-                            <label>{this.state.left}</label>
-                            <button onSubmit={this.handleSubmit}>A </button>
+
+                            <div className="alert alert-success alert-labeled">
+                                <div className="alert-labeled-row text-center">
+                                    <h2>Income: {this.state.budget}</h2>
+                                </div>
+                            </div>
+
+                            <div className="alert alert-danger alert-labeled">
+                                <div className="alert-labeled-row text-center">
+                                    <h2>Expenses:{this.state.expenses}</h2>
+                                </div>
+                            </div>
+
+                            <div className="alert alert-warning alert-labeled">
+                                <div className="alert-labeled-row text-center">
+                                    <h2>Left: {this.state.left}</h2>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
