@@ -49,20 +49,27 @@ var BudgetDetailsBoard = React.createClass({
 
     render: function() {
         return (
-            <div>
-                <label>Income: </label>
-                <label>300</label>
-                <br/>
-                <label>Expenses: </label>
-                <label>30</label>
-                <br/>
-                <label>Left: </label>
-                <label>40</label>
-
+            <div id="page-content-wrapper">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <label>Income: </label>
+                        <label>300</label>
+                        <br/>
+                        <label>Expenses: </label>
+                        <label>30</label>
+                        <br/>
+                        <label>Left: </label>
+                        <label>40</label>
+                    </div>
+                </div>
             </div>
-        )
+        </div>
+        );
     }
 
 });
 
 module.exports = BudgetDetailsBoard;
+
+
