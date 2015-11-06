@@ -13,7 +13,7 @@ function incomesList(){
 	return {
 		incomes: IncomeStore.getAll(),
 		sum: '',
-		date: new Date()
+		date: 'yyyy/mm/dd'
 	}
 	
 };
@@ -59,7 +59,7 @@ var AddIncome = React.createClass({
 						<div className="col-md-4 col-md-offset-4">
 							<form >
 								<Input type="number" className="suma" label="Suma" ref="suma" defaultValue={this.state.suma} placeholder="Enter amount" />
-								<Input type="text" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
+								<Input type="date" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
 								<ButtonInput className="btn btn-primary" type="submit" value="Add income" onClick={this.addIncome} />
 							</form>
 						</div>
