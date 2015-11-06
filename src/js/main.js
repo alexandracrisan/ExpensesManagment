@@ -28,7 +28,7 @@ var routes = (
 		<Route name="categories" path="categories" handler={Categories}></Route>
 		<Route name="calendar" path="calendar" handler={Calendar}></Route>
 		<Route name="balance" path="balance" handler={Balance}></Route>
-		<Route name="addCategory" path="add-category" handler={Expense}></Route>
+		<Route name="addExpense" path="add-expense" handler={Expense}></Route>
 		<Route name="income" path="income" handler={Income}></Route>
 
 	</Route>

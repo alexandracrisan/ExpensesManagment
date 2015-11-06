@@ -37,6 +37,7 @@ function _addItem(item){
     //});
 
     mockExpensesList.push({
+        id: mockExpensesList.length,
         suma: item.suma,
         date: item.data,
         description: item.description
@@ -44,7 +45,7 @@ function _addItem(item){
     console.log(mockExpensesList);
 }
 
-var ExpenseStore = assign(EventEmitter.prototype, {
+var ExpenseStore = assign({}, EventEmitter.prototype, {
 
     emitChange: function () {
         this.emit(CHANGE_EVENT);
@@ -52,27 +53,32 @@ var ExpenseStore = assign(EventEmitter.prototype, {
 
     getMockData: function() {
         return mockExpensesList;
+    },
+
+    addChangeListener: function(callback) {
+       this.on(CHANGE_EVENT, callback);
+    },
+
+    removeChangeListener: function(callback) {
+        this.on(CHANGE_EVENT,callback)
     }
 });
-    //this is a way to reference our store if we have multiple stores
-AppDispatcher.register(function(payload){
 
-    var action = payload.action; //this is our action from handleViewAction
 
-    //depending on what value is in payload.action.actionType the corresponding function will be called
+ExpenseStore.dispatchToken = AppDispatcher.register(function(action){
 
-    switch(action.actionType){
-        case ExpenseConstants.ADD_EXPENSE:
+    //var action = payload.action;
+
+    switch(action.type){
+        case ExpenseConstants.ActionTypes.ADD_EXPENSE:
             _addItem(action.item);
             ExpenseStore.emitChange();
-            console.log(action.item + 'aaaaaaaStore');
+            //console.log(action.item + 'aaaaaaaStore');
             break;
-        //default:
-        //    return true;
+        default:
+            //
     }
 
-    ExpenseStore.emitChange();
-    return true; //return true so it can actually resolve to the dispatcher so it can move onto the next action
 });
 
 

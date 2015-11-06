@@ -5,6 +5,7 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
 var ExpenseAction = require('../../actions/expenses-actions.js');
+var ExpenseStore = require('../../stores/expense-store.js');
 
 var Input =  ReactBootstrap.Input,
     ButtonInput =  ReactBootstrap.ButtonInput;
@@ -18,6 +19,22 @@ var AddExpense = React.createClass({
             date: '2015-02-01',
             description: ''
         }
+    },
+
+    getExpenseList: function() {
+      return {expenses: ExpenseStore.getMockData()}
+    },
+
+    componentWillMount: function(){ //will be called one time (every time we make a change in the browser to our list - the render method will be called and this function will NOT be called again and again)
+        ExpenseStore.addChangeListener(this._onChange)
+    },
+
+    componentWillUnmount: function(){
+        ExpenseStore.removeChangeListener(this._onChange);
+    },
+
+    _onChange: function(){
+        this.setState(this.getExpenseList());
     },
 
     addExpense: function(e) {

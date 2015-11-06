@@ -8,11 +8,10 @@ var IncomeActions = {
 	batchLoaded: function(data){
 		
 		Dispatcher.dispatch({
-
 			type: ActionTypes.ADD_INCOME,
-			data,
+			data
 		});
-	},
+	}
 };
 
 module.exports = IncomeActions;
