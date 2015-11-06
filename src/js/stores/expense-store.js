@@ -39,7 +39,7 @@ function _addItem(item){
     mockExpensesList.push({
         id: mockExpensesList.length,
         suma: item.suma,
-        date: item.data,
+        date: item.date,
         description: item.description
     });
     console.log(mockExpensesList);
@@ -73,7 +73,6 @@ ExpenseStore.dispatchToken = AppDispatcher.register(function(action){
         case ExpenseConstants.ActionTypes.ADD_EXPENSE:
             _addItem(action.item);
             ExpenseStore.emitChange();
-            //console.log(action.item + 'aaaaaaaStore');
             break;
         default:
     }

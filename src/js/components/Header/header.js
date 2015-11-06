@@ -3,7 +3,6 @@
  */
 var React = require('react');
 var Link = require('react-router').Link;
-var Expense = require('../Expenses/expense.js');
 
 var Header = React.createClass({
     render: function(){
@@ -12,7 +11,7 @@ var Header = React.createClass({
 				<ul className="nav nav-pills right ">
 				  <li role="presentation" ><Link to="income">Add Income</Link></li>
 				  <li role="presentation"><Link to="addExpense">Add Expenses</Link></li>
-				  <li role="presentation"> <Link to="addCategory">Add Category</Link></li>
+				  <li role="presentation"><Link to="addCategory">Add Category</Link></li>
 				</ul>
             </div>
         );
