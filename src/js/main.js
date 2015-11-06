@@ -3,7 +3,6 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ajax = require('jquery');
 var App = require('./components/app.js');
 
 

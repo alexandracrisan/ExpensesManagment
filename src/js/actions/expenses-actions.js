@@ -1,4 +1,17 @@
 
 var ExpenseConstants = require('../constants/expense-constants.js');
-var ExpenseDispatcher = require('../dispatchers/expense-dispatchers');
+var AppDispatcher = require('../dispatchers/app.dispatcher.js');
 
+var ExpenseActions = {
+
+    addItem: function(item) {
+
+        AppDispatcher.dispatch({
+            type: ExpenseConstants.ActionTypes.ADD_EXPENSE,
+            item: item
+        });
+    }
+
+};
+
+module.exports = ExpenseActions;

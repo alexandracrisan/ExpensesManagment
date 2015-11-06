@@ -1,8 +1,7 @@
-
 var Constants = {
-	ActionTypes: {
-		ADD_EXPENSE: 'ADD_EXPENSE'
-	}
+	ActionTypes:  {
+		ADD_INCOME: 'ADD_INCOME'
+	},
 };
 
 module.exports = Constants;

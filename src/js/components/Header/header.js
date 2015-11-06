@@ -3,6 +3,7 @@
  */
 var React = require('react');
 var Link = require('react-router').Link;
+var Expense = require('../Expenses/expense.js');
 
 var Header = React.createClass({
     render: function(){
