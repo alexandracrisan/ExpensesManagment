@@ -1,9 +1,10 @@
 var React = require('react');
+var SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
+	Header = require('../../components/Header/header.js');
 var IncomeActions = require('../../actions/income-actions.js');
 var IncomeStore = require('../../stores/income-store.js');
 var Income = require('../../components/Income/incomeItem.js');
 var SidebarBox = require('../../components/Sidebar/sidebarBox.js');
-
 var Bootstrap = require('react-bootstrap');
 var Input = Bootstrap.Input;
 var ButtonInput  = Bootstrap.ButtonInput;
@@ -64,26 +65,29 @@ var AddIncome = React.createClass({
 
 		return(
 			<div>
-				<SidebarBox />
-				<div className="container row">
-					<div className="col-md-4 col-md-offset-4">
-						<form >
-							<Input type="number" className="suma" label="Suma" ref="suma" defaultValue={this.state.suma} placeholder="Enter amount" />
-							<Input type="text" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
-							<ButtonInput className="btn btn-default" type="submit" value="Add income" onClick={this.addIncome} />
-						</form>
+				<Header />			
+				<div className="row">
+					<SidebarBox />
+					<div className="container row">
+						<div className="col-md-4 col-md-offset-4">
+							<form >
+								<Input type="number" className="suma" label="Suma" ref="suma" defaultValue={this.state.suma} placeholder="Enter amount" />
+								<Input type="text" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
+								<ButtonInput className="btn btn-default" type="submit" value="Add income" onClick={this.addIncome} />
+							</form>
+						</div>
+						<div>
+					        <ul id="myList" className="list_wrapper">
+					          {incomeList.map(function (income, i){
+					            return (
+					                <li id="elem">
+					                  {income}
+					                </li>
+					            );
+					          })}
+					        </ul> 
+					    </div>
 					</div>
-					<div>
-				        <ul id="myList" className="list_wrapper">
-				          {incomeList.map(function (income, i){
-				            return (
-				                <li id="elem">
-				                  {income}
-				                </li>
-				            );
-				          })}
-				        </ul> 
-				     </div>
 				</div>
 			</div>
 			);
