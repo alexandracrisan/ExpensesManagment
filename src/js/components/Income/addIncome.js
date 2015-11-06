@@ -67,11 +67,9 @@ var AddIncome = React.createClass({
 			<div>
 				<Header />			
 				<div className="row">
-					<div>
 					<SidebarBox />
-					</div>
-					<div className="container row ">
-						<div className="col-md-4 col-md-offset-4 income-contente">
+					<div className="container row">
+						<div className="col-md-4 col-md-offset-4">
 							<form >
 								<Input type="number" className="suma" label="Suma" ref="suma" defaultValue={this.state.suma} placeholder="Enter amount" />
 								<Input type="text" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
@@ -88,32 +86,10 @@ var AddIncome = React.createClass({
 					            );
 					          })}
 					        </ul> 
-				     </div>
+					    </div>
+					</div>
 				</div>
-			</div>			
-
-			// 	<SidebarBox />
-			// 	<div className="container row">
-			// 		<div className="col-md-4 col-md-offset-4">
-			// 			<form >
-			// 				<Input type="number" className="suma" label="Suma" ref="suma" defaultValue={this.state.suma} placeholder="Enter amount" />
-			// 				<Input type="text" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
-			// 				<ButtonInput className="btn btn-default" type="submit" value="Add income" onClick={this.addIncome} />
-			// 			</form>
-			// 		</div>
-			// 		<div>
-			// 	        <ul id="myList" className="list_wrapper">
-			// 	          {incomeList.map(function (income, i){
-			// 	            return (
-			// 	                <li id="elem">
-			// 	                  {income}
-			// 	                </li>
-			// 	            );
-			// 	          })}
-			// 	        </ul> 
-			// 	     </div>
-			// 	</div>
-			// </div>
+			</div>
 			);
 	}
 });
