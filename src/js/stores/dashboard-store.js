@@ -9,6 +9,29 @@ var assign = require('react/lib/Object.assign');
 
 var CHANGE_EVENT = 'change';
 
+var mockExpensesList = [
+    {
+        suma: 30,
+        date: '2014-02-01',
+        description: 'lalalal'
+    },
+    {
+        suma: 30,
+        date: '2014-02-01',
+        description: 'AnaBanana'
+    },
+    {
+        suma: 100,
+        date: '2014-02-01',
+        description: 'mINIONS'
+    },
+    {
+        suma: 100,
+        date: '2014-02-01',
+        description: 'mINIONS'
+    }
+];
+
 var DashboardStore = assign(EventEmitter.prototype, {
     //emitChange: function () {
     //    this.emit(CHANGE_EVENT);
@@ -33,11 +56,15 @@ var DashboardStore = assign(EventEmitter.prototype, {
     } ,
 
      getCurrentMonthExpenses: function() {
-        return 500;
-     },
 
-     getCurrentMonthLeftBudget: function(){
-        return 500;
+         var total = 0,
+             i;
+
+         for( i = 0; i < mockExpensesList.length; i++) {
+            total = total + mockExpensesList[i].suma;
+         }
+
+        return total;
      }
 });
 
