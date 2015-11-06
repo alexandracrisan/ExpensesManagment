@@ -5,7 +5,7 @@ var React = require('react');
     LoginStore = require('../../stores/login-store.js');
 
 var LoginForm = React.createClass({
-  
+
   getInitialState: function(){
     return{
       username: '',
@@ -52,10 +52,6 @@ var LoginForm = React.createClass({
     LoginActions.loginUser(userData);
     
     this.setState({error: true}); 
-  },
-
-  handleChange: function(e) {
-    return e.target.value;
   },
 
   showError: function() {
