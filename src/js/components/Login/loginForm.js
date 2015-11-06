@@ -40,7 +40,7 @@ var LoginForm = React.createClass({
     return (
       <div className="container">
         <div className="row vertical-offset-100">
-          <div className="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+          <div className="col-md-6 col-md-offset-3">
             <div className="panel panel-default">
               <div className="panel-heading ">
                 <h3 className="panel-title" >Please log in</h3>
