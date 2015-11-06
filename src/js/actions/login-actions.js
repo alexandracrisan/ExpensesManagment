@@ -1,4 +1,4 @@
-var LoginConstants = require('../components/Login/login-constants.js');
+var LoginConstants = require('../constants/login-constants.js');
 var AppDisptacher = require('../dispatchers/app-dispatcher');
 
 var LoginActions = {
@@ -6,8 +6,8 @@ var LoginActions = {
 		AppDispatcher.dispath({
 			actionType: LoginConstants.LOGIN_USER,
 			jwt: jwt 
-		})
-	}
+		});
+	},
 };
 
 module.exports=LoginActions;

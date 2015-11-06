@@ -1,6 +1,9 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var LoginActions = require('../actions/login-actions.js');
+var LoginStore = require('../stores/login-store.js');
+var Login = require('../components/Login/loginForm.js');
 
 var LoginForm = React.createClass({
   getInitialState: function(){
@@ -10,6 +13,15 @@ var LoginForm = React.createClass({
       error: false
     }
   },
+  componentWillMount: function(){ 
+    LoginStore.addChangeListener(this._onChange)
+  },
+  componentWillUnmount: function(){
+    LoginStore.removeChangeListener(this._onChange);
+  },
+  _onChange: function(){
+      this.setState(incomesList());
+  },
   login: function(e) {
     e.preventDefault();
     var data = {
@@ -17,14 +29,15 @@ var LoginForm = React.createClass({
       password: this.refs.password.value
     }
     //submit login form via AJAX
-    $.ajax({
-      type: 'POST',
-      url: 'http:/localhost:blabla',
-      data: data
-    })
-    .done(function(data) {
-      this.clearForm();
-    })
+    // $.ajax({
+    //   type: 'POST',
+    //   url: 'http:/localhost:blabla',
+    //   data: data
+    // })
+    // .done(function(data) {
+    //   this.clearForm();
+    // })
+    LoginActions.loginUser(user);
     
     this.setState({error: true});
     console.log(data); 
