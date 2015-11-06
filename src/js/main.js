@@ -11,8 +11,9 @@ var LoginForm = require('./components/Login/loginForm.js'),
     ViewAll = require('./components/ViewAll/viewAll.js'),
     Categories = require('./components/Categories/categories.js'),
     Calendar = require('./components/Calendar/calendar.js'),
-    Balance = require('./components/Balance/balance.js');
-    Income = require('./components/Income/addIncome.js');
+    Balance = require('./components/Balance/balance.js'),
+    Income = require('./components/Income/addIncome.js'),
+	Expense = require('./components/Expenses/expense.js');
 
 
 var Router = require('react-router'),
@@ -29,6 +30,7 @@ var routes = (
 		<Route name="calendar" path="calendar" handler={Calendar}></Route>
 		<Route name="balance" path="balance" handler={Balance}></Route>
 		<Route name="income" path="income" handler={Income}></Route>
+		<Route name="addExpense" path="add-expense" handler={Expense}></Route>
 	</Route>
 );
 
