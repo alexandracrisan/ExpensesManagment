@@ -1,5 +1,7 @@
+
 var React = require('react');
 var SidebarBox = require('../../components/Sidebar/sidebarBox.js');
+var IncomeList = require('../../components/ViewAll/incomeList.js');
 // var ExpenseActions = require('../actions/expense-actions.js');
 // var ModifyBtn = require('../components/ViewAll/modifyBtn.js');
 // var ExpenseItem = require('../components/ViewAll/expenseItem.js');
@@ -15,7 +17,7 @@ var ViewAll = React.createClass({
 	            	<div className="container-fluid">
 	                	<div className="row">
 	                    	<div className="col-lg-12">
-								<p>View All</p>		
+								<IncomeList/>
 							</div>
 						</div>
 					</div>
@@ -26,3 +28,4 @@ var ViewAll = React.createClass({
 });
 
 module.exports = ViewAll;
+

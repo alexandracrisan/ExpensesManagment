@@ -25,6 +25,9 @@ var SidebarBox = React.createClass({
 	                <li>
 	                    <Link to="balance">Balance</Link>
 	                </li>
+	                <li>
+	                    <Link to="income">Add Income</Link>
+	                </li>
 	            </ul>
         	</div>	
 		);
