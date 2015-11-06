@@ -1,5 +1,8 @@
-module.exports = {
-	EDIT_EXPENSE: 'EDIT_EXPENSE',
-	REMOVE_EXPENSE: 'REMOVE_EXPENSE',
-	ADD_EXPENSE: 'ADD_EXPENSE'
+
+var Constants = {
+	ActionTypes: {
+		ADD_EXPENSE: 'ADD_EXPENSE'
+	}
 };
+
+module.exports = Constants;

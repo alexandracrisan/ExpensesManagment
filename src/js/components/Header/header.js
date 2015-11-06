@@ -9,7 +9,8 @@ var Header = React.createClass({
     render: function(){
         return (
             <div>
-                <Link to="addCategory">Add Category</Link>
+               <Link to="addExpense">Add Expense</Link>
+
             </div>
         );
     }

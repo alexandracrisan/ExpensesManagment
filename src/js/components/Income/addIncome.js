@@ -60,7 +60,7 @@ var AddIncome = React.createClass({
       		return (
         	<Income key={item.id} sum={item.sum} date={item.date}/>
       		);
-    	}) 
+    	});
 
 		return(
 			<div>

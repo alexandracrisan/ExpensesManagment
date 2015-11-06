@@ -3,7 +3,7 @@ var IncomeActions = require('../actions/income-actions.js');
 var Dispatcher = require('../dispatchers/app.dispatcher.js');
 
 var EventEmitter = require('events').EventEmitter;
-var assign = require('react/lib/Object.assign');;
+var assign = require('react/lib/Object.assign');
 
 var CHANGE_EVENT = 'change';
 
@@ -16,7 +16,7 @@ function _addIncome(income){
 		date: income.dataTime
 	});
 	//console.log(_incomes[0]);
-};
+}
 
 var IncomeStore = assign({}, EventEmitter.prototype, {
 	
@@ -34,7 +34,7 @@ var IncomeStore = assign({}, EventEmitter.prototype, {
 
   	getAll: function(){
   		return _incomes;
-  	}, 	
+  	}
 });
 
 IncomeStore.dispatchToken = Dispatcher.register(function(action){
