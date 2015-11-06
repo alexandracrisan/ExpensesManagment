@@ -76,7 +76,6 @@ ExpenseStore.dispatchToken = AppDispatcher.register(function(action){
             //console.log(action.item + 'aaaaaaaStore');
             break;
         default:
-            console.log(23);
     }
 
 });

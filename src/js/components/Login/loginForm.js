@@ -5,7 +5,7 @@ var React = require('react');
     LoginStore = require('../../stores/login-store.js');
 
 var LoginForm = React.createClass({
-  
+
   getInitialState: function(){
     return{
       username: '',
@@ -54,10 +54,6 @@ var LoginForm = React.createClass({
     this.setState({error: true}); 
   },
 
-  handleChange: function(e) {
-    return e.target.value;
-  },
-
   showError: function() {
     if(this.state.error)
       return (
@@ -84,7 +80,7 @@ var LoginForm = React.createClass({
                   <div className="form-group">
                     <input type="text" className="form-control input-sm" ref="password" defaultValue={this.state.password} placeholder="Password"/>
                   </div>
-                  <button type="submit" className="btn btn-info btn-block" onClick={this.login}><Link to="dashboard">Log in</Link></button>
+                  <button onClick={this.login} className="btn btn-info btn-block"><Link to="dashboard" type="submit" className="btn btn-info btn-block">Log in</Link></button>
                 </form>
               </div>  
             </div>

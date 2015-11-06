@@ -8,12 +8,17 @@ var Expense = require('../Expenses/expense.js');
 var Header = React.createClass({
     render: function(){
         return (
-            <div>
-               <Link to="addExpense">Add Expense</Link>
-
+            <div className="header-component ">
+				<ul className="nav nav-pills right ">
+				  <li role="presentation" ><Link to="income">Add Income</Link></li>
+				  <li role="presentation"><Link to="addExpense">Add Expenses</Link></li>
+				  <li role="presentation"> <Link to="addCategory">Add Category</Link></li>
+				</ul>
             </div>
         );
     }
 });
 
 module.exports = Header;
+
+
