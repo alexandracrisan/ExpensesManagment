@@ -80,7 +80,7 @@ var LoginForm = React.createClass({
                   <div className="form-group">
                     <input type="text" className="form-control input-sm" ref="password" defaultValue={this.state.password} placeholder="Password"/>
                   </div>
-                  <button onClick={this.login} className="btn btn-info btn-block"><Link to="dashboard" type="submit" className="btn btn-info btn-block">Log in</Link></button>
+                  <button onClick={this.login} className="btn btn-dark btn-block"><Link to="dashboard" type="submit" className="btn btn-dark btn-block">Log in</Link></button>
                 </form>
               </div>  
             </div>
