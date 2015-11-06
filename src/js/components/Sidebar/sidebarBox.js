@@ -9,9 +9,9 @@ var SidebarBox = React.createClass({
 			<div id="sidebar-wrapper">
 	            <ul className="sidebar-nav">
 	                <li className="sidebar-brand">
-	                    <a href="#">
+	                    <Link to="dashboard">
 	                        Expenses Manager
-	                    </a>
+	                    </Link>
 	                </li>
 	                <li>
 	                   <Link to="viewAll">View All</Link>
@@ -24,9 +24,6 @@ var SidebarBox = React.createClass({
 	                </li>
 	                <li>
 	                    <Link to="balance">Balance</Link>
-	                </li>
-	                <li>
-	                    <Link to="income">Add Income</Link>
 	                </li>
 	            </ul>
         	</div>	

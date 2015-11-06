@@ -1,18 +1,20 @@
-var React = require('react');
-var SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
-	Header = require('../../components/Header/header.js');
-var IncomeActions = require('../../actions/income-actions.js');
-var IncomeStore = require('../../stores/income-store.js');
-var Income = require('../../components/Income/incomeItem.js');
-var SidebarBox = require('../../components/Sidebar/sidebarBox.js');
-var Bootstrap = require('react-bootstrap');
-var Input = Bootstrap.Input;
-var ButtonInput  = Bootstrap.ButtonInput;
+var React = require('react'),
+	SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
+	Header = require('../../components/Header/header.js'),
+	IncomeActions = require('../../actions/income-actions.js'),
+	IncomeStore = require('../../stores/income-store.js'),
 
-//TODO: move the income list in the view all module
+	Bootstrap = require('react-bootstrap'),
+	Input = Bootstrap.Input,
+	ButtonInput  = Bootstrap.ButtonInput;
+
 
 function incomesList(){
-	return {incomes: IncomeStore.getAll()}
+	return {
+		incomes: IncomeStore.getAll(),
+		sum: '',
+		date: new Date()
+	}
 	
 };
 
@@ -37,32 +39,17 @@ var AddIncome = React.createClass({
 	addIncome: function(e){
 		e.preventDefault();
 		var sum = $('.suma').val();
-		var dtime = $('.dataTime').val();
+		var date = $('.dataTime').val();
 		var income = {
-			suma: sum,
-			dataTime: dtime
+			sum: sum,
+			date: date
 		}
 
 		IncomeActions.batchLoaded(income);
 
-		console.log(income);
-		// $.ajax({
-		// 	url: "https://api.github.com/users/defunkt",
-		// 	type: 'GET',
-		// 	success: function(res) {
-		// 		console.log(res);
-		// 	}
-		// });
 	},
 
 	render: function(){
-
-		var incomeList = this.state.incomes.map(function(item, i){
-      		return (
-        	<Income key={item.id} sum={item.sum} date={item.date}/>
-      		);
-    	});
-
 		return(
 			<div>
 				<Header />			
@@ -73,20 +60,9 @@ var AddIncome = React.createClass({
 							<form >
 								<Input type="number" className="suma" label="Suma" ref="suma" defaultValue={this.state.suma} placeholder="Enter amount" />
 								<Input type="text" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
-								<ButtonInput className="btn btn-default" type="submit" value="Add income" onClick={this.addIncome} />
+								<ButtonInput className="btn btn-primary" type="submit" value="Add income" onClick={this.addIncome} />
 							</form>
 						</div>
-						<div>
-					        <ul id="myList" className="list_wrapper">
-					          {incomeList.map(function (income, i){
-					            return (
-					                <li id="elem">
-					                  {income}
-					                </li>
-					            );
-					          })}
-					        </ul> 
-					    </div>
 					</div>
 				</div>
 			</div>
