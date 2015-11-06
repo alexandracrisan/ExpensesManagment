@@ -1,10 +1,11 @@
 var React = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
-var LoginActions = require('../../actions/login-actions.js');
-var LoginStore = require('../../stores/login-store.js');
+    Router = require('react-router');
+    Link = Router.Link;
+    LoginActions = require('../../actions/login-actions.js');
+    LoginStore = require('../../stores/login-store.js');
 
 var LoginForm = React.createClass({
+  
   getInitialState: function(){
     return{
       username: '',
@@ -12,24 +13,32 @@ var LoginForm = React.createClass({
       error: false
     }
   },
+
   getUsersList: function() {
     return {users: LoginStore.getMockData()}
   },
+
   componentWillMount: function(){ 
     LoginStore.addChangeListener(this._onChange)
   },
+
   componentWillUnmount: function(){
     LoginStore.removeChangeListener(this._onChange);
   },
+
   _onChange: function(){
       this.setState(this.getUsersList());
   },
+
   login: function(e) {
     e.preventDefault();
     var userData = {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
+
+    console.log(userData);
+
     //submit login form via AJAX
     // $.ajax({
     //   type: 'POST',
@@ -39,14 +48,16 @@ var LoginForm = React.createClass({
     // .done(function(data) {
     //   this.clearForm();
     // })
+
     LoginActions.loginUser(userData);
     
-    this.setState({error: true});
-    console.log(userData); 
+    this.setState({error: true}); 
   },
+
   handleChange: function(e) {
     return e.target.value;
   },
+
   showError: function() {
     if(this.state.error)
       return (
@@ -54,6 +65,7 @@ var LoginForm = React.createClass({
         )
     return "";
   },
+
   render: function(){
     return (
       <div className="container">

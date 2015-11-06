@@ -1,9 +1,9 @@
 var LoginConstants = require('../constants/login-constants.js');
-var AppDispatcher = require('../dispatchers/app.dispatcher');
-var LoginActions = require('../actions/login-actions.js');
-var LoginForm = require('../components/Login/LoginForm.js')
-var assign = require('react/lib/Object.assign');
-var EventEmitter = require('events').EventEmitter;
+	AppDispatcher = require('../dispatchers/app.dispatcher');
+	LoginActions = require('../actions/login-actions.js');
+	LoginForm = require('../components/Login/LoginForm.js')
+	assign = require('react/lib/Object.assign');
+	EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change';
 

@@ -1,16 +1,17 @@
 var LoginConstants = require('../constants/login-constants.js');
-var AppDispatcher = require('../dispatchers/app.dispatcher');
+	AppDispatcher = require('../dispatchers/app.dispatcher');
 
 var ActionTypes = LoginConstants.ActionTypes;
 
 var LoginActions = {
-	loginUser: function(jwt){
+	loginUser: function(user){
 		AppDispatcher.dispatch({
 			type: ActionTypes.LOGIN_USER,
-			jwt
+			user: user
 		});
 	},
 };
 
 module.exports=LoginActions;
 	
+
