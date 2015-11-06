@@ -34,8 +34,7 @@ var AddIncome = React.createClass({
 	render: function(){
 		return(
 			<div>
-				<Header />
-			<div>
+				<Header />			
 				<div className="row">
 					<div>
 					<SidebarBox />
@@ -48,9 +47,8 @@ var AddIncome = React.createClass({
 								<ButtonInput className="btn btn-default" type="submit" value="Add income" onClick={this.addIncome} />
 							</form>
 						</div>
-					</div>
+					</div>				
 				</div>
-			</div>
 			</div>
 			);
 	}
