@@ -2,7 +2,6 @@
  * Created by alinaoros on 11/3/2015.
  */
 var DashboardStore = require('../../stores/dashboard-store.js');
-var Actions = require("../../actions/dashboard-actions.js");
 
 var React = require('react');
 

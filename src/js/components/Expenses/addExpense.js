@@ -6,14 +6,25 @@ var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
 var ExpenseAction = require('../../actions/expenses-actions.js');
 var ExpenseStore = require('../../stores/expense-store.js');
+var Income = require('../../components/Income/incomeItem.js');
 
 var Input =  ReactBootstrap.Input,
     ButtonInput =  ReactBootstrap.ButtonInput;
+
+function getExpenseList() {
+      return {expenses: ExpenseStore.getMockData(),
+            suma: 0,
+            //categories: this.props.categories,
+            date: '2015-02-01',
+            description: ''
+      }
+    };
 
 var AddExpense = React.createClass({
 
     getInitialState: function() {
         return {
+            expenses: ExpenseStore.getMockData(),
             suma: 0,
             //categories: this.props.categories,
             date: '2015-02-01',
@@ -22,7 +33,7 @@ var AddExpense = React.createClass({
     },
 
     getExpenseList: function() {
-      return {expenses: ExpenseStore.getMockData()}
+        return {expenses: ExpenseStore.getMockData()};
     },
 
     componentWillMount: function(){ //will be called one time (every time we make a change in the browser to our list - the render method will be called and this function will NOT be called again and again)
@@ -54,6 +65,11 @@ var AddExpense = React.createClass({
     },
 
     render: function() {
+        var expenseList = this.state.expenses.map(function(item, i){
+            return (
+            <Income key={item.id} sum={item.sum} date={item.date}/>
+            );
+        }) 
         return (
             <div id="page-content-wrapper">
                 <div className="container-fluid">
@@ -68,6 +84,16 @@ var AddExpense = React.createClass({
                                 <textarea ref="description" rows="4" className="form-control" label="Enter description" defaultValue={this.state.description} id="description" placeholder="description"></textarea>
                                 <button type="submit" className="btn btn-primary col-lg-3" onClick={this.addExpense}>Add Expense</button>
                             </form>
+
+                            <ul id="myList" className="list_wrapper">
+                                {expenseList.map(function (income, i){
+                                return (
+                                    <li id="elem">
+                                        {income}
+                                    </li>
+                                    );
+                                })}
+                            </ul> 
                         </div>
                     </div>
                 </div>
