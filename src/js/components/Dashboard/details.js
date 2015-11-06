@@ -8,9 +8,9 @@ var React = require('react');
 
 function BudgetDetails() {
     return {
-        budget: DashboardStore.getCurrentMonthBudget(),
-        expenses: DashboardStore.getCurrentMonthExpenses(),
-        left: DashboardStore.getCurrentMonthLeftBudget()
+        budget: DashboardStore.getCurrentMonthBudget(), //--> income store
+        expenses: DashboardStore.getCurrentMonthExpenses(), // -> expense store
+        left: DashboardStore.getCurrentMonthBudget() - DashboardStore.getCurrentMonthExpenses()
     }
 }
 
