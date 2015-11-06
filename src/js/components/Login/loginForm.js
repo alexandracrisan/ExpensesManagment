@@ -1,9 +1,8 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
-var LoginActions = require('../actions/login-actions.js');
-var LoginStore = require('../stores/login-store.js');
-var Login = require('../components/Login/loginForm.js');
+var LoginActions = require('../../actions/login-actions.js');
+var LoginStore = require('../../stores/login-store.js');
 
 var LoginForm = React.createClass({
   getInitialState: function(){
@@ -13,6 +12,9 @@ var LoginForm = React.createClass({
       error: false
     }
   },
+  getUsersList: function() {
+    return {users: LoginStore.getMockData()}
+  },
   componentWillMount: function(){ 
     LoginStore.addChangeListener(this._onChange)
   },
@@ -20,11 +22,11 @@ var LoginForm = React.createClass({
     LoginStore.removeChangeListener(this._onChange);
   },
   _onChange: function(){
-      this.setState(incomesList());
+      this.setState(this.getUsersList());
   },
   login: function(e) {
     e.preventDefault();
-    var data = {
+    var userData = {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
@@ -37,10 +39,13 @@ var LoginForm = React.createClass({
     // .done(function(data) {
     //   this.clearForm();
     // })
-    LoginActions.loginUser(user);
+    LoginActions.loginUser(userData);
     
     this.setState({error: true});
-    console.log(data); 
+    console.log(userData); 
+  },
+  handleChange: function(e) {
+    return e.target.value;
   },
   showError: function() {
     if(this.state.error)

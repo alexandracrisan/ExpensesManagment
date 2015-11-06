@@ -1,21 +1,34 @@
 var LoginConstants = require('../constants/login-constants.js');
-var AppDisptacher = require('../dispatchers/app-dispatcher');
-var LoginActions = require('../actions/login-actions.js')
+var AppDispatcher = require('../dispatchers/app.dispatcher');
+var LoginActions = require('../actions/login-actions.js');
+var LoginForm = require('../components/Login/LoginForm.js')
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
-var jwt_decode = require('jwt_decode');
 
 var CHANGE_EVENT = 'change';
 
-var _users = [];
+var mockUsersList = [
+    {
+        username: 'Diana',
+        password: '123'
+    },
+    {
+        username: 'Alexandra',
+        password: '123'
+    },
+    {
+        username: 'Mihai',
+        password: '123'
+    }
+];
 
 function _addUser(user) {
-	_users.push({
-		id: _users.length,
+	mockUsersList.push({
+		id: mockUsersList.length,
 		username: user.username,
 		password: user.password
 	});
-	console.log(_users[0]);
+	console.log(mockUsersList);
 };
 
 var LoginStore = assign({}, EventEmitter.prototype, {
@@ -28,25 +41,16 @@ var LoginStore = assign({}, EventEmitter.prototype, {
 	removeChangeListener: function(callback){
 		this.removeListener(CHANGE_EVENT, callback)
 	},
-	getUsername: function(){
-		return this._username;
-	},
-	getJwt: function(){
-		return this._jwt;
-	},
-	getAll: function(){
-		return _users;
-	}
-	isLoggedIn() {
-		return !!this._username;
-	},
+	getMockData: function() {
+        return mockUsersList;
+    }
 });
 
 
-LoginStore.dispatchToken = AppDispather.register(function(action) {
+LoginStore.dispatchToken = AppDispatcher.register(function(action) {
 	switch(action.type) {
 		case LoginConstants.ActionTypes.LOGIN_USER:
-			_addUser(action.data);
+			_addUser(action.user);
 			LoginStore.emitChange();
 			break;
 		default:
