@@ -8,11 +8,25 @@ var Income = React.createClass({
    
     return (
       <div>
-        <div>Suma: {this.props.sum} </div>
-        <div>Data: {this.props.date}</div>
+		<table className="table table-hover">
+		    <thead>
+		        <tr>
+		          <th>Suma</th>
+		          <th>Data</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		          <td>{this.props.sum}</td>
+		          <td>{this.props.sum}</td>
+		        </tr>
+		    </tbody>
+		</table>
       </div>
     );
   }
 });
 
 module.exports = Income;
+
+
