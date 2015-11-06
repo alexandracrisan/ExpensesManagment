@@ -15,7 +15,6 @@ var LoginForm = require('./components/Login/loginForm.js'),
 	Expense = require('./components/Expenses/expense.js'),
 	Income = require('./components/Income/addIncome.js');
 
-
 var Router = require('react-router'),
     DefaultRoute = Router.DefaultRoute,
     Route = Router.Route,
