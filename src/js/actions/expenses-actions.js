@@ -8,7 +8,7 @@ var ExpenseActions = {
 
         AppDispatcher.dispatch({
             type: ExpenseConstants.ActionTypes.ADD_EXPENSE,
-            item
+            item: item
         });
     }
 
