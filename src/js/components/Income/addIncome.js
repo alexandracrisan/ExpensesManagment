@@ -4,7 +4,6 @@ var SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
 var IncomeActions = require('../../actions/income-actions.js');
 var IncomeStore = require('../../stores/income-store.js');
 var Income = require('../../components/Income/incomeItem.js');
-var SidebarBox = require('../../components/Sidebar/sidebarBox.js');
 var Bootstrap = require('react-bootstrap');
 var Input = Bootstrap.Input;
 var ButtonInput  = Bootstrap.ButtonInput;
@@ -73,7 +72,7 @@ var AddIncome = React.createClass({
 							<form >
 								<Input type="number" className="suma" label="Suma" ref="suma" defaultValue={this.state.suma} placeholder="Enter amount" />
 								<Input type="text" className="dataTime" label="Data" ref="dataTime" defaultValue={this.state.dataTime} placeholder="Enter Data" />
-								<ButtonInput className="btn btn-default" type="submit" value="Add income" onClick={this.addIncome} />
+								<ButtonInput className="btn btn-primary" type="submit" value="Add income" onClick={this.addIncome} />
 							</form>
 						</div>
 						<div>
