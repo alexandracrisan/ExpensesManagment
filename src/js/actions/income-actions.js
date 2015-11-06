@@ -9,7 +9,7 @@ var IncomeActions = {
 		
 		Dispatcher.dispatch({
 			type: ActionTypes.ADD_INCOME,
-			data
+			data: data
 		});
 	}
 };
