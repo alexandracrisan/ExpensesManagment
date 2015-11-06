@@ -1,9 +1,8 @@
-var React = require('react');
-var SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
-	Header = require('../../components/Header/header.js');
-// var ExpenseActions = require('../actions/expense-actions.js');
-// var ModifyBtn = require('../components/ViewAll/modifyBtn.js');
-// var ExpenseItem = require('../components/ViewAll/expenseItem.js');
+var React = require('react'),
+	SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
+	Header = require('../../components/Header/header.js'),
+	IncomeList = require('../../components/ViewAll/incomeList.js');
+
 
 
 var ViewAll = React.createClass({
@@ -18,7 +17,7 @@ var ViewAll = React.createClass({
 		            	<div className="container-fluid">
 		                	<div className="row">
 		                    	<div className="col-lg-12">
-									<p>View All</p>		
+									<IncomeList/>
 								</div>
 							</div>
 						</div>

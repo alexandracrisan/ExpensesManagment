@@ -12,10 +12,9 @@ var _incomes = [];
 function _addIncome(income){
 	_incomes.push({
 		id: _incomes.length,
-		sum: income.suma,
-		date: income.dataTime
+		sum: income.sum,
+		date: income.date
 	});
-	//console.log(_incomes[0]);
 }
 
 var IncomeStore = assign({}, EventEmitter.prototype, {
@@ -43,7 +42,7 @@ IncomeStore.dispatchToken = Dispatcher.register(function(action){
 			_addIncome(action.data);
 			IncomeStore.emitChange();
 			break;
-		default: //nothin
+		default: //do nothing
 	}
 });
 
