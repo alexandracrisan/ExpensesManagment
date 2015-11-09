@@ -12,13 +12,14 @@ var Input =  ReactBootstrap.Input,
     ButtonInput =  ReactBootstrap.ButtonInput;
 
 function getExpenseList() {
-      return {expenses: ExpenseStore.getMockData(),
-            suma: 0,
+      return {
+          expenses: ExpenseStore.getMockData(),
+          suma: 0,
             //categories: this.props.categories,
-            date: '2015-02-01',
-            description: ''
+          date: '2015-02-01',
+          description: ''
       }
-    };
+}
 
 var AddExpense = React.createClass({
 
@@ -69,7 +70,7 @@ var AddExpense = React.createClass({
             return (
             <Income key={item.id} sum={item.sum} date={item.date}/>
             );
-        }) 
+        });
         return (
             <div id="page-content-wrapper">
                 <div className="container-fluid">
