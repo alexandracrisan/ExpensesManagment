@@ -47,7 +47,7 @@ gulp.task('copy', function(){
 
 	 gulp.src('src/assets/**/*.*')
 		.pipe(myCss())
-	 	.pipe(gulp.dest('dist/'));
+	 	.pipe(gulp.dest('dist/assets/'));
 	 
 	 
 });
