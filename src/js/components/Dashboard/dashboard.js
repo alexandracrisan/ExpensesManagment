@@ -1,11 +1,11 @@
 /**
  * Created by alinaoros on 11/3/2015.
  */
-var BudgetDetails = require('./details.js'),
-    SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
-    Header = require('../../components/Header/header.js');
+var React = require('react'),
+    Header = require('../../components/Header/header.js'),
+    SidebarBox = require('../../components/Sidebar/SidebarBox.js'),
+    FinancesTable = require('../../components/FinancesTable/FinancesTable.js');
 
-var React = require('react');
 
 
 var Dashboard = React.createClass({
@@ -14,8 +14,8 @@ var Dashboard = React.createClass({
            <div>
              <Header />
              <div>
-                 <SidebarBox />
-                 <BudgetDetails />
+                <SidebarBox/>
+                <FinancesTable/>
              </div>
            </div>
        );

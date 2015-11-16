@@ -2,7 +2,8 @@ var React = require('react'),
 	SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
 	Header = require('../../components/Header/header.js'),
 	IncomeList = require('../../components/ViewAll/incomeList.js'),
-	ExpenseList = require('../../components/ViewAll/expensesList.js');
+	ExpenseList = require('../../components/ViewAll/expensesList.js'),
+	ExpenseRow = require('../FinancesTable/ExpenseRow/expenseRow.js');
 
 
 var ViewAll = React.createClass({
