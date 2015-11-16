@@ -1,9 +1,8 @@
 /**
  * Created by alinaoros on 11/3/2015.
  */
-var BudgetDetails = require('./details.js'),
-    SidebarBox = require('../../components/Sidebar/sidebarBox.js'),
-    Header = require('../../components/Header/header.js');
+var Header = require('../../components/Header/header.js');
+    FinancesTable = require('../../components/FinancesTable/FinancesTable.js');
 
 var React = require('react');
 
@@ -14,8 +13,7 @@ var Dashboard = React.createClass({
            <div>
              <Header />
              <div>
-                 <SidebarBox />
-                 <BudgetDetails />
+                 <FinancesTable/>
              </div>
            </div>
        );
