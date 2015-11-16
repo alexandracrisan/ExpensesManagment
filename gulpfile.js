@@ -3,7 +3,7 @@
 */
 
 /* require includes modules that exist in separate files
-   functionality: it reads a js file, executes the file and returns the .exports object 
+   functionality: it reads a js file, executes the file and returns the .exports object
    if there are multiple calls (of the same module) to require, the module cache  will be
    invoked rather than reading the file again
 */
@@ -22,7 +22,7 @@ var connect = require('gulp-connect');
    gulp requires that the input should be a stream
    browserify outputs a string
 */
-var source = require('vinyl-source-stream'); //converts a string to a stream 
+var source = require('vinyl-source-stream'); //converts a string to a stream
 
 //--------------------------------------TASKS------------------------------------------------------------------
 
@@ -37,7 +37,7 @@ gulp.task('browserify', function() {
 	 .pipe(uglify().on('error', gutil.log))
 	 .pipe(sourcemaps.write('./')) // writes .map file
 	 .pipe(gulp.dest('dist/js'))
-	 .pipe(connect.reload()); 
+	 .pipe(connect.reload());
 }); //end of gulp task
 
 gulp.task('copy', function(){
@@ -48,8 +48,8 @@ gulp.task('copy', function(){
 	 gulp.src('src/assets/**/*.*')
 		.pipe(myCss())
 	 	.pipe(gulp.dest('dist/assets/'));
-	 
-	 
+
+
 });
 
 gulp.task('connect', function() {
