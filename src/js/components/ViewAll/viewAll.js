@@ -20,7 +20,6 @@ var ViewAll = React.createClass({
 		                    	<div className="col-lg-12">
 									<IncomeList/>
 									<ExpenseList/>
-									<ExpenseRow />
 								</div>
 							</div>
 						</div>
