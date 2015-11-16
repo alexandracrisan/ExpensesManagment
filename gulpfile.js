@@ -62,7 +62,7 @@ gulp.task('connect', function() {
 gulp.task('watch', ['browserify', 'copy'], function(){ //in [] we run the tasks from above
 	// **, *.* means anything
 	// .watch creates a watcher that will spy on files that are mat
-	return gulp.watch('src/**/*.*', ['browserify', 'copy']) //we re-run browserify and copy
+	return gulp.watch('src/**/*.*', ['browserify', 'copy']); //we re-run browserify and copy
 });
 
 gulp.task('default', ['connect', 'watch']);
