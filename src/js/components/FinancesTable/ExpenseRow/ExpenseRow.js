@@ -52,6 +52,7 @@ var ExpenseRow = React.createClass({
     render: function() {
         var currentExpense = this.state.expense;
         return (
+
             <tr>
                 <td contentEditable="false">{currentExpense.nr}</td>
                 <td contentEditable="true">{currentExpense.date}</td>
@@ -61,6 +62,7 @@ var ExpenseRow = React.createClass({
                 {this.determinateValueCredit()}
                 <td><CheckBox /></td>
             </tr>
+
         );
     }
 });
