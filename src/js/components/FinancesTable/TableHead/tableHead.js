@@ -21,12 +21,6 @@ var TableHead = React.createClass({
 							</th>
 						</tr>
 					</thead>
-					<tfoot>
-						<tr>
-							<td>Sold</td>
-							<td>$100</td>
-						</tr>
-					</tfoot>
 				</form>
 			</div>
 		);

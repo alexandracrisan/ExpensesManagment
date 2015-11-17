@@ -1,6 +1,6 @@
 var Constants = {
 	ActionTypes:  {
-		ADD_INCOME: 'ADD_FINANCE'
+		ADD_FINANCE: 'ADD_FINANCE'
 	},
 };
 
