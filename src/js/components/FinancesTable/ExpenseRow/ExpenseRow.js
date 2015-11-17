@@ -12,15 +12,7 @@ var ExpenseRow = React.createClass({
 
     getInitialState: function() {
       return {
-          expense: {
-              nr: 2,
-              date: '12/12/1010',
-              description: 'ceds',
-              category: 'food',
-              debit: 300,
-              credit: 100
-          }
-              //this.props.expense
+          expense: this.props.expense
       }
     },
 
@@ -40,19 +32,15 @@ var ExpenseRow = React.createClass({
         var currentExpense = this.state.expense;
         console.log(currentExpense);
         return (
-            <table>
-                <tbody>
             <tr>
-                <td contentEditable="true">{currentExpense.nr}</td>
+                <td contentEditable="false">{currentExpense.nr}</td>
                 <td contentEditable="true">{currentExpense.date}</td>
                 <td contentEditable="true">{currentExpense.description}</td>
                 <td contentEditable="true">{currentExpense.category}</td>
-                <td contentEditable="false">{this.props.mihai}</td>
+                <td contentEditable="true">{currentExpense.debit}</td>
                 <td contentEditable="true">{currentExpense.credit}</td>
                 <td><CheckBox /></td>
             </tr>
-            </tbody>
-            </table>
         );
     }
 });
