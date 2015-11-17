@@ -25,6 +25,12 @@ var runSequence = require('run-sequence');
    browserify outputs a string
 */
 var source = require('vinyl-source-stream'); //converts a string to a stream
+var sourcePath = {
+	index: 'src/index.html',
+	css: 'js/styles.css'
+}
+
+
 
 //--------------------------------------TASKS------------------------------------------------------------------
 
@@ -44,7 +50,7 @@ gulp.task('browserify', function() {
 
 gulp.task('copy', function(){
 	// copies the file given as input to the destination file given in pipe
-	gulp.src('src/index.html')
+	gulp.src(sourcePath.index)
 	 	.pipe(gulp.dest('dist'));
 
 	gulp.src('src/assets/**/*.*')
