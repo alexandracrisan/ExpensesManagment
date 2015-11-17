@@ -35,7 +35,6 @@ var FinancesTable = React.createClass({
 		return (
 
 			<table className="table table-bordered">
-
 				<TableHead/>
 				<tbody>
 					{
