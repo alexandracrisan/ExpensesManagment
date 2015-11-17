@@ -1,14 +1,14 @@
 var React = require('react');
-
+var FinanceAction = require('../../actions/finances-actions.js');
 var AddItem = React.createClass({
 
 	getInitialState: function(){
 
 		return {
-			sum: 0,
+			sum: null,
 			date: '2015-01-01',
 			description: '',
-			category: '',
+			category: 'Taxes',
 			type: '+'
 		};
 	},
@@ -48,7 +48,7 @@ var AddItem = React.createClass({
 			type: this.state.type
 		}
 
-		
+		FinanceAction.dataLoaded(data);
 	},
 
 	render: function() {
@@ -61,11 +61,11 @@ var AddItem = React.createClass({
                 <input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Amount" />
                 <input type="date" className="form-control" value={this.state.date} onChange={this.handleDate} placeholder="Data" />
                 <textarea rows="4" className="form-control" value={this.state.description} onChange={this.handleDescription} placeholder="description"></textarea>
-                <select value={this.state.category} onChange={this.handleCategory}>
+                <select className="form-control" value={this.state.category} onChange={this.handleCategory}>
                 	<option>Taxes</option>
                 	<option>Food</option>
                 </select>
-                 <select value={this.state.type} onChange={this.handleType}>
+                 <select className="form-control" value={this.state.type} onChange={this.handleType}>
                 	<option>+</option>
                 	<option>-</option>
                 </select>
@@ -77,3 +77,5 @@ var AddItem = React.createClass({
 		);
 	}
 });
+
+module.exports = AddItem;
