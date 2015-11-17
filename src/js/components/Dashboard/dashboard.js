@@ -4,7 +4,8 @@
 var React = require('react'),
     Header = require('../../components/Header/header.js'),
     SidebarBox = require('../../components/Sidebar/SidebarBox.js'),
-    FinancesTable = require('../../components/FinancesTable/FinancesTable.js');
+    FinancesTable = require('../../components/FinancesTable/FinancesTable.js'),
+    FinanceForm = require('../../components/AddForm/addItem.js');
 
 
 
@@ -15,6 +16,7 @@ var Dashboard = React.createClass({
              <Header />
              <div>
                 <SidebarBox/>
+                <FinanceForm/>
                 <FinancesTable/>
              </div>
            </div>
