@@ -15,7 +15,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
 var gutil = require('gulp-util');
-
+var babelify = require('babelify');
 var connect = require('gulp-connect');
 
 /* when using gulp with browserify:
@@ -28,7 +28,7 @@ var source = require('vinyl-source-stream'); //converts a string to a stream
 
 gulp.task('browserify', function() {
 	return browserify('./src/js/main.js',{ debug: true } ) //when calling browserify the argument should be the the entry point of the application
-	 .transform('reactify') //transforms from jsx to js
+	 .transform("babelify", {presets: ["react"]}) //transforms from jsx to js
 	 .bundle()	//the output of the transform will be here
 
 	 .pipe(source('main.js'))//takes as input the output of bundle and transforms it to a stream

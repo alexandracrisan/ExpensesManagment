@@ -1,7 +1,7 @@
 var React = require('react'),
 	
 var TableHead = React.createClass({
-
+ 
 	render: function(){
 		return (
 			<table>

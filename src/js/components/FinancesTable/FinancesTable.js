@@ -7,7 +7,13 @@ var FinancesTable = React.createClass({
 	render: function() {
 		
 		return (
-			<ExpenseRow/>
+			<table>
+				<tableHead/>
+				<tbody>
+					<ExpenseRow/>
+				</tbody>
+			</table>
+			
 		);
 	}
 });

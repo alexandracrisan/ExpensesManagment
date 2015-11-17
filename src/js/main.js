@@ -13,7 +13,6 @@ var LoginForm = require('./components/Login/loginForm.js'),
     Expenses = require('./components/Expenses/expense.js');
 
 
-
 var Router = require('react-router'),
     DefaultRoute = Router.DefaultRoute,
     Route = Router.Route,
@@ -30,6 +29,7 @@ var routes = (
 		<Route name="income" path="income" handler={Income}></Route>
 		<Route name="addExpense" path="add-expense" handler={Expenses}></Route>
 		<Route name="addCategory" path="add-category" handler={Categories}></Route>
+		
 	</Route>
 );
 
