@@ -1,6 +1,7 @@
 var AppDispatcher = require('../dispatchers/app.dispatcher.js'),
     EventEmitter = require('events').EventEmitter,
-    assign = require('react/lib/Object.assign');
+    assign = require('react/lib/Object.assign'),
+    FinanceConstants = require('../constants/finances-constants.js');
 
 var CHANGE_EVENT = 'change';
 
@@ -41,6 +42,28 @@ var mockFinancesList = [{
     credit: 560
 }];
 
+function _addItem(finance){
+
+	var debit, credit;
+	
+	if(finance.type === '+'){
+
+		debit = finance.sum;
+		credit = '-';
+	}
+	else{
+		credit = finance.sum;
+		debit = '-';
+	}
+	mockFinancesList.push({
+		nr: mockFinancesList.length + 1,
+		date: finance.date,
+		description: finance.description,
+		category: finance.category,
+		debit: debit,
+		credit: credit
+	});
+}
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
 
@@ -64,15 +87,13 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
 
 FinanceStore.dispatchToken = AppDispatcher.register(function(action){
 
-    //var action = payload.action;
-
-    //switch(action.type){
-    //    case ExpenseConstants.ActionTypes.ADD_EXPENSE:
-    //        _addItem(action.item);
-    //        ExpenseStore.emitChange();
-    //        break;
-    //    default:
-    //}
+    switch(action.type){
+       case FinanceConstants.ActionTypes.ADD_FINANCE:
+           _addItem(action.data);
+           FinanceStore.emitChange();
+           break;
+       default:
+    }
 
 });
 
