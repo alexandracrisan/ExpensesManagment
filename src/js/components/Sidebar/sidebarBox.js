@@ -14,9 +14,6 @@ var SidebarBox = React.createClass({
 	                    </Link>
 	                </li>
 	                <li>
-	                   <Link to="viewAll">View All</Link>
-	                </li>
-	                <li>
 	                    <Link to="categories">Categories</Link>
 	                </li>
 	                <li>
