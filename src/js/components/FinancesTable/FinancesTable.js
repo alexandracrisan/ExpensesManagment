@@ -1,6 +1,7 @@
 var React = require('react');
 
 var ExpenseRow = require('../../components/FinancesTable/ExpenseRow/ExpenseRow.js');
+var TableHead = require('../../components/FinancesTable/TableHead/tableHead.js');
 
 var FinancesTable = React.createClass({
 
@@ -8,7 +9,7 @@ var FinancesTable = React.createClass({
 		
 		return (
 			<table>
-				<tableHead/>
+				<TableHead/>
 				<tbody>
 					<ExpenseRow/>
 				</tbody>
