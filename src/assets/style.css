@@ -30,7 +30,20 @@
 	color: #fff;
 	background: rgba(255,255,255,0.2);
 }
-
+.all-space {
+	width: 100%;
+}
 ul li {
 	list-style: none;
+}
+
+.addCategory {
+	padding: 10px;
+	border: none;
+	background: none;
+}
+
+th, td {
+	text-align: center;
+
 }

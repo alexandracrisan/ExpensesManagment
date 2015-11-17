@@ -1,9 +1,8 @@
 var React = require('react');
 
-var ExpenseRow = require('../../components/FinancesTable/ExpenseRow/ExpenseRow.js'),
+var ExpenseRow = require('../FinancesTable/ExpenseRow/expenseRow.js'),
 	TableHead = require('../FinancesTable/TableHead/tableHead.js'),
 	FinanceStore = require('../../stores/finances-store.js');
-
 
 var FinancesTable = React.createClass({
 
@@ -19,7 +18,7 @@ var FinancesTable = React.createClass({
 		}
 	},
 
-	componentWillMount: function(){ //will be called one time (every time we make a change in the browser to our list - the render method will be called and this function will NOT be called again and again)
+	componentWillMount: function(){
 		FinanceStore.addChangeListener(this._onChange)
 	},
 
@@ -33,22 +32,20 @@ var FinancesTable = React.createClass({
 
 	render: function() {
 		return (
-
 			<table className="table table-bordered">
-
 				<TableHead/>
 				<tbody>
 					{
 						this.getFinances().finances.map(function(finance) {
-							return(<ExpenseRow expense={finance} />)
+							return(<ExpenseRow expense={finance} key={finance.nr}/>)
 						})
 					}
 
 				</tbody>
 				<tfoot>
 				<tr>
-					<td>Sold</td>
-					<td colSpan="6">$100</td>
+					<td><b>Sold</b></td>
+					<td colSpan="6"><b>$100</b></td>
 				</tr>
 				</tfoot>
 			</table>
