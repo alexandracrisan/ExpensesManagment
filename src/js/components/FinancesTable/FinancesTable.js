@@ -4,6 +4,7 @@ var ExpenseRow = require('../../components/FinancesTable/ExpenseRow/ExpenseRow.j
 	TableHead = require('../FinancesTable/TableHead/tableHead.js'),
 	FinanceStore = require('../../stores/finances-store.js');
 
+
 var FinancesTable = React.createClass({
 
 	getInitialState: function() {
@@ -32,7 +33,9 @@ var FinancesTable = React.createClass({
 
 	render: function() {
 		return (
+
 			<table className="table table-bordered">
+
 				<TableHead/>
 				<tbody>
 					{
