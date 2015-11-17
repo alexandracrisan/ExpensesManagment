@@ -36,6 +36,14 @@
 ul li {
 	list-style: none;
 }
+
+.addCategory {
+	padding: 10px;
+	border: none;
+	background: none;
+}
+
 th, td {
 	text-align: center;
+
 }

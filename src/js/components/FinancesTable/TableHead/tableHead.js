@@ -4,7 +4,6 @@ var TableHead = React.createClass({
  
 	render: function(){
 		return (
-			<div>
 				<form action='#' method='post'>
 					<thead>
 						<tr>
@@ -22,7 +21,6 @@ var TableHead = React.createClass({
 						</tr>
 					</thead>
 				</form>
-			</div>
 		);
 	}
 });

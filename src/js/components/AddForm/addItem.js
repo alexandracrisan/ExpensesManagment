@@ -6,10 +6,10 @@ var AddItem = React.createClass({
 
 		return {
 			sum: null,
-			date: '2015-01-01',
+			date: null,
 			description: '',
-			category: 'Taxes',
-			type: '+'
+			category: 'Default',
+			type: '-'
 		};
 	},
 
@@ -57,18 +57,19 @@ var AddItem = React.createClass({
 			<div id="page-content-wrapper">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-12 centered form-inline">
+            <div className="col-md-12 centered form-inline">
             	<div className="form-group">              
-                <input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Amount" />
+                <input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Add amount" />
               </div>
               <div className="form-group"> 
-                <input type="date" className="form-control" value={this.state.date} onChange={this.handleDate} placeholder="Data" />
+                <input type="date" className="form-control" value={this.state.date} onChange={this.handleDate} />
               </div>
-                <textarea rows="1" className="form-control" value={this.state.description} onChange={this.handleDescription} placeholder="description"></textarea>
+                <textarea rows="1" className="description-field form-control" value={this.state.description} onChange={this.handleDescription} placeholder="Add description"></textarea>
               <div className="form-group">   
                 <select className="form-control" value={this.state.category} onChange={this.handleCategory}>
-                	<option>Taxes</option>
+                	<option default >Select your option</option>
                 	<option>Food</option>
+                	<option>Taxes</option>
                 </select>
               </div>
               <div className="form-group"> 
@@ -77,7 +78,7 @@ var AddItem = React.createClass({
                 	<option>-</option>
                 </select>
               </div>
-                <button className="btn btn-primary" onClick={this.handleData}>Add</button>   
+                <button className="btn btn-danger" onClick={this.handleData}>Add</button>   
 	         </div>
 	        </div>
 	      </div>
