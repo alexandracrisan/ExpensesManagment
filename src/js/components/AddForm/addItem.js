@@ -57,19 +57,27 @@ var AddItem = React.createClass({
 			<div id="page-content-wrapper">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-6 col-lg-offset-2 centered">              
+            <div className="col-lg-12 centered form-inline">
+            	<div className="form-group">              
                 <input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Amount" />
+              </div>
+              <div className="form-group"> 
                 <input type="date" className="form-control" value={this.state.date} onChange={this.handleDate} placeholder="Data" />
-                <textarea rows="4" className="form-control" value={this.state.description} onChange={this.handleDescription} placeholder="description"></textarea>
+              </div>
+                <textarea rows="1" className="form-control" value={this.state.description} onChange={this.handleDescription} placeholder="description"></textarea>
+              <div className="form-group">   
                 <select className="form-control" value={this.state.category} onChange={this.handleCategory}>
                 	<option>Taxes</option>
                 	<option>Food</option>
                 </select>
+              </div>
+              <div className="form-group"> 
                  <select className="form-control" value={this.state.type} onChange={this.handleType}>
                 	<option>+</option>
                 	<option>-</option>
                 </select>
-                <button className="btn btn-primary col-lg-3" onClick={this.handleData}>Add</button>   
+              </div>
+                <button className="btn btn-primary" onClick={this.handleData}>Add</button>   
 	         </div>
 	        </div>
 	      </div>

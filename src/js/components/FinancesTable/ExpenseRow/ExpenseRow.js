@@ -27,19 +27,41 @@ var ExpenseRow = React.createClass({
     //    this.setState(this.getExpenseList());
     //},
 
+    determinateValueDebit: function() {
+        var currentExpense = this.state.expense;
+        if(currentExpense.debit === '-') {
+            return (<td contentEditable="false">{currentExpense.debit}</td>);
+        }
+        else {
+            return (<td contentEditable="true">{currentExpense.debit}</td>);
+        }
+    },
+
+    determinateValueCredit: function() {
+        var currentExpense = this.state.expense;
+        if(currentExpense.credit === '-') {
+            return (<td contentEditable="false">{currentExpense.credit}</td>);
+        }
+        else {
+            return (<td contentEditable="true">{currentExpense.credit}</td>);
+        }
+    },
+
+
     render: function() {
         var currentExpense = this.state.expense;
-        console.log(currentExpense);
         return (
+
             <tr>
                 <td contentEditable="false">{currentExpense.nr}</td>
                 <td contentEditable="true">{currentExpense.date}</td>
                 <td contentEditable="true">{currentExpense.description}</td>
                 <td contentEditable="true">{currentExpense.category}</td>
-                <td contentEditable="true">{currentExpense.debit}</td>
-                <td contentEditable="true">{currentExpense.credit}</td>
+                {this.determinateValueDebit()}
+                {this.determinateValueCredit()}
                 <td><CheckBox /></td>
             </tr>
+
         );
     }
 });
