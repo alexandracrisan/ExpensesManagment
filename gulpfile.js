@@ -17,6 +17,8 @@ var buffer = require('vinyl-buffer');
 var gutil = require('gulp-util');
 var babelify = require('babelify');
 var connect = require('gulp-connect');
+var del = require('del');
+var runSequence = require('run-sequence');
 
 /* when using gulp with browserify:
    gulp requires that the input should be a stream
@@ -45,11 +47,18 @@ gulp.task('copy', function(){
 	gulp.src('src/index.html')
 	 	.pipe(gulp.dest('dist'));
 
-	 gulp.src('src/assets/**/*.*')
+	gulp.src('src/assets/**/*.*')
 		.pipe(myCss())
 	 	.pipe(gulp.dest('dist/assets/'));
 
+	gulp.src('node_modules/bootstrap/fonts/*')
+	 	.pipe(gulp.dest('dist/fonts/'));
 
+
+});
+
+gulp.task('deleteBuild', function() {
+  del('dist/*');
 });
 
 gulp.task('connect', function() {
@@ -65,4 +74,8 @@ gulp.task('watch', ['browserify', 'copy'], function(){ //in [] we run the tasks 
 	return gulp.watch('src/**/*.*', ['browserify', 'copy']); //we re-run browserify and copy
 });
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('default', function() {
+	runSequence('deleteBuild', 
+		['connect', 'watch']
+	)
+});
