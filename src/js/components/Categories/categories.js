@@ -16,9 +16,28 @@ const customStyles = {
 
 var Categories = React.createClass({
 	getInitialState: function() {
-		return { modalIsOpen: false };
+		return {
+			modalIsOpen: false,
+			category: '',
+			type: 'Expense'
+		};
 	},
 
+	handleCategory: function(event) {
+		this.setState({category: event.target.value});
+	},
+
+	handleType: function(event) {
+		this.setState({type: event.target.value});
+	},
+	handleDates: function() {
+		var newCategory = {
+			category: this.state.category,
+			type: this.state.type
+		}
+
+		console.log(newCategory);
+	},
 	openModal: function() {
 		this.setState({modalIsOpen: true});
 	},
@@ -39,13 +58,16 @@ var Categories = React.createClass({
 					<h2>Add a new category</h2>
 					<form>
                         <br/>
-						<input placeholder="Add a new Category"  />
+						<input className="form-control" value={this.state.category} onChange={this.handleCategory} placeholder="Add a new Category"  />
 						<br/>
-						<button>tab navigation</button>
+						<select className="form-control" value={this.state.type} onChange={this.handleType}>
+							<option>Expense</option>
+							<option>Income</option>
+						</select>
 						<br/>
 					</form>
-					<button onClick={this.closeModal}>close</button>
-					<button>save</button>
+					<button className="btn btn-danger col-lg-3" onClick={this.closeModal}>close</button>
+					<button className="btn btn-primary col-lg-3" onClick={this.handleDates}>save</button>
 
 				</Modal>
 			</div>
