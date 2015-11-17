@@ -9,7 +9,7 @@ var React = require('react'),
 
 var ExpenseRow = React.createClass({
 
-    editIncome: function
+
     getInitialState: function() {
       return {
           expense: {
@@ -50,7 +50,6 @@ var ExpenseRow = React.createClass({
                 <td contentEditable="false">{this.props.mihai}</td>
                 <td contentEditable="true">{currentExpense.credit}</td>
                 <td><CheckBox /></td>
-                >
             </tr>
             </tbody>
             </table>
