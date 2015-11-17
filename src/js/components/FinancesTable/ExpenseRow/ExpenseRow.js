@@ -9,6 +9,7 @@ var React = require('react'),
 
 var ExpenseRow = React.createClass({
 
+
     getInitialState: function() {
       return {
           expense: this.props.expense
