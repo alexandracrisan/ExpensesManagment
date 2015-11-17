@@ -7,8 +7,6 @@ var React = require('react'),
     FinancesTable = require('../../components/FinancesTable/FinancesTable.js'),
     FinanceForm = require('../../components/AddForm/addItem.js');
 
-
-
 var Dashboard = React.createClass({
    render: function() {
        return (
