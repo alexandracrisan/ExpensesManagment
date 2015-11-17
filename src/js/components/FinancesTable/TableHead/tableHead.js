@@ -22,7 +22,7 @@ var TableHead = React.createClass({
 					</tr>
 				</thead>
 			</form>
-
+			
 		);
 	}
 });
