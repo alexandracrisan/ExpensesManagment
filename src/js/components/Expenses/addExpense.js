@@ -8,9 +8,6 @@ var ExpenseAction = require('../../actions/expenses-actions.js');
 var ExpenseStore = require('../../stores/expense-store.js');
 var Income = require('../../components/Income/incomeItem.js');
 
-var Input =  ReactBootstrap.Input,
-    ButtonInput =  ReactBootstrap.ButtonInput;
-
 function getExpenseList() {
       return {
           expenses: ExpenseStore.getMockData(),
