@@ -25,63 +25,89 @@ var runSequence = require('run-sequence');
    browserify outputs a string
 */
 var source = require('vinyl-source-stream'); //converts a string to a stream
+
 var sourcePath = {
-	index: 'src/index.html',
-	css: 'js/styles.css'
-}
+			index: 'src/index.html',
+			css: 'js/styles.css',
+			sourceAssets: 'src/assets/**/*.*',
+			sourceMain: './src/js/main.js',
+			main: 'main.js',
+			sourceFonts: 'node_modules/bootstrap/fonts/*',
+			sourceMap: './'
+		},
+		destinationPath = {
+			distJs: 'dist/js',
+			dist: 'dist',
+			delDist: 'dist/*',
+			destAssets: 'dist/assets/',
+			destFonts: 'dist/fonts/'
+		},
+		watchPath = {
+			runSource: 'src/**/*.*',
+			watch: 'watch'
+		},
+		tasks = {
+			browserify: 'browserify',
+			babelify: 'babelify',
+			react: 'react',
+			copy: 'copy',
+			deleteBuild: 'deleteBuild',
+			connect: 'connect',
+			defaultTask: 'default'
+		}
 
 
 
 //--------------------------------------TASKS------------------------------------------------------------------
 
-gulp.task('browserify', function() {
-	return browserify('./src/js/main.js',{ debug: true } ) //when calling browserify the argument should be the the entry point of the application
-	 .transform("babelify", {presets: ["react"]}) //transforms from jsx to js
+gulp.task(tasks.browserify, function() {
+	return browserify(sourcePath.sourceMain,{ debug: true } ) //when calling browserify the argument should be the the entry point of the application
+	 .transform(tasks.babelify, {presets: [tasks.react]}) //transforms from jsx to js
 	 .bundle()	//the output of the transform will be here
 
-	 .pipe(source('main.js'))//takes as input the output of bundle and transforms it to a stream
+	 .pipe(source(sourcePath.main))//takes as input the output of bundle and transforms it to a stream
 	 .pipe(buffer())
 	 .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
 	 .pipe(uglify().on('error', gutil.log))
-	 .pipe(sourcemaps.write('./')) // writes .map file
-	 .pipe(gulp.dest('dist/js'))
+	 .pipe(sourcemaps.write(sourcePath.sourceMap)) // writes .map file
+	 .pipe(gulp.dest(destinationPath.distJs))
 	 .pipe(connect.reload());
 }); //end of gulp task
 
-gulp.task('copy', function(){
+gulp.task(tasks.copy, function(){
 	// copies the file given as input to the destination file given in pipe
 	gulp.src(sourcePath.index)
-	 	.pipe(gulp.dest('dist'));
+	 	.pipe(gulp.dest(destinationPath.dist));
 
-	gulp.src('src/assets/**/*.*')
+	gulp.src(sourcePath.sourceAssets)
 		.pipe(myCss())
-	 	.pipe(gulp.dest('dist/assets/'));
+	 	.pipe(gulp.dest(destinationPath.destAssets));
 
-	gulp.src('node_modules/bootstrap/fonts/*')
-	 	.pipe(gulp.dest('dist/fonts/'));
+	gulp.src(sourcePath.sourceFonts)
+	 	.pipe(gulp.dest(destinationPath.destFonts));
 
 
 });
 
-gulp.task('deleteBuild', function() {
-  del('dist/*');
+gulp.task(tasks.deleteBuild, function() {
+  del(destinationPath.delDist);
 });
 
-gulp.task('connect', function() {
+gulp.task(tasks.connect, function() {
   return connect.server({
-    root: 'dist',
+    root: destinationPath.dist,
     livereload: true
   });
 });
 
-gulp.task('watch', ['browserify', 'copy'], function(){ //in [] we run the tasks from above
+gulp.task(watchPath.watch, [tasks.browserify, tasks.copy], function(){ //in [] we run the tasks from above
 	// **, *.* means anything
 	// .watch creates a watcher that will spy on files that are mat
-	return gulp.watch('src/**/*.*', ['browserify', 'copy']); //we re-run browserify and copy
+	return gulp.watch(watchPath.runSource, [tasks.browserify, tasks.copy]); //we re-run browserify and copy
 });
 
-gulp.task('default', function() {
-	runSequence('deleteBuild', 
-		['connect', 'watch']
+gulp.task(tasks.defaultTask, function() {
+	runSequence(tasks.deleteBuild, 
+		[tasks.connect, watchPath.watch]
 	)
 });
