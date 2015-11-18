@@ -39,7 +39,7 @@ var Header = React.createClass({
         return (
             <div>
                 <div className="header-component ">
-                    <button className="header-component right addCategory" onClick={this.openModal}>Add Category</button>
+                    <button className="header-component right addCategory" onClick={this.openModal}>Category</button>
                 </div>
                 <Modal
                     isOpen={this.state.modalIsOpen}
@@ -49,7 +49,7 @@ var Header = React.createClass({
                     <h2>Category Manager</h2>
 
                     <ModalContent />
-                    
+
                     <button className="btn btn-danger col-lg-3" onClick={this.closeModal}>close</button>
 
                 </Modal>
