@@ -4,14 +4,16 @@
 
 var React = require('react'),
     FinanceStore = require('../../../stores/finances-store.js'),
-    CheckBox = require('../../Common/checkBox.js');
+    CheckBox = require('../../Common/checkBox.js'),
+    InlineEdit = require('react-inline-edit');
 
 
 var ExpenseRow = React.createClass({
 
     getInitialState: function() {
       return {
-          expense: this.props.expense
+          expense: this.props.expense,
+          editing: true
       }
     },
 
@@ -47,16 +49,67 @@ var ExpenseRow = React.createClass({
         }
     },
 
+    onSave: function() {
+        this.replaceState(this.getInitialState())
+    },
+
+    onCancel: function() {
+        this.replaceState(this.getInitialState())
+    },
+
+    onChange: function(param) {
+        this.setState({expense: param});
+    },
 
     render: function() {
         var currentExpense = this.state.expense;
         return (
 
             <tr>
-                <td contentEditable="false">{currentExpense.nr}</td>
-                <td contentEditable="true">{currentExpense.date}</td>
-                <td contentEditable="true">{currentExpense.description}</td>
-                <td contentEditable="true">{currentExpense.category}</td>
+                <td contentEditable="false">{currentExpense.nr}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        nr={currentExpense.nr}
+                        maxLength={200}
+                        editing={false}
+                    />
+                </td>
+                <td contentEditable="true">{currentExpense.date}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        date={currentExpense.date}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
+                <td contentEditable="true">{currentExpense.description}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        description={currentExpense.description}
+                        maxLength={500}
+                        editing={this.state.editing}
+                        />
+                </td>
+                <td contentEditable="true">{currentExpense.category}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        category={currentExpense.category}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
                 {this.determinateValueDebit()}
                 {this.determinateValueCredit()}
                 <td><CheckBox /></td>

@@ -73,6 +73,11 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
 
     getData: function() {
         return mockFinancesList;
+        //var url = 'http://213.167.241.172/api/movements/get';
+        //
+        //$.get(url, function(data) {
+        //    console.log(data);
+        //})
     },
 
     addChangeListener: function(callback) {
