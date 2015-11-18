@@ -33,6 +33,7 @@ var Header = React.createClass({
     handleType: function(event) {
         this.setState({type: event.target.value});
     },
+
     handleDates: function() {
         var newCategory = {
             category: this.state.category,
@@ -40,7 +41,10 @@ var Header = React.createClass({
         }
 
         console.log(newCategory);
+
+        this.closeModal();
     },
+
     openModal: function() {
         this.setState({modalIsOpen: true});
     },
@@ -67,7 +71,7 @@ var Header = React.createClass({
                         <br/>
                         <select className="form-control" value={this.state.type} onChange={this.handleType}>
                             <option>Expense</option>
-                            <option>Income</option>
+                            <option selected>Income</option>
                         </select>
                         <br/>
                     </form>
