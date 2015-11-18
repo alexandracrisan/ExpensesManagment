@@ -2,8 +2,10 @@
  * Created by alinaoros on 11/4/2015.
  */
 var React = require('react');
+var CategoryAction = require('../../actions/category-actions.js');
+var CategoryStore = require('../../stores/category-store.js');
 
-var addCategory = React.createClass({
+var AddCategory = React.createClass({
 
     getInitialState: function() {
         return {
@@ -25,7 +27,8 @@ var addCategory = React.createClass({
             category: this.state.category,
             type: this.state.type
         }
-
+        
+        CategoryAction.addCategory(newCategory);
         console.log(newCategory);
     },
 
@@ -49,4 +52,4 @@ var addCategory = React.createClass({
     }
 });
 
-module.exports = addCategory;
+module.exports = AddCategory;

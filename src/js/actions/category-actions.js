@@ -7,7 +7,7 @@
 
  var ActionTypes = CategoryConstants.ActionTypes;
 
- var CaregoryAction = {
+ var CategoryAction = {
 
  	addCategory: function(data) {
 
@@ -18,4 +18,4 @@
  	}
  };
 
- module.exports = CaregoryAction;
+ module.exports = CategoryAction;
