@@ -1,31 +1,34 @@
 var React = require('react');
 var FinanceAction = require('../../actions/finances-actions.js');
+var CategoriesStore = require('../../stores/category-store.js');
+
+function getCategories(){
+
+	return {categoryArr: CategoriesStore.getCategories()};
+}
+
 var AddItem = React.createClass({
 
 	getInitialState: function(){
 
 		return {
-			sum: null,
-			date: null,
-			description: '',
-			category: 'Default',
-			type: '-'
+			categoryArr: CategoriesStore.getCategories(),
+			//getCategories();
+			category: 'bla'
 		};
 	},
 
-	handleSum: function(event){
+	handleData: function(){
 
-		this.setState({sum: event.target.value});
-	},
+		var data = {
+			sum: this.refs.sum.getDOMNode().value,
+			date: this.refs.date.getDOMNode().value,
+			description:this.refs.description.getDOMNode().value,
+			category: this.state.category,
+			type: this.refs.type.getDOMNode().value
+		}
 
-	handleDate: function(event){
-
-		this.setState({date: event.target.value});
-	},
-
-	handleDescription: function(event){
-
-		this.setState({description: event.target.value});
+		FinanceAction.dataLoaded(data);
 	},
 
 	handleCategory: function(event){
@@ -33,47 +36,55 @@ var AddItem = React.createClass({
 		this.setState({category: event.target.value});
 	},
 
-	handleType: function(event){
+	componentWillMount: function(){
 
-		this.setState({type: event.target.value});
+		CategoriesStore.addChangeListener(this._onChange);
 	},
 
-	handleData: function(){
+	componentWillUnmount: function(){
 
-		var data = {
-			sum: this.state.sum,
-			date: this.state.date,
-			description: this.state.description,
-			category: this.state.category,
-			type: this.state.type
-		}
+		CategoriesStore.removeChangeListener(this._onChange);
+	},
 
-		FinanceAction.dataLoaded(data);
+	_onChange: function(){
+
+		this.setState(getCategories());
 	},
 
 	render: function() {
 		
+		var categoryList = this.state.categoryArr.map(function(item){
+
+			return (category = {
+				name: item.category,
+				type: item.type
+			});
+		});
+
 		return (
 			<div id="page-content-wrapper">
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12 centered form-inline">
             	<div className="form-group">              
-                <input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Add amount" />
+                <input className="form-control" ref="sum" defaultValue='' placeholder="Add amount" />
               </div>
               <div className="form-group"> 
-                <input type="date" className="form-control" value={this.state.date} onChange={this.handleDate} />
+                <input type="date" className="form-control" ref="date"defaultValue='01/01/2015' />
               </div>
-                <textarea rows="1" className="description-field form-control" value={this.state.description} onChange={this.handleDescription} placeholder="Add description"></textarea>
+                <textarea rows="1" className="description-field form-control" ref="description" defaultValue='' placeholder="Add description"></textarea>
               <div className="form-group">   
-                <select className="form-control" value={this.state.category} onChange={this.handleCategory}>
-                	<option default >Select your option</option>
-                	<option>Food</option>
-                	<option>Taxes</option>
+                <select className="form-control" value={this.state.category} onChange={this.handleCategory} >
+                	{categoryList.map(function(category){
+                		return (
+                			<option>{category.name} - {category.type}</option>
+                		);
+                	})}
+                	
                 </select>
               </div>
               <div className="form-group"> 
-                 <select className="form-control" value={this.state.type} onChange={this.handleType}>
+                 <select className="form-control" ref="type" defaultValue='+'>
                 	<option>+</option>
                 	<option>-</option>
                 </select>
