@@ -65,6 +65,21 @@ function _addItem(finance){
 	});
 }
 
+function getDataFromServer() {
+    var url = 'http://213.167.241.172/api/movements/get';
+
+    $.get(url, function(data) {
+        //console.log(data);
+    })
+        .done(function(data) {
+            var response = data.data;
+            return response;
+        })
+        .fail(function() {
+            alert('Error on retrieving data');
+        })
+}
+
 var FinanceStore = assign({}, EventEmitter.prototype, {
 
     emitChange: function () {
@@ -73,11 +88,7 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
 
     getData: function() {
         return mockFinancesList;
-        //var url = 'http://213.167.241.172/api/movements/get';
-        //
-        //$.get(url, function(data) {
-        //    console.log(data);
-        //})
+        //return getDataFromServer;
     },
 
     addChangeListener: function(callback) {

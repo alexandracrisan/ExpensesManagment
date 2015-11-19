@@ -41,17 +41,19 @@
 }
 
 .all-space {
+  display: inline-block;
   width: 100%;
-}
-
-ul li {
-  list-style: none;
+  border: none;
 }
 
 .addCategory {
   padding: 10px;
   border: none;
   background: none;
+}
+
+ul li {
+  list-style: none;
 }
 
 th,

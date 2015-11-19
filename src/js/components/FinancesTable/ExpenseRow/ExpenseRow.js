@@ -63,6 +63,7 @@ var ExpenseRow = React.createClass({
 
     render: function() {
         var currentExpense = this.state.expense;
+        {console.log(currentExpense)}
         return (
 
             <tr>
