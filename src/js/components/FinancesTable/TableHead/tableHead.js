@@ -9,7 +9,8 @@ var TableHead = React.createClass({
 						<tr>
 							<th>Id</th>
 							<th>Title</th>
-							<th>Desciption</th>
+							<th>Description</th>
+							<th>Amount</th>
 							<th>From</th>
 							<th>To</th>
 							<th>Created</th>
