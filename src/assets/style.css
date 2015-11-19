@@ -31,19 +31,18 @@
 	background: rgba(255,255,255,0.2);
 }
 .all-space {
+	display: inline-block;
 	width: 100%;
+	border: none;
 }
-ul li {
-	list-style: none;
-}
-
 .addCategory {
 	padding: 10px;
 	border: none;
 	background: none;
 }
-
+ul li {
+	list-style: none;
+}
 th, td {
 	text-align: center;
-
 }
