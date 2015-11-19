@@ -100,6 +100,17 @@ var ExpenseRow = React.createClass({
                         editing={this.state.editing}
                         />
                 </td>
+                <td contentEditable="true">{currentExpense.amount}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        amount={currentExpense.amount}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
                 <td contentEditable="true">{currentExpense.from}
                     <InlineEdit
 
@@ -122,13 +133,24 @@ var ExpenseRow = React.createClass({
                         editing={this.state.editing}
                         />
                 </td>
-                <td contentEditable="true">{currentExpense.amount}
+                <td contentEditable="true">{currentExpense.created}
                     <InlineEdit
 
                         onChange={this.onChange}
                         onEnterKey={this.onSave}
                         onEscapeKey={this.onCancel}
-                        amount={currentExpense.amount}
+                        created={currentExpense.created}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
+                <td contentEditable="true">{currentExpense.updated}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        updated={currentExpense.updated}
                         maxLength={200}
                         editing={this.state.editing}
                         />
@@ -155,8 +177,6 @@ var ExpenseRow = React.createClass({
                         editing={this.state.editing}
                         />
                 </td>
-                {this.determinateValueDebit()}
-                {this.determinateValueCredit()}
                 <td><CheckBox /></td>
             </tr>
 
