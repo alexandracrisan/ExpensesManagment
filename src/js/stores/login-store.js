@@ -58,20 +58,4 @@ LoginStore.dispatchToken = AppDispatcher.register(function(action) {
 	}
 });
 
-// AppDispather.register(function(payload) {
-// 	var action = payload.action;
-// 	switch(action.actionType) {
-// 		case LoginConstants.LOGIN_USER:
-// 			we get the jwt from the action and save it locally
-// 			this._jwt = action.jwt;
-// 			we decode it to get the user information
-// 			this._username = jwt_decode(this._jwt); 
-// 			we emit a change to all components that are listening
-// 			this.emitChange();
-// 			break;
-// 		default:
-// 			break;
-// 	};
-// }
-
 module.exports=LoginStore;

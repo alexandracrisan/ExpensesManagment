@@ -3,16 +3,15 @@ var LoginConstants = require('../constants/login-constants.js');
 
 var ActionTypes = LoginConstants.ActionTypes;
 
-var LoginActions = {
-	
-	loginUser: function(user){
+var LoginServerActions = {
+
+	loginUser: function(json, errors){
 		AppDispatcher.dispatch({
-			type: ActionTypes.LOGIN_USER,
-			user: user
+			type: ActionTypes.LOGIN_RESPONSE,
+			json: json,
+			errors: errors
 		});
 	},
 };
 
-module.exports=LoginActions;
-	
-
+module.exports=LoginServerActions;
