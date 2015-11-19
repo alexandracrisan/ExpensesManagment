@@ -2,8 +2,8 @@
  * Created by alinaoros on 11/4/2015.
  */
 var React = require('react');
-var Modal = require('react-modal');
 var AddCategory = require('../ModalContent/addCategory.js');
+var CategoryList = require('../ModalContent/categoryList.js');
 
 var Header = React.createClass({
 
@@ -11,6 +11,7 @@ var Header = React.createClass({
         return (
             <div>
 	            <AddCategory />
+                <CategoryList />
             </div>
         );
     }

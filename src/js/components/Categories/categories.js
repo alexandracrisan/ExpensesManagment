@@ -53,7 +53,7 @@ var Categories = React.createClass({
 				<Modal
 					isOpen={this.state.modalIsOpen}
 					onRequestClose={this.closeModal}
-					style={customStyles}>
+					>
 
 					<h2>Add a new category</h2>
 					<form>
