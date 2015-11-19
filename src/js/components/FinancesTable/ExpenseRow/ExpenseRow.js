@@ -10,6 +10,7 @@ var React = require('react'),
 
 var ExpenseRow = React.createClass({
 
+
     getInitialState: function() {
       return {
           expense: this.props.expense,
@@ -29,37 +30,45 @@ var ExpenseRow = React.createClass({
     //    this.setState(this.getExpenseList());
     //},
 
-    determinateValueDebit: function() {
-        var currentExpense = this.state.expense;
-        if(currentExpense.debit === '-') {
-            return (<td contentEditable="false">{currentExpense.debit}</td>);
-        }
-        else {
-            return (<td contentEditable="true">{currentExpense.debit}</td>);
-        }
-    },
-
     determinateValueCredit: function() {
         var currentExpense = this.state.expense;
-        if(currentExpense.credit === '-') {
-            return (<td contentEditable="false">{currentExpense.credit}</td>);
+        if(currentExpense.amount < 0) {
+            return (<td contentEditable="true">{currentExpense.amount}</td>);
         }
         else {
-            return (<td contentEditable="true">{currentExpense.credit}</td>);
+            return (<td contentEditable="false">-</td>);
         }
     },
 
-    onSave: function() {
-        this.replaceState(this.getInitialState())
+    determinateValueDebit: function() {
+        var currentExpense = this.state.expense;
+        if(currentExpense.amount > 0) {
+            return (<td contentEditable="true">{currentExpense.amount}</td>);
+        }
+        else {
+            return (<td contentEditable="false">-</td>);
+        }
     },
 
-    onCancel: function() {
-        this.replaceState(this.getInitialState())
+    handleTags: function(event) {
+        tag = this.state.expense.tags;
+        this.setState({tag: event.target.value});
+        console.log(this.state.expense);
     },
 
-    onChange: function(param) {
-        this.setState({expense: param});
+    handleData: function () {
+        console.log('workin');
+        var data = {tags: this.refs.tags.getDOMNode().value};
+        console.log(data)
+
     },
+    //onCancel: function() {
+    //    this.replaceState(this.getInitialState())
+    //},
+    //
+    //onChange: function(param) {
+    //    this.setState({expense: param});
+    //},
 
     render: function() {
         var currentExpense = this.state.expense;
@@ -67,52 +76,21 @@ var ExpenseRow = React.createClass({
         return (
 
             <tr>
-                <td contentEditable="false">{currentExpense.nr}
-                    <InlineEdit
+                <td contentEditable="false">{currentExpense.id}</td>
+                <td contentEditable="true">{currentExpense.title}</td>
+                <td contentEditable="true">{currentExpense.description}</td>
 
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        nr={currentExpense.nr}
-                        maxLength={200}
-                        editing={false}
-                    />
-                </td>
-                <td contentEditable="true">{currentExpense.date}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        date={currentExpense.date}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.description}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        description={currentExpense.description}
-                        maxLength={500}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.category}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        category={currentExpense.category}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                {this.determinateValueDebit()}
                 {this.determinateValueCredit()}
+                {this.determinateValueDebit()}
+
+                <td contentEditable="true">{currentExpense.from}</td>
+                <td contentEditable="true">{currentExpense.to}</td>
+                <td contentEditable="true">{currentExpense.created}</td>
+                <td contentEditable="true">{currentExpense.updated}</td>
+                <td contentEditable="true">{currentExpense.typeid}</td>
+                <td contentEditable="true">
+                    <input type="text" value={currentExpense.tags} onChange={this.handleTags} onBlur={this.handleData}/>
+                </td>
                 <td><CheckBox /></td>
             </tr>
 

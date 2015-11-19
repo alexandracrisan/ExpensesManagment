@@ -1,7 +1,9 @@
 var AppDispatcher = require('../dispatchers/app.dispatcher.js'),
     EventEmitter = require('events').EventEmitter,
     assign = require('react/lib/Object.assign'),
-    FinanceConstants = require('../constants/finances-constants.js');
+    FinanceConstants = require('../constants/finances-constants.js'),
+    ApiCalls = require('../stores/api-calls.js'),
+    ApiConstants = require('../constants/api-constants.js');
 
 var CHANGE_EVENT = 'change';
 
@@ -65,21 +67,6 @@ function _addItem(finance){
 	});
 }
 
-function getDataFromServer() {
-    var url = 'http://213.167.241.172/api/movements/get';
-
-    $.get(url, function(data) {
-        //console.log(data);
-    })
-        .done(function(data) {
-            var response = data.data;
-            return response;
-        })
-        .fail(function() {
-            alert('Error on retrieving data');
-        })
-}
-
 var FinanceStore = assign({}, EventEmitter.prototype, {
 
     emitChange: function () {
@@ -87,8 +74,10 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     },
 
     getData: function() {
-        return mockFinancesList;
-        //return getDataFromServer;
+       
+        var data = ApiCalls.getData(ApiConstants.MOVEMENTS);
+        
+        return data;
     },
 
     addChangeListener: function(callback) {
@@ -96,7 +85,7 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     },
 
     removeChangeListener: function(callback) {
-        this.on(CHANGE_EVENT,callback)
+        this.removeListener(CHANGE_EVENT,callback);
     }
 });
 

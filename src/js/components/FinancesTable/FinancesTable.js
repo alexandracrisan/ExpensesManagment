@@ -7,13 +7,21 @@ var ExpenseRow = require('../FinancesTable/ExpenseRow/expenseRow.js'),
 var FinancesTable = React.createClass({
 
 	getInitialState: function() {
+
 		return {
-			finances: FinanceStore.getData()
+			finances: []
 		}
 	},
 
 	componentWillMount: function(){
 		FinanceStore.addChangeListener(this._onChange)
+	},
+
+	componentDidMount: function() {
+		var self = this;
+		FinanceStore.getData().then(function(data) {
+			self.setState({finances: data.data});
+		});
 	},
 
 	componentWillUnmount: function(){
@@ -39,7 +47,7 @@ var FinancesTable = React.createClass({
 				<tfoot>
 				<tr>
 					<td><b>Sold</b></td>
-					<td colSpan="6"><b>$100</b></td>
+					<td colSpan="11"><b>$100</b></td>
 				</tr>
 				</tfoot>
 			</table>

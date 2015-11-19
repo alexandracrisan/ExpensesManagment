@@ -2,11 +2,6 @@ var React = require('react');
 var FinanceAction = require('../../actions/finances-actions.js');
 var CategoriesStore = require('../../stores/category-store.js');
 
-function getCategories(){
-
-	return {categoryArr: CategoriesStore.getCategories()};
-}
-
 var AddItem = React.createClass({
 
 	getInitialState: function(){
@@ -14,18 +9,22 @@ var AddItem = React.createClass({
 		return {
 			categoryArr: CategoriesStore.getCategories(),
 			//getCategories();
-			category: 'bla'
+			category: '',
+			sum: ''
 		};
 	},
 
 	handleData: function(){
 
 		var data = {
-			sum: this.refs.sum.getDOMNode().value,
-			date: this.refs.date.getDOMNode().value,
+			sum: this.state.sum,
+			title: this.refs.title.getDOMNode().value,
+			created: this.refs.dateCreated.getDOMNode().value,
+			from: this.refs.from.getDOMNode().value,
+			to: this.refs.to.getDOMNode().value,
 			description:this.refs.description.getDOMNode().value,
 			category: this.state.category,
-			type: this.refs.type.getDOMNode().value
+			tags: this.refs.tags.getDOMNode().value
 		}
 
 		FinanceAction.dataLoaded(data);
@@ -34,6 +33,11 @@ var AddItem = React.createClass({
 	handleCategory: function(event){
 
 		this.setState({category: event.target.value});
+	},
+
+	handleSum: function(event){
+
+		this.setState({sum: event.target.value});
 	},
 
 	componentWillMount: function(){
@@ -48,7 +52,7 @@ var AddItem = React.createClass({
 
 	_onChange: function(){
 
-		this.setState(getCategories());
+		this.setState({categoryArr: CategoriesStore.getCategories()});
 	},
 
 	render: function() {
@@ -65,31 +69,23 @@ var AddItem = React.createClass({
 			<div id="page-content-wrapper">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12 centered form-inline">
-            	<div className="form-group">              
-                <input className="form-control" ref="sum" defaultValue='' placeholder="Add amount" />
-              </div>
-              <div className="form-group"> 
-                <input type="date" className="form-control" ref="date"defaultValue='01/01/2015' />
-              </div>
-                <textarea rows="1" className="description-field form-control" ref="description" defaultValue='' placeholder="Add description"></textarea>
-              <div className="form-group">   
-                <select className="form-control" value={this.state.category} onChange={this.handleCategory} >
-                	{categoryList.map(function(category){
-                		return (
-                			<option>{category.name} - {category.type}</option>
-                		);
-                	})}
-                	
-                </select>
-              </div>
-              <div className="form-group"> 
-                 <select className="form-control" ref="type" defaultValue='+'>
-                	<option>+</option>
-                	<option>-</option>
-                </select>
-              </div>
-                <button className="btn btn-danger" onClick={this.handleData}>Add</button>   
+            <div className="col-md-12 centered form-inline"> 	                    
+	            <input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Add amount" autoFocus={true}/> 
+				      <input className="form-control" ref="title" defaultValue='' placeholder="Add title" />    
+				      <input type="date" className="form-control" defaultValue='' ref='dateCreated' />       
+	          	<input type="text" className="form-control" defaultValue='' ref='from' placeholder="From" />   
+	          	<input type="text" className="form-control" defaultValue='' ref='to' placeholder="To" />        
+	          	<input type="text" className="form-control" defaultValue='' ref='tags' placeholder="Tags" />              
+	            <select className="form-control" value={this.state.category} onChange={this.handleCategory} >
+	            	{categoryList.map(function(category){
+	            		return (
+	            			<option>{category.name} - {category.type}</option>
+	            		);
+	            	})}
+	            	
+	            </select>        
+	           <textarea rows="1" className="form-control" ref="description" defaultValue='' placeholder="Add description"></textarea>
+	           <button className="btn btn-danger" onClick={this.handleData}>Add</button>   
 	         </div>
 	        </div>
 	      </div>

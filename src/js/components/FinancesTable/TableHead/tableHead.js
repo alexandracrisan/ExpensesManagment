@@ -7,12 +7,17 @@ var TableHead = React.createClass({
 				<form action='#' method='post'>
 					<thead>
 						<tr>
-							<th>Nr. crt</th>
-							<th>Date</th>
-							<th>Desciption</th>
-							<th>Category</th>
-							<th>Debit</th>
+							<th>Id</th>
+							<th>Title</th>
+							<th>Description</th>
 							<th>Credit</th>
+							<th>Debit</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Created</th>
+							<th>Updated</th>
+							<th>Typeid</th>
+							<th>Tags</th>
 							<th>
 								<button className="btn btn-default btn-sm all-space">
 									<i className="glyphicon glyphicon-trash"></i> <strong>Delete</strong>
