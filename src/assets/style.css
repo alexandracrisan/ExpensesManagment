@@ -40,6 +40,9 @@
 	border: none;
 	background: none;
 }
+.login-button {
+	border: none;
+}
 ul li {
 	list-style: none;
 }
