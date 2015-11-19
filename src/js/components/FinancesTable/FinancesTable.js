@@ -12,12 +12,6 @@ var FinancesTable = React.createClass({
 		}
 	},
 
-	getFinances: function() {
-		return {
-			finances: FinanceStore.getData()
-		}
-	},
-
 	componentWillMount: function(){
 		FinanceStore.addChangeListener(this._onChange)
 	},
@@ -27,7 +21,7 @@ var FinancesTable = React.createClass({
 	},
 
 	_onChange: function(){
-		this.setState(this.getFinances());
+		this.setState({finances: FinanceStore.getData()});
 	},
 
 	render: function() {
@@ -36,8 +30,8 @@ var FinancesTable = React.createClass({
 				<TableHead/>
 				<tbody>
 					{
-						this.getFinances().finances.map(function(finance) {
-							return(<ExpenseRow expense={finance} key={finance.nr}/>)
+						this.state.finances.map(function(finance) {
+							return(<ExpenseRow expense={finance} key={finance.id}/>)
 						})
 					}
 

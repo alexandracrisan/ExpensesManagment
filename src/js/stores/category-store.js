@@ -11,24 +11,24 @@ var CHANGE_EVENT = 'change';
 
 var mockCategoryList = [{
     nr: 1,
-    category: 'food',
+    category: 'Taxes',
     type: 'Expense'
 }, {
     nr: 2,
-    category: 'meal',
+    category: 'Meal',
     type: 'Expense'
 
 }, {
     nr: 3,
-    category: 'food',
+    category: 'Pension',
    type:  'Income'
 }, {
     nr: 4,
-    category: 'food',
+    category: 'Salary',
     type: 'Income'
 }, {
     nr: 5,
-    category: 'food',
+    category: 'Gas',
     type: 'Expense'
 }];
 
@@ -57,7 +57,7 @@ var CategoryStore = assign({}, EventEmitter.prototype, {
 	},
 
 	removeChangeListener: function(callback) {
-		this.on(CHANGE_EVENT, callback);
+		this.removeListener(CHANGE_EVENT, callback);
 	}
 });
 
@@ -71,4 +71,4 @@ CategoryStore.dispatchToken = Dispatcher.register(function(action) {
 	}
 });
 
-module.exports - CategoryStore;
+module.exports = CategoryStore;

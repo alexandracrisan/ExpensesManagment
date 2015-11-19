@@ -45,16 +45,6 @@
 // 	closeModal: function() {
 // 		this.setState({modalIsOpen: false});
 // 	},
-
-// 	render: function() {
-// 		return (
-// 			<div>
-// 				<button onClick={this.openModal}>Open Modal</button>
-// 				<Modal
-// 					isOpen={this.state.modalIsOpen}
-// 					onRequestClose={this.closeModal}
-// 					style={customStyles}>
-
 // 					<h2>Add a new category</h2>
 // 					<form>
 //                         <br/>
