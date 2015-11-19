@@ -50,24 +50,32 @@ var ExpenseRow = React.createClass({
         }
     },
 
-    onSave: function() {
-        this.replaceState(this.getInitialState())
+    handleTags: function(event) {
+        tag = this.state.expense.tags;
+        this.setState({tag: event.target.value});
+        console.log(this.state.expense);
     },
 
-    onCancel: function() {
-        this.replaceState(this.getInitialState())
-    },
+    handleData: function () {
+        console.log('workin');
+        var data = {tags: this.refs.tags.getDOMNode().value};
+        console.log(data)
 
-    onChange: function(param) {
-        this.setState({expense: param});
     },
+    //onCancel: function() {
+    //    this.replaceState(this.getInitialState())
+    //},
+    //
+    //onChange: function(param) {
+    //    this.setState({expense: param});
+    //},
 
     render: function() {
         var currentExpense = this.state.expense;
         {console.log(currentExpense)}
         return (
 
-            <tr id={currentExpense.id}>
+            <tr>
                 <td contentEditable="false">{currentExpense.id}</td>
                 <td contentEditable="true">{currentExpense.title}</td>
                 <td contentEditable="true">{currentExpense.description}</td>
@@ -80,7 +88,9 @@ var ExpenseRow = React.createClass({
                 <td contentEditable="true">{currentExpense.created}</td>
                 <td contentEditable="true">{currentExpense.updated}</td>
                 <td contentEditable="true">{currentExpense.typeid}</td>
-                <td contentEditable="true">{currentExpense.tags}</td>
+                <td contentEditable="true">
+                    <input type="text" value={currentExpense.tags} onChange={this.handleTags} onBlur={this.handleData}/>
+                </td>
                 <td><CheckBox /></td>
             </tr>
 

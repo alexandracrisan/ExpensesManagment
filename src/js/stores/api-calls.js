@@ -13,6 +13,6 @@ var ApiCalls = {
         });
         return severData;
 	}
-}
+};
 
 module.exports = ApiCalls;
