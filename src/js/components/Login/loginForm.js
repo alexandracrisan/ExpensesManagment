@@ -39,16 +39,6 @@ var LoginForm = React.createClass({
 
     console.log(userData);
 
-    //submit login form via AJAX
-    // $.ajax({
-    //   type: 'POST',
-    //   url: 'http:/localhost:blabla',
-    //   data: data
-    // })
-    // .done(function(data) {
-    //   this.clearForm();
-    // })
-
     LoginActions.loginUser(userData);
     
     this.setState({error: true}); 
@@ -75,12 +65,16 @@ var LoginForm = React.createClass({
                 <form role="form" onSubmit={this.login}>
                   {this.showError()}
                   <div className="form-group">
-                    <input type="text" className="form-control input-sm" ref="username" defaultValue={this.state.username} placeholder="Username"/>
+                    <input type="text" className="form-control input-sm" ref="username" 
+                        defaultValue={this.state.username} placeholder="Username"/>
                   </div>
                   <div className="form-group">
-                    <input type="text" className="form-control input-sm" ref="password" defaultValue={this.state.password} placeholder="Password"/>
+                    <input type="text" className="form-control input-sm" ref="password" 
+                        defaultValue={this.state.password} placeholder="Password"/>
                   </div>
-                  <button onClick={this.login} className="btn btn-primary btn-block login-button"><Link to="dashboard" type="submit" className="btn btn-primary btn-block login-button">Log in</Link></button>
+                  <button onClick={this.login} className="btn btn-primary btn-block login-button">
+                    <Link to="dashboard" type="submit" className="btn btn-primary btn-block login-button">Log in</Link>
+                  </button>
                 </form>
               </div>  
             </div>
