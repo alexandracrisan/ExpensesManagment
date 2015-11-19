@@ -67,17 +67,13 @@ function _addItem(finance){
 
 function getDataFromServer() {
     var url = 'http://213.167.241.172/api/movements/get';
+    var response = [];
 
     $.get(url, function(data) {
-        //console.log(data);
-    })
-        .done(function(data) {
-            var response = data.data;
-            return response;
-        })
-        .fail(function() {
-            alert('Error on retrieving data');
-        })
+        response = data.data;
+    });
+
+    return response;
 }
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
@@ -87,8 +83,22 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     },
 
     getData: function() {
-        return mockFinancesList;
-        //return getDataFromServer;
+        //return mockFinancesList;
+        var url = 'http://213.167.241.172/api/movements/get';
+        //var result = $.get(url, function(data) {
+        //    //console.log(data.data);
+        //});
+        //console.log(result);
+        //return result;
+
+        var severData = $.ajax({
+            type:'GET',
+            url: url,
+            success: function (data) {
+                return data;
+            }
+        });
+        return severData;
     },
 
     addChangeListener: function(callback) {
@@ -96,7 +106,7 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     },
 
     removeChangeListener: function(callback) {
-        this.on(CHANGE_EVENT,callback)
+        this.removeListener(CHANGE_EVENT,callback);
     }
 });
 

@@ -68,31 +68,30 @@ var ExpenseRow = React.createClass({
         return (
 
             <tr>
-                <td contentEditable="false">{currentExpense.nr}
+                <td contentEditable="false">{currentExpense.id}
                     <InlineEdit
 
                         onChange={this.onChange}
                         onEnterKey={this.onSave}
                         onEscapeKey={this.onCancel}
-                        nr={currentExpense.nr}
+                        id={currentExpense.id}
                         maxLength={200}
                         editing={false}
                     />
                 </td>
-                <td contentEditable="true">{currentExpense.date}
+                <td contentEditable="true">{currentExpense.title}
                     <InlineEdit
 
                         onChange={this.onChange}
                         onEnterKey={this.onSave}
                         onEscapeKey={this.onCancel}
-                        date={currentExpense.date}
+                        title={currentExpense.title}
                         maxLength={200}
                         editing={this.state.editing}
                         />
                 </td>
                 <td contentEditable="true">{currentExpense.description}
                     <InlineEdit
-
                         onChange={this.onChange}
                         onEnterKey={this.onSave}
                         onEscapeKey={this.onCancel}
@@ -101,13 +100,57 @@ var ExpenseRow = React.createClass({
                         editing={this.state.editing}
                         />
                 </td>
-                <td contentEditable="true">{currentExpense.category}
+                <td contentEditable="true">{currentExpense.from}
                     <InlineEdit
 
                         onChange={this.onChange}
                         onEnterKey={this.onSave}
                         onEscapeKey={this.onCancel}
-                        category={currentExpense.category}
+                        from={currentExpense.from}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
+                <td contentEditable="true">{currentExpense.to}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        to={currentExpense.to}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
+                <td contentEditable="true">{currentExpense.amount}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        amount={currentExpense.amount}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
+                <td contentEditable="true">{currentExpense.typeid}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        typeid={currentExpense.typeid}
+                        maxLength={200}
+                        editing={this.state.editing}
+                        />
+                </td>
+                <td contentEditable="true">{currentExpense.tags}
+                    <InlineEdit
+
+                        onChange={this.onChange}
+                        onEnterKey={this.onSave}
+                        onEscapeKey={this.onCancel}
+                        tags={currentExpense.tags}
                         maxLength={200}
                         editing={this.state.editing}
                         />
