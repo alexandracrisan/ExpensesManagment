@@ -65,17 +65,6 @@ function _addItem(finance){
 	});
 }
 
-function getDataFromServer() {
-    var url = 'http://213.167.241.172/api/movements/get';
-    var response = [];
-
-    $.get(url, function(data) {
-        response = data.data;
-    });
-
-    return response;
-}
-
 var FinanceStore = assign({}, EventEmitter.prototype, {
 
     emitChange: function () {
@@ -83,13 +72,7 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     },
 
     getData: function() {
-        //return mockFinancesList;
         var url = 'http://213.167.241.172/api/movements/get';
-        //var result = $.get(url, function(data) {
-        //    //console.log(data.data);
-        //});
-        //console.log(result);
-        //return result;
 
         var severData = $.ajax({
             type:'GET',
