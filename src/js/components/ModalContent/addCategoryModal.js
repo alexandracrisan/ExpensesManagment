@@ -3,18 +3,16 @@
  */
 var React = require('react');
 var AddCategory = require('../ModalContent/addCategory.js');
-var CategoryList = require('../ModalContent/categoryList.js');
 
-var Header = React.createClass({
+var addCategoryModal = React.createClass({
 
     render: function(){
         return (
             <div>
-	            <AddCategory />
-                <CategoryList />
+                <AddCategory />
             </div>
         );
     }
 });
 
-module.exports = Header;
+module.exports = addCategoryModal;

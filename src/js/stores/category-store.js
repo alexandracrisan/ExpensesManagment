@@ -30,7 +30,24 @@ var mockCategoryList = [{
     nr: 5,
     category: 'Gas',
     type: 'Expense'
-}];
+}, {
+    nr: 6,
+    category: 'Meal',
+    type: 'Expense'
+
+}, {
+    nr: 7,
+    category: 'Pension',
+   type:  'Income'
+}, {
+    nr: 8,
+    category: 'Salary',
+    type: 'Income'
+}, {
+    nr: 9,
+    category: 'Gas',
+    type: 'Income'
+ }];
 
 function _addCategory(data) {
 

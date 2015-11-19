@@ -35,6 +35,7 @@ var AddCategory = React.createClass({
     render: function(){
         return (
             <div>
+            <div>
 	            <form>
 	                <br/>
 	                <input className="form-control" value={this.state.category} onChange={this.handleCategory} placeholder="Add a new Category"  />
@@ -46,7 +47,7 @@ var AddCategory = React.createClass({
 	                <br/>
 	            </form>
 	            <button className="btn btn-primary col-lg-3" onClick={this.handleDates}>save</button>
-
+            </div>
             </div>
         );
     }

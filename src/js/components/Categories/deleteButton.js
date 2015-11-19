@@ -1,10 +1,6 @@
-/**
- * Created by alinaoros on 11/4/2015.
- */
 var React = require('react');
 var Link = require('react-router').Link;
 var Modal = require('react-modal');
-var AddCategoryModal = require('../../components/ModalContent/addCategoryModal.js');
 
 const customStyles = {
     content : {
@@ -17,7 +13,7 @@ const customStyles = {
     }
 };
 
-var Header = React.createClass({
+var DeleteButton = React.createClass({
 
     getInitialState: function() {
         return {
@@ -35,22 +31,26 @@ var Header = React.createClass({
         this.setState({modalIsOpen: false});
     },
 
+    deleteItem: function() {
+        console.log('delete function');
+        this.closeModal()
+    },
+
     render: function(){
         return (
             <div>
-                <div className="header-component ">
-                    <button className="header-component right addCategory" onClick={this.openModal}>Add Category</button>
+                <div >
+                    <button className="btn btn-danger" onClick={this.openModal}>Delete</button>
                 </div>
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     style={customStyles}>
 
-                    <h2>Category Manager</h2>
+                    <h4>Are you sure you want to Delete this items?</h4>
 
-                    <AddCategoryModal />
-
-                    <button className="btn btn-danger col-lg-3" onClick={this.closeModal}>close</button>
+                    <button className="btn btn-danger" onClick={this.deleteItem}>Yes</button>
+                    <button className="btn btn-primary" onClick={this.closeModal}>Cancel</button>
 
                 </Modal>
             </div>
@@ -58,6 +58,4 @@ var Header = React.createClass({
     }
 });
 
-module.exports = Header;
-
-
+module.exports = DeleteButton;
