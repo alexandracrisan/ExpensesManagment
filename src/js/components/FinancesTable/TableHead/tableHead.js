@@ -10,7 +10,8 @@ var TableHead = React.createClass({
 							<th>Id</th>
 							<th>Title</th>
 							<th>Description</th>
-							<th>Amount</th>
+							<th>Credit</th>
+							<th>Debit</th>
 							<th>From</th>
 							<th>To</th>
 							<th>Created</th>

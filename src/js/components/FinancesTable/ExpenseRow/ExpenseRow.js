@@ -30,23 +30,23 @@ var ExpenseRow = React.createClass({
     //    this.setState(this.getExpenseList());
     //},
 
-    determinateValueDebit: function() {
+    determinateValueCredit: function() {
         var currentExpense = this.state.expense;
-        if(currentExpense.debit === '-') {
-            return (<td contentEditable="false">{currentExpense.debit}</td>);
+        if(currentExpense.amount < 0) {
+            return (<td contentEditable="true">{currentExpense.amount}</td>);
         }
         else {
-            return (<td contentEditable="true">{currentExpense.debit}</td>);
+            return (<td contentEditable="false">-</td>);
         }
     },
 
-    determinateValueCredit: function() {
+    determinateValueDebit: function() {
         var currentExpense = this.state.expense;
-        if(currentExpense.credit === '-') {
-            return (<td contentEditable="false">{currentExpense.credit}</td>);
+        if(currentExpense.amount > 0) {
+            return (<td contentEditable="true">{currentExpense.amount}</td>);
         }
         else {
-            return (<td contentEditable="true">{currentExpense.credit}</td>);
+            return (<td contentEditable="false">-</td>);
         }
     },
 
@@ -67,116 +67,20 @@ var ExpenseRow = React.createClass({
         {console.log(currentExpense)}
         return (
 
-            <tr>
-                <td contentEditable="false">{currentExpense.id}
-                    <InlineEdit
+            <tr id={currentExpense.id}>
+                <td contentEditable="false">{currentExpense.id}</td>
+                <td contentEditable="true">{currentExpense.title}</td>
+                <td contentEditable="true">{currentExpense.description}</td>
 
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        id={currentExpense.id}
-                        maxLength={200}
-                        editing={false}
-                    />
-                </td>
-                <td contentEditable="true">{currentExpense.title}
-                    <InlineEdit
+                {this.determinateValueCredit()}
+                {this.determinateValueDebit()}
 
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        title={currentExpense.title}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.description}
-                    <InlineEdit
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        description={currentExpense.description}
-                        maxLength={500}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.amount}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        amount={currentExpense.amount}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.from}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        from={currentExpense.from}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.to}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        to={currentExpense.to}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.created}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        created={currentExpense.created}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.updated}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        updated={currentExpense.updated}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.typeid}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        typeid={currentExpense.typeid}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
-                <td contentEditable="true">{currentExpense.tags}
-                    <InlineEdit
-
-                        onChange={this.onChange}
-                        onEnterKey={this.onSave}
-                        onEscapeKey={this.onCancel}
-                        tags={currentExpense.tags}
-                        maxLength={200}
-                        editing={this.state.editing}
-                        />
-                </td>
+                <td contentEditable="true">{currentExpense.from}</td>
+                <td contentEditable="true">{currentExpense.to}</td>
+                <td contentEditable="true">{currentExpense.created}</td>
+                <td contentEditable="true">{currentExpense.updated}</td>
+                <td contentEditable="true">{currentExpense.typeid}</td>
+                <td contentEditable="true">{currentExpense.tags}</td>
                 <td><CheckBox /></td>
             </tr>
 
