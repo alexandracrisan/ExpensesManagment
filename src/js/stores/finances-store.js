@@ -1,7 +1,9 @@
 var AppDispatcher = require('../dispatchers/app.dispatcher.js'),
     EventEmitter = require('events').EventEmitter,
     assign = require('react/lib/Object.assign'),
-    FinanceConstants = require('../constants/finances-constants.js');
+    FinanceConstants = require('../constants/finances-constants.js'),
+    ApiCalls = require('../stores/api-calls.js'),
+    ApiConstants = require('../constants/api-constants.js');
 
 var CHANGE_EVENT = 'change';
 
@@ -72,16 +74,10 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     },
 
     getData: function() {
-        var url = 'http://213.167.241.172/api/movements/get';
-
-        var severData = $.ajax({
-            type:'GET',
-            url: url,
-            success: function (data) {
-                return data;
-            }
-        });
-        return severData;
+       
+        var data = ApiCalls.getData(ApiConstants.MOVEMENTS);
+        
+        return data;
     },
 
     addChangeListener: function(callback) {
