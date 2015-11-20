@@ -1,18 +1,40 @@
+ApiConstants = require('../constants/api-constants.js');
+
 var ApiCalls = {
 
-	getData: function(dataType){
+    movements: {
+    
+        add: function(movement, callback){
+            $.ajax({
+                type: "POST",
+                url: ApiConstants.url + ApiConstants.endPoints.movements + 'add',
+                data: movement,
+                
+                success: callback
 
-		var url = 'http://213.167.241.172/api/';
+            });
+        },
+        get: function(callback){
+            $.ajax({
+                type:'GET',
+                url:ApiConstants.url + ApiConstants.endPoints.movements + 'get',
+                success: callback
+            });
+        },
+        delete: function(id){},
+        update: function(movement){}
+    },
 
-        var severData = $.ajax({
-            type:'GET',
-            url: url + dataType + '/get',
-            success: function (data) {
-                return data;
-            }
-        });
-        return severData;
-	}
-};
+    categories: {
+        
+        add: function(){
+            
+        },
+        get: function(){},
+        delete: function(){},
+        update: function(){}
+    }
+
+}
 
 module.exports = ApiCalls;

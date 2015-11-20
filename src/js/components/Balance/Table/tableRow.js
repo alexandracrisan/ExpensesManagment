@@ -1,4 +1,5 @@
 var React = require('react');
+var Action = require('../action/action.js');
 
 var TableRow = React.createClass({
 	getInitialState: function() {
@@ -7,7 +8,9 @@ var TableRow = React.createClass({
       }
     },
     deleteUser: function(){
-		
+		var data = this.state.user.id;
+		console.log(data);
+		Action.deleteData(data);
 	},
 	render: function(){
 		var currentUser = this.state.user

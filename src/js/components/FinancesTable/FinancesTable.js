@@ -19,9 +19,8 @@ var FinancesTable = React.createClass({
 
 	componentDidMount: function() {
 		var self = this;
-		FinanceStore.getData().then(function(data) {
-			self.setState({finances: data.data});
-		});
+		FinanceStore.refreshData();
+		
 	},
 
 	componentWillUnmount: function(){

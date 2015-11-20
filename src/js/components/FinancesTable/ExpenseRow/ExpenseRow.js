@@ -146,6 +146,14 @@ var ExpenseRow = React.createClass({
                 {this.determinateValueCredit()}
                 {this.determinateValueDebit()}
 
+<<<<<<< HEAD
+                <td contentEditable="true">{currentExpense.from}</td>
+                <td contentEditable="true">{currentExpense.to}</td>
+                <td contentEditable="true">{currentExpense.date}</td>
+                <td contentEditable="true">{currentExpense.updated}</td>
+                <td contentEditable="true">{currentExpense.typeid}</td>
+                <td contentEditable="true">{currentExpense.tags}</td>
+=======
                 <td>
                     <input type="text" defaultValue={currentExpense.from} onChange={this.handleFrom}/>
                 </td>
@@ -164,6 +172,7 @@ var ExpenseRow = React.createClass({
                 <td>
                     <input type="text" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
                 </td>
+>>>>>>> d7e5c1773c4ebd9bf890959740128650ebbac91f
                 <td><CheckBox /></td>
             </tr>
 

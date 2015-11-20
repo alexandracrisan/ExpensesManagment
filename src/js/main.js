@@ -7,7 +7,8 @@ var LoginForm = require('./components/Login/loginForm.js'),
     Dashboard = require('./components/Dashboard/dashboard.js'),
     Categories = require('./components/Categories/categories.js'),
     Calendar = require('./components/Calendar/calendar.js'),
-    Balance = require('./components/Balance/balance.js');
+    Balance = require('./components/Balance/balance.js'),
+    Validation = require('./components/Login/validation.js');
      
 var Router = require('react-router'),
     DefaultRoute = Router.DefaultRoute,
@@ -16,7 +17,7 @@ var Router = require('react-router'),
 
 var routes = (
 	<Route handler={App}>
-		<DefaultRoute handler={LoginForm}/>
+		<DefaultRoute handler={Validation}/>
 		<Route name="dashboard" path="dashboard" handler={Dashboard}></Route>
 		<Route name="categories" path="categories" handler={Categories}></Route>
 		<Route name="calendar" path="calendar" handler={Calendar}></Route>

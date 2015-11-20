@@ -1,7 +1,6 @@
 var Constants = {
 	ActionTypes: {
-		LOGIN_USER: 'LOGIN_USER',
-		LOGIN_RESPONSE: 'LOGIN_RESPONSE'
+		LOGIN_USER: 'LOGIN_USER'
 	}
 };
 
