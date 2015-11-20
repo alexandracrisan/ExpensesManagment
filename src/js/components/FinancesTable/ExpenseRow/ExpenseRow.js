@@ -14,7 +14,17 @@ var ExpenseRow = React.createClass({
     getInitialState: function() {
       return {
           expense: this.props.expense,
-          editing: true
+          editing: false,
+
+          title: '',
+          description: '',
+          amount: 0,
+          from: 1,
+          to: 1,
+          created: '',
+          updated: '',
+          typeid: 1,
+          tags: ''
       }
     },
 
@@ -33,63 +43,126 @@ var ExpenseRow = React.createClass({
     determinateValueCredit: function() {
         var currentExpense = this.state.expense;
         if(currentExpense.amount < 0) {
-            return (<td contentEditable="true">{currentExpense.amount}</td>);
+            return (<td><input type="text" defaultValue={currentExpense.amount} onChange={this.handleAmount}/></td>);
         }
         else {
-            return (<td contentEditable="false">-</td>);
+            return (<td contentEditable="false"><input type="text" defaultValue='-'/></td>);
         }
     },
 
     determinateValueDebit: function() {
         var currentExpense = this.state.expense;
         if(currentExpense.amount > 0) {
-            return (<td contentEditable="true">{currentExpense.amount}</td>);
+            return (<td><input type="text" defaultValue={currentExpense.amount} onChange={this.handleAmount}/></td>);
         }
         else {
-            return (<td contentEditable="false">-</td>);
+            return (<td contentEditable="false"><input type="text" defaultValue='-'/></td>);
         }
     },
 
+    handleData: function(event) {
+        var code = event.keyCode;
+        if(code === 9 && this.state.editing){
+            console.log('you presses tab');
+            var finance = {
+                id: this.state.expense.id,
+                title: this.state.title,
+                description: this.state.description,
+                amount: this.state.amount,
+                from: this.state.from,
+                to: this.state.to,
+                created: this.state.created,
+                updated: this.state.updated,
+                typeid: this.state.typeid,
+                tags: this.state.tags
+            };
+            console.log(finance);
+        }
+
+    },
+
+    handleTitle: function(event){
+        this.setState({title: event.target.value});
+        this.setState({editing: true});
+
+    },
+
+    handleDescription: function(event){
+        this.setState({description: event.target.value});
+        this.setState({editing: true});
+    },
+
+    handleAmount: function(event){
+        this.setState({amount: event.target.value});
+        this.setState({editing: true});
+    },
+
+    handleFrom: function(event){
+        this.setState({from: event.target.value});
+        this.setState({editing: true});
+    },
+
+    handleTo: function(event){
+        this.setState({to: event.target.value});
+        this.setState({editing: true});
+    },
+
+    handleCreated: function(event){
+        this.setState({created: event.target.value});
+        this.setState({editing: true});
+    },
+
+    handleUpdated: function(event){
+        this.setState({updated: event.target.value});
+        this.setState({editing: true});
+    },
+
+    handleTypeid: function(event){
+        this.setState({typeid: event.target.value});
+        this.setState({editing: true});
+    },
+
+
     handleTags: function(event) {
-        tag = this.state.expense.tags;
-        this.setState({tag: event.target.value});
-        console.log(this.state.expense);
+        this.setState({tags: event.target.value});
+        this.setState({editing: true});
     },
-
-    handleData: function () {
-        console.log('workin');
-        var data = {tags: this.refs.tags.getDOMNode().value};
-        console.log(data)
-
-    },
-    //onCancel: function() {
-    //    this.replaceState(this.getInitialState())
-    //},
-    //
-    //onChange: function(param) {
-    //    this.setState({expense: param});
-    //},
 
     render: function() {
         var currentExpense = this.state.expense;
-        {console.log(currentExpense)}
         return (
 
             <tr>
-                <td contentEditable="false">{currentExpense.id}</td>
-                <td contentEditable="true">{currentExpense.title}</td>
-                <td contentEditable="true">{currentExpense.description}</td>
+                <td contentEditable="false">
+                    {currentExpense.id}
+                </td>
+                <td>
+                    <input type="text" defaultValue={currentExpense.title} onChange={this.handleTitle}/>
+                </td>
+                <td>
+                    <input type="text" defaultValue={currentExpense.description} onChange={this.handleDescription}/>
+                </td>
 
                 {this.determinateValueCredit()}
                 {this.determinateValueDebit()}
 
-                <td contentEditable="true">{currentExpense.from}</td>
-                <td contentEditable="true">{currentExpense.to}</td>
-                <td contentEditable="true">{currentExpense.created}</td>
-                <td contentEditable="true">{currentExpense.updated}</td>
-                <td contentEditable="true">{currentExpense.typeid}</td>
-                <td contentEditable="true">
-                    <input type="text" value={currentExpense.tags} onChange={this.handleTags} onBlur={this.handleData}/>
+                <td>
+                    <input type="text" defaultValue={currentExpense.from} onChange={this.handleFrom}/>
+                </td>
+                <td>
+                    <input type="text" defaultValue={currentExpense.to} onChange={this.handleTo}/>
+                </td>
+                <td>
+                    <input type="text" defaultValue={currentExpense.created} onChange={this.handleCreated}/>
+                </td>
+                <td>
+                    <input type="text" defaultValue={currentExpense.updated} onChange={this.handleUpdated}/>
+                </td>
+                <td>
+                    <input type="text" defaultValue={currentExpense.typeid} onChange={this.handleTypeid}/>
+                </td>
+                <td>
+                    <input type="text" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
                 </td>
                 <td><CheckBox /></td>
             </tr>
