@@ -77,7 +77,7 @@ var ExpenseRow = React.createClass({
 
                 <td contentEditable="true">{currentExpense.from}</td>
                 <td contentEditable="true">{currentExpense.to}</td>
-                <td contentEditable="true">{currentExpense.created}</td>
+                <td contentEditable="true">{currentExpense.date}</td>
                 <td contentEditable="true">{currentExpense.updated}</td>
                 <td contentEditable="true">{currentExpense.typeid}</td>
                 <td contentEditable="true">{currentExpense.tags}</td>

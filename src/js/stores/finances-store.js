@@ -6,78 +6,54 @@ var AppDispatcher = require('../dispatchers/app.dispatcher.js'),
     ApiConstants = require('../constants/api-constants.js');
 
 var CHANGE_EVENT = 'change';
+var _movements = [];
 
-var mockFinancesList = [{
-    nr: 1,
-    date: '12/12/1010',
-    description: 'fooood',
-    category: 'food',
-    debit: '-',
-    credit: 100
-}, {
-    nr: 2,
-    date: '12/12/1010',
-    description: 'cd',
-    category: 'meal',
-    debit: '-',
-    credit: 100
-}, {
-    nr: 3,
-    date: '12/12/1010',
-    description: 'ceds',
-    category: 'food',
-    debit: 200,
-    credit: '-'
-}, {
-    nr: 4,
-    date: '12/12/1010',
-    description: 'ceds',
-    category: 'food',
-    debit: 1020,
-    credit: '-'
-}, {
-    nr: 5,
-    date: '12/12/1010',
-    description: 'ceds',
-    category: 'food',
-    debit: '-',
-    credit: 560
-}];
 
 function _addItem(finance){
 
-	var debit, credit;
-	
-	if(finance.type === '+'){
+	var data = ApiCalls.movements.add(finance);
 
-		debit = finance.sum;
-		credit = '-';
-	}
-	else{
-		credit = finance.sum;
-		debit = '-';
-	}
-	mockFinancesList.push({
-		nr: mockFinancesList.length + 1,
-		date: finance.date,
-		description: finance.description,
-		category: finance.category,
-		debit: debit,
-		credit: credit
-	});
+
 }
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
+
+	 
 
     emitChange: function () {
         this.emit(CHANGE_EVENT);
     },
 
-    getData: function() {
+    refreshData: function() {
        
-        var data = ApiCalls.getData(ApiConstants.MOVEMENTS);
+       ApiCalls.movements.get(function(response){
+        		if(response.result){
+        			_movements = response.data;
+        			console.log(_movements);
+        			FinanceStore.emitChange();
+        		}
+        		else {console.log(response);}
+        	});
         
-        return data;
+        
+    },
+
+    getData: function(){
+
+    	return _movements;
+    },
+
+    addMovement: function(movement){
+
+    	ApiCalls.movements.add(movement, function(response){
+        		if(response.result){
+        			
+        			FinanceStore.refreshData();
+        		}
+        		else {
+        			console.log(response);
+        		}
+        	});
     },
 
     addChangeListener: function(callback) {
@@ -94,8 +70,8 @@ FinanceStore.dispatchToken = AppDispatcher.register(function(action){
 
     switch(action.type){
        case FinanceConstants.ActionTypes.ADD_FINANCE:
-           _addItem(action.data);
-           FinanceStore.emitChange();
+           FinanceStore.addMovement(action.data);
+           
            break;
        default:
     }
