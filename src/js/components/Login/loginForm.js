@@ -1,6 +1,5 @@
 var React = require('react'),
     Router = require('react-router'),
-    Link = Router.Link,
     LoginActions = require('../../actions/login-actions.js'),
     LoginStore = require('../../stores/login-store.js'),
     Validation = require('react-validation'),
@@ -33,20 +32,6 @@ var LoginForm = React.createClass({
       this.setState(this.getUsersList());
   },
 
-  // login: function(e) {
-  //   e.preventDefault();
-  //   var userData = {
-  //     username: this.refs.username.value,
-  //     password: this.refs.password.value
-  //   }
-
-  //   console.log(userData);
-
-  //   LoginActions.loginUser(userData);
-    
-  //   this.setState({error: true}); 
-  // },
-
   validate : function (e) {
     e.preventDefault();
     
@@ -55,27 +40,28 @@ var LoginForm = React.createClass({
       password: this.refs.password.getDOMNode().value
     }
 
-    console.log('sdfghjjhgfd', this.props.check);
+    console.log(userData);
 
     LoginActions.loginUser(userData);
-
+    //this.setState({error: true});
     this.props.check(userData, this.success, this.fail);
   },
+
   success : function () {
     this.transitionTo('dashboard'); 
-    alert('Success');
-  },
-  fail : function () {
-    alert('Fail');
   },
 
-  showError: function() {
-    if(this.state.error)
-      return (
-        <div className={"alert alert-notice"}>Invalid login</div>
-        )
-    return "";
+  fail : function () {
+    alert('You must enter your username and password');
   },
+
+  // showError: function() {
+  //   if(this.state.error)
+  //     return (
+  //       <div className={"alert alert-notice"}>Invalid login</div>
+  //       )
+  //   return "";
+  // },
 
   render: function(){
     return (
@@ -83,12 +69,14 @@ var LoginForm = React.createClass({
         <div className="row vertical-offset-100">
           <div className="col-md-6 col-md-offset-3">
             <div className="panel panel-default">
+
               <div className="panel-heading ">
                 <h3 className="panel-title" >Please log in</h3>
               </div>
+
               <div className="panel-body">
                 <form role="form">
-                  
+
                   <div className="form-group">
                     <input type="text" className="form-control input-sm" ref="username" 
                          placeholder="Username"/>
@@ -100,10 +88,12 @@ var LoginForm = React.createClass({
                   </div>
 
                   <button onClick = {this.validate} className="btn btn-primary btn-block login-button">
-                   Log in
+                    Log in
                   </button>
+
                 </form>
               </div>  
+              
             </div>
           </div>
         </div>

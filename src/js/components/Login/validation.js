@@ -4,7 +4,6 @@ var React = require('react');
 var Validate = React.createClass({
   check : function (userData, success, fail) {
     if (userData.username !== '' && userData.password !== '') {
-      console.log('validation', userData);
       success();
     } else {
       fail();
