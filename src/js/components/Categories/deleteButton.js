@@ -47,7 +47,7 @@ var DeleteButton = React.createClass({
                     onRequestClose={this.closeModal}
                     style={customStyles}>
 
-                    <h4>Are you sure you want to Delete this items?</h4>
+                    <h4>Are you sure you want to Delete this item?</h4>
 
                     <button className="btn btn-danger" onClick={this.deleteItem}>Yes</button>
                     <button className="btn btn-primary" onClick={this.closeModal}>Cancel</button>
