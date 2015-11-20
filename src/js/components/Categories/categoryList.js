@@ -43,8 +43,4 @@
 
  module.exports = CategoryList;
 
- // <div className="form-inline">
-	// 						<CheckBox />
-	// 						<input className="form-control" type="text" refs="category" defaultValue = '' />
-	// 						<input className="form-control" type="text" id="a" refs="type" defaultValue="" onBlur={this.handleData} />
-	// 					</div>
+ 

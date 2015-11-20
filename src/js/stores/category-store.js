@@ -5,7 +5,8 @@
 var Dispatcher = require('../dispatchers/app.dispatcher.js'),
 	EventEmitter = require('events').EventEmitter,
     assign = require('react/lib/Object.assign'),
-    CategoryConstants = require('../constants/category-constants.js');
+    CategoryConstants = require('../constants/category-constants.js'),
+    
 
 var CHANGE_EVENT = 'change';
 
@@ -66,6 +67,7 @@ var CategoryStore = assign({}, EventEmitter.prototype, {
 	},
 
 	getCategories: function() {
+        var data = ApiCalls.getData()
 		return mockCategoryList;
 	},
 
