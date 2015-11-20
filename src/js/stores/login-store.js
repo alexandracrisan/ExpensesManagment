@@ -10,15 +10,15 @@ var CHANGE_EVENT = 'change';
 var mockUsersList = [
     {
         username: 'Diana',
-        password: '123'
+        password: '123',
     },
     {
         username: 'Alexandra',
-        password: '123'
+        password: '123',
     },
     {
         username: 'Mihai',
-        password: '123'
+        password: '123',
     }
 ];
 
@@ -43,7 +43,7 @@ var LoginStore = assign({}, EventEmitter.prototype, {
 	},
 	getMockData: function() {
         return mockUsersList;
-    }
+  }
 });
 
 

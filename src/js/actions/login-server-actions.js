@@ -1,17 +1,16 @@
-var LoginConstants = require('../constants/login-constants.js');
-	AppDispatcher = require('../dispatchers/app.dispatcher');
+// var LoginConstants = require('../constants/login-constants.js');
+// 	AppDispatcher = require('../dispatchers/app.dispatcher');
 
-var ActionTypes = LoginConstants.ActionTypes;
+// var ActionTypes = LoginConstants.ActionTypes;
 
-var LoginServerActions = {
+// var LoginServerActions = {
 
-	loginUser: function(json, errors){
-		AppDispatcher.dispatch({
-			type: ActionTypes.LOGIN_RESPONSE,
-			json: json,
-			errors: errors
-		});
-	},
-};
+// 	loginUser: function(error){
+// 		AppDispatcher.dispatch({
+// 			type: ActionTypes.LOGIN_RESPONSE,
+// 			error: error
+// 		});
+// 	},
+// };
 
-module.exports=LoginServerActions;
+// module.exports=LoginServerActions;

@@ -1,10 +1,13 @@
-var React = require('react');
-    Router = require('react-router');
-    Link = Router.Link;
-    LoginActions = require('../../actions/login-actions.js');
-    LoginStore = require('../../stores/login-store.js');
+var React = require('react'),
+    Router = require('react-router'),
+    Link = Router.Link,
+    LoginActions = require('../../actions/login-actions.js'),
+    LoginStore = require('../../stores/login-store.js'),
+    Validation = require('react-validation'),
+    Navigation = Router.Navigation;
 
 var LoginForm = React.createClass({
+  mixins: [Navigation],
 
   getInitialState: function(){
     return{
@@ -30,18 +33,40 @@ var LoginForm = React.createClass({
       this.setState(this.getUsersList());
   },
 
-  login: function(e) {
+  // login: function(e) {
+  //   e.preventDefault();
+  //   var userData = {
+  //     username: this.refs.username.value,
+  //     password: this.refs.password.value
+  //   }
+
+  //   console.log(userData);
+
+  //   LoginActions.loginUser(userData);
+    
+  //   this.setState({error: true}); 
+  // },
+
+  validate : function (e) {
     e.preventDefault();
+    
     var userData = {
-      username: this.refs.username.value,
-      password: this.refs.password.value
+      username: this.refs.username.getDOMNode().value,
+      password: this.refs.password.getDOMNode().value
     }
 
-    console.log(userData);
+    console.log('sdfghjjhgfd', this.props.check);
 
     LoginActions.loginUser(userData);
-    
-    this.setState({error: true}); 
+
+    this.props.check(userData, this.success, this.fail);
+  },
+  success : function () {
+    this.transitionTo('dashboard'); 
+    alert('Success');
+  },
+  fail : function () {
+    alert('Fail');
   },
 
   showError: function() {
@@ -62,18 +87,20 @@ var LoginForm = React.createClass({
                 <h3 className="panel-title" >Please log in</h3>
               </div>
               <div className="panel-body">
-                <form role="form" onSubmit={this.login}>
-                  {this.showError()}
+                <form role="form">
+                  
                   <div className="form-group">
                     <input type="text" className="form-control input-sm" ref="username" 
-                        defaultValue={this.state.username} placeholder="Username"/>
+                         placeholder="Username"/>
                   </div>
+
                   <div className="form-group">
                     <input type="text" className="form-control input-sm" ref="password" 
-                        defaultValue={this.state.password} placeholder="Password"/>
+                         placeholder="Username"/>
                   </div>
-                  <button onClick={this.login} className="btn btn-primary btn-block login-button">
-                    <Link to="dashboard" type="submit" className="btn btn-primary btn-block login-button">Log in</Link>
+
+                  <button onClick = {this.validate} className="btn btn-primary btn-block login-button">
+                   Log in
                   </button>
                 </form>
               </div>  
