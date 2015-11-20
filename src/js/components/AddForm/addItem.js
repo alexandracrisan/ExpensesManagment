@@ -17,13 +17,13 @@ var AddItem = React.createClass({
 	handleData: function(){
 
 		var data = {
-			sum: this.state.sum,
+			amount: this.state.sum,
 			title: this.refs.title.getDOMNode().value,
-			created: this.refs.dateCreated.getDOMNode().value,
+			date: this.refs.dateCreated.getDOMNode().value,
 			from: this.refs.from.getDOMNode().value,
 			to: this.refs.to.getDOMNode().value,
 			description:this.refs.description.getDOMNode().value,
-			category: this.state.category,
+			type: 1,
 			tags: this.refs.tags.getDOMNode().value
 		}
 
