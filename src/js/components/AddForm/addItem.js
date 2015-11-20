@@ -69,23 +69,68 @@ var AddItem = React.createClass({
 			<div id="page-content-wrapper">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12 centered form-inline"> 	                    
-	            <input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Add amount" autoFocus={true}/> 
-				      <input className="form-control" ref="title" defaultValue='' placeholder="Add title" />    
-				      <input type="date" className="form-control" defaultValue='' ref='dateCreated' />       
-	          	<input type="text" className="form-control" defaultValue='' ref='from' placeholder="From" />   
-	          	<input type="text" className="form-control" defaultValue='' ref='to' placeholder="To" />        
-	          	<input type="text" className="form-control" defaultValue='' ref='tags' placeholder="Tags" />              
-	            <select className="form-control" value={this.state.category} onChange={this.handleCategory} >
-	            	{categoryList.map(function(category){
-	            		return (
-	            			<option>{category.name} - {category.type}</option>
-	            		);
-	            	})}
-	            	
-	            </select>        
-	           <textarea rows="1" className="form-control" ref="description" defaultValue='' placeholder="Add description"></textarea>
-	           <button className="btn btn-danger" onClick={this.handleData}>Add</button>   
+            <div className="col-md-12 centered form-horizontal"> 	
+            	
+					    <div className="row">
+					    	
+					      <div className="col-lg-4 col-sm-offset-2">
+					      	<div className="form-group">
+		            		<label className="control-label col-sm-2">Amount</label>
+			            	<div className="col-sm-10">
+			            		<input className="form-control" value={this.state.sum} onChange={this.handleSum} placeholder="Add amount" autoFocus={true}/> 		            	
+						      	</div>
+						      </div>
+						      <div className="form-group">
+						      	<label className="control-label col-sm-2">Title</label>
+							      <div className="col-sm-10">
+							      	<input className="form-control" ref="title" defaultValue='' placeholder="Add title" />
+						      	</div>
+						      </div>
+						      <div className="form-group">
+						      	<label className="control-label col-sm-2" >Date</label>
+								    <div className="col-sm-10">
+								    	<input type="date" className="form-control" defaultValue='' ref='dateCreated' />       
+								    </div>
+								  </div>
+								  <div className="form-group">
+								    <label className="control-label col-sm-2" >Tags</label> 
+								    <div className="col-sm-10">
+								    	<input type="text" className="form-control" defaultValue='' ref='tags' placeholder="Tags" />   
+								    </div>
+									</div>
+									<div className="form-group">
+								    <label className="control-label col-sm-2">From</label>
+			          		<div className="col-sm-10">
+			          			<input type="text" className="form-control" defaultValue='' ref='from' placeholder="From" /> 
+		  	        		</div>
+		    					</div>
+		    					<div className="form-group">
+			          		<label className="control-label col-sm-2">To</label>
+			          		<div className="col-sm-10">
+	 										<input type="text" className="form-control" defaultValue='' ref='to' placeholder="To" /> 
+	 									</div>
+									</div>
+				      	</div>
+				      	<div className="col-lg-4">
+				      		<div className="form-group">
+					      		<label>Select category</label>
+					      		<select className="form-control" value={this.state.category} onChange={this.handleCategory} >
+				            	{categoryList.map(function(category){
+				            		return (
+				            			<option>{category.name} - {category.type}</option>
+			  	          		);
+			    	        	})}	            	
+	          	  		</select> 
+	            		</div>
+	            		<div className="form-group">
+		            		<label>Enter description</label>
+					   				<textarea rows="8" className="form-control mov-textarea" ref="description" defaultValue='' placeholder="Add description"></textarea>
+					   				<div className="mov-btn-container col-sm-offset-9">
+					   					<button className="movement-btn btn btn-danger" onClick={this.handleData}>Add Movement</button> 
+										</div>
+									</div>
+								</div>
+							</div>	          	         	                 	         	             
 	         </div>
 	        </div>
 	      </div>
