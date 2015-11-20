@@ -46,7 +46,7 @@ var FinancesTable = React.createClass({
 				<tfoot>
 				<tr>
 					<td><b>Sold</b></td>
-					<td colSpan="10"><b>$100</b></td>
+					<td colSpan="11"><b>$100</b></td>
 				</tr>
 				</tfoot>
 			</table>

@@ -10,6 +10,12 @@ var Action = {
 			type: ActionType.ADD_USER,
 			data: data
 		});
+	},
+	deleteData: function(data){
+		Dispatcher.dispatch({
+			type: ActionType.REMOVE_USER,
+			data: data
+		});
 	}
 };
 module.exports = Action;

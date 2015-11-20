@@ -4,7 +4,7 @@ var LoginConstants = require('../constants/login-constants.js');
 var ActionTypes = LoginConstants.ActionTypes;
 
 var LoginActions = {
-	
+
 	loginUser: function(user){
 		AppDispatcher.dispatch({
 			type: ActionTypes.LOGIN_USER,

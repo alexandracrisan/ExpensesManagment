@@ -29,6 +29,11 @@ function insertUser (data){
 		varsta:data.varsta
 	});
 }
+function deletetUser(data){
+	users.splice(data-1, 1);	
+	console.log(users);
+	console.log(data);
+}
 
 
 var Store = assign({}, EventEmitter.prototype, {
@@ -54,6 +59,11 @@ Store.dispatchToken = Dispatcher.register(function(action){
 		case Constants.ActionTypes.ADD_USER:
 			insertUser(action.data);
 			Store.emitChange();
+	        break;
+	   
+	    case Constants.ActionTypes.REMOVE_USER:
+			deletetUser(action.data);
+			Store.emitChange();			
 	        break;
 	    default:
 	}
