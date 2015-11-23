@@ -30,21 +30,21 @@ var ExpenseRow = React.createClass({
 
     determinateValueCredit: function() {
         var currentExpense = this.state.expense;
-        if(currentExpense.amount < 0) {
-            return (<td><input type="text" defaultValue={currentExpense.amount} onChange={this.handleAmount}/></td>);
+        if(currentExpense.amount <= 0) {
+            return (<td><input type="text" defaultValue={currentExpense.amount * (-1)} onChange={this.handleCredit}/></td>);
         }
         else {
-            return (<td contentEditable="false"><input type="text" defaultValue='-'/></td>);
+            return (<td><input type="text" readOnly defaultValue='-'/></td>);
         }
     },
 
     determinateValueDebit: function() {
         var currentExpense = this.state.expense;
         if(currentExpense.amount > 0) {
-            return (<td><input type="text" defaultValue={currentExpense.amount} onChange={this.handleAmount}/></td>);
+            return (<td><input type="text" defaultValue={currentExpense.amount} onChange={this.handleDebit}/></td>);
         }
         else {
-            return (<td contentEditable="false"><input type="text" defaultValue='-'/></td>);
+            return (<td><input type="text" readOnly defaultValue='-'/></td>);
         }
     },
 
@@ -60,7 +60,7 @@ var ExpenseRow = React.createClass({
                 from: this.state.from,
                 to: this.state.to,
                 date: this.state.date,
-                typeid: this.state.typeid,
+                type: this.state.typeid,
                 tags: this.state.tags
             };
             console.log(finance);
@@ -80,7 +80,12 @@ var ExpenseRow = React.createClass({
         this.setState({editing: true});
     },
 
-    handleAmount: function(event){
+    handleCredit: function(event){
+        this.setState({amount: event.target.value * (-1)});
+        this.setState({editing: true});
+    },
+
+    handleDebit: function(event){
         this.setState({amount: event.target.value});
         this.setState({editing: true});
     },
@@ -114,7 +119,6 @@ var ExpenseRow = React.createClass({
     render: function() {
         var currentExpense = this.state.expense;
         return (
-
             <tr>
                 <td contentEditable="false">
                     {currentExpense.id}
@@ -139,7 +143,7 @@ var ExpenseRow = React.createClass({
                     <input type="text" defaultValue={currentExpense.date} onChange={this.handleDate}/>
                 </td>
                 <td>
-                    <input type="text" defaultValue={currentExpense.typeid} onChange={this.handleTypeid}/>
+                    <input type="number" defaultValue={currentExpense.type} onChange={this.handleTypeid}/>
                 </td>
                 <td>
                     <input type="text" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
