@@ -17,17 +17,24 @@ var ApiCalls = {
         get: function(callback){
             $.ajax({
                 type:'GET',
-                url:ApiConstants.url + ApiConstants.endPoints.movements + 'get',
+                url: ApiConstants.url + ApiConstants.endPoints.movements + 'get',
                 success: callback
             });
         },
 
-        delete: function(id){},
+        delete: function(id, callback){
+            $.ajax({
+                type:'POST',
+                url:ApiConstants.url + ApiConstants.endPoints.movements + 'delete',
+                data: id,
+                success: callback
+            }); 
+        },
 
         update: function(movement, callback){
             $.ajax({
                 type:'POST',
-                url:ApiConstants.url + ApiConstants.endPoints.movements + 'update',
+                url: ApiConstants.url + ApiConstants.endPoints.movements + 'update',
                 data: movement,
                 success: callback
             });
@@ -77,6 +84,6 @@ var ApiCalls = {
             });
         }
     },
-}
+};
 
 module.exports = ApiCalls;

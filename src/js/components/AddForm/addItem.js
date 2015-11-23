@@ -25,7 +25,7 @@ var AddItem = React.createClass({
 			description:this.refs.description.getDOMNode().value,
 			type: 1,
 			tags: this.refs.tags.getDOMNode().value
-		}
+		};
 
 		FinanceAction.dataLoaded(data);
 	},
