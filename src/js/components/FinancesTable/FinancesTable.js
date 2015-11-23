@@ -1,6 +1,6 @@
 var React = require('react');
 
-var ExpenseRow = require('../FinancesTable/ExpenseRow/expenseRow.js'),
+var ExpenseRow = require('../FinancesTable/ExpenseRow/financeRow.js'),
 	TableHead = require('../FinancesTable/TableHead/tableHead.js'),
 	FinanceStore = require('../../stores/finances-store.js');
 

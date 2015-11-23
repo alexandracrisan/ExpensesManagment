@@ -11,6 +11,14 @@ var FinanceActions = {
 			type: ActionTypes.ADD_FINANCE,
 			data: data
 		});
+	},
+
+	editFinance: function(data){
+
+		Dispatcher.dispatch({
+			type: ActionTypes.EDIT_FINANCE,
+			data: data
+		});
 	}
 };
 
