@@ -17,7 +17,7 @@ var ApiCalls = {
         get: function(callback){
             $.ajax({
                 type:'GET',
-                url:ApiConstants.url + ApiConstants.endPoints.movements + 'get',
+                url: ApiConstants.url + ApiConstants.endPoints.movements + 'get',
                 success: callback
             });
         },
@@ -34,7 +34,7 @@ var ApiCalls = {
         update: function(movement, callback){
             $.ajax({
                 type:'POST',
-                url:ApiConstants.url + ApiConstants.endPoints.movements + 'update',
+                url: ApiConstants.url + ApiConstants.endPoints.movements + 'update',
                 data: movement,
                 success: callback
             });
@@ -74,6 +74,6 @@ var ApiCalls = {
         }
     }
 
-}
+};
 
 module.exports = ApiCalls;

@@ -14,8 +14,7 @@ var TableHead = React.createClass({
 							<th>Debit</th>
 							<th>From</th>
 							<th>To</th>
-							<th>Created</th>
-							<th>Updated</th>
+							<th>Date</th>
 							<th>Typeid</th>
 							<th>Tags</th>
 							<th>
