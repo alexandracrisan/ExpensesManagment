@@ -18,9 +18,7 @@ var FinancesTable = React.createClass({
 	},
 
 	componentDidMount: function() {
-		var self = this;
 		FinanceStore.refreshData();
-		
 	},
 
 	componentWillUnmount: function(){
@@ -38,7 +36,7 @@ var FinancesTable = React.createClass({
 				<tbody>
 					{
 						this.state.finances.map(function(finance) {
-							return(<ExpenseRow expense={finance} keygulp={finance.id}/>)
+							return(<ExpenseRow expense={finance} key={finance.id}/>)
 						})
 					}
 
