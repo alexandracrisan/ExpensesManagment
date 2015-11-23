@@ -65,8 +65,18 @@ var ApiCalls = {
 
             });
         }
-    }
+    },
 
+    users: {
+        
+        get: function(callback){
+            $.ajax({
+                type:'GET',
+                url:ApiConstants.url + ApiConstants.endPoints.login,
+                success: callback
+            });
+        }
+    },
 }
 
 module.exports = ApiCalls;

@@ -6,6 +6,7 @@ var LoginConstants = require('../constants/login-constants.js');
 	EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change';
+//var _users = [];
 
 var mockUsersList = [
     {
@@ -35,9 +36,27 @@ function _addUser(user) {
 
 var LoginStore = assign({}, EventEmitter.prototype, {
 
-	emitChange: function () {
+	emitChange: function() {
 		this.emit(CHANGE_EVENT);
 	},
+
+	// userLogin: function() {
+	// 	ApiCalls.users.get(function(response){
+	// 		if(response.result){
+	// 			_users = response.data;
+	// 			console.log(_users);
+	// 			LoginStore.emitChange();
+	// 		}
+	// 		else {
+	// 			console.log(response);
+	// 			alert('Username or password incorrect!');
+	// 		}
+	// 	});
+	// },
+
+	// getData: function(){
+	// 	return _users;
+	// },
 
 	addChangeListener: function(callback){
 		this.on(CHANGE_EVENT, callback)
