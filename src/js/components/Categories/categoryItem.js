@@ -11,25 +11,13 @@
 
  	getInitialState: function() {
  		return {
- 			categories: CategoryStore.getCategories(),
+ 			categories: this.props.category,
  			editing: false,
 
  			category: '',
  			type: ''
  		}
  	},
-
-	componentWillMount: function(){
-		CategoryStore.addChangeListener(this._onChange)
-	},
-
-	componentWillUnmount: function(){
-		CategoryStore.removeChangeListener(this._onChange);
-	},
-
-	_onChange: function(){
-		this.setState({categories: CategoryStore.getCategories()});
-	},
 
  	handleCategory: function(event) {
  		this.setState({category: event.target.value});
@@ -49,7 +37,6 @@
  			category: this.state.category,
  			type:     this.state.type
  			}
- 			console.log(data);
  		}
  		
  		console.log(data);
@@ -60,18 +47,16 @@
  	},
 
  	render: function() {
- 		return (<div>
- 					{this.state.categories.map(function(category) {
- 						return(
- 							<div className="form-inline" key={category.nr}>
- 								<CheckBox />
- 								<input className="form-control" type="text" defaultValue = {category.category} onChange={this.handleCategory}/>
- 								<input className="form-control" type="text" defaultValue={category.type} onChange={this.handleType} onKeyDown={this.handleData}/>
- 							</div>)
- 					})}
- 		       </div>)
+ 		return (
+	
+				<div className="form-inline">
+					<CheckBox />
+					<input className="form-control" type="text" defaultValue = {this.state.categories.category} onChange={this.handleCategory}/>
+					<input className="form-control" type="text" defaultValue={this.state.categories.type} onChange={this.handleType} onKeyDown={this.handleData}/>
+				</div>
+				)
  	}
-
+ 		
  });
 
  module.exports = CategoryList;
