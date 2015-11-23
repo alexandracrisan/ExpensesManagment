@@ -12,16 +12,49 @@
  	getInitialState: function() {
  		return {
  			categories: CategoryStore.getCategories(),
- 			type: 'aa'
+ 			editing: false,
+
+ 			category: '',
+ 			type: ''
  		}
  	},
- 	handleData: function() {
- 		var data = {
- 			category: this.refs.category.getDOMNode().value,
- 			type:     this.refs.type.getDOMNode().value
- 		}
- 		console.log("d");
+
+	componentWillMount: function(){
+		CategoryStore.addChangeListener(this._onChange)
+	},
+
+	componentWillUnmount: function(){
+		CategoryStore.removeChangeListener(this._onChange);
+	},
+
+	_onChange: function(){
+		this.setState({categories: CategoryStore.getCategories()});
+	},
+
+ 	handleCategory: function(event) {
+ 		this.setState({category: event.target.value});
+ 		this.setState({editing: true});
  	},
+
+ 	handleType: function(event) {
+ 		this.setState({type: event.target.value});
+ 		this.setState({editing: true});
+ 	},
+
+ 	handleData: function(event) {
+ 		var code = event.keyCode;
+ 		if(code === 9 && this.state.editing) {
+ 			console.log('you presses tab');
+ 			var data = {
+ 			category: this.state.category,
+ 			type:     this.state.type
+ 			}
+ 			console.log(data);
+ 		}
+ 		
+ 		console.log(data);
+ 	},
+
  	editDates: function() {
 
  	},
@@ -32,8 +65,8 @@
  						return(
  							<div className="form-inline" key={category.nr}>
  								<CheckBox />
- 								<input className="form-control" type="text" refs="category" defaultValue = {category.category}/>
- 								<input className="form-control" type="text" refs="type" defaultValue={category.type} onBlur={this.handleData}/>
+ 								<input className="form-control" type="text" defaultValue = {category.category} onChange={this.handleCategory}/>
+ 								<input className="form-control" type="text" defaultValue={category.type} onChange={this.handleType} onKeyDown={this.handleData}/>
  							</div>)
  					})}
  		       </div>)

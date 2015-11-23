@@ -8,6 +8,7 @@ var React = require('react'),
     CategoryList = require('./categoryList.js');
 
 var Dashboard = React.createClass({
+  
    render: function() {
        return (
            <div>
