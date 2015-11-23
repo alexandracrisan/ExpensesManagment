@@ -8,12 +8,12 @@ var ApiCalls = {
             $.ajax({
                 type: "POST",
                 url: ApiConstants.url + ApiConstants.endPoints.movements + 'add',
-                data: movement,
-                
+                data: movement,  
                 success: callback
 
             });
         },
+
         get: function(callback){
             $.ajax({
                 type:'GET',
@@ -21,18 +21,50 @@ var ApiCalls = {
                 success: callback
             });
         },
+
         delete: function(id){},
-        update: function(movement){}
+
+        update: function(movement, callback){
+            $.ajax({
+                type:'POST',
+                url:ApiConstants.url + ApiConstants.endPoints.movements + 'update',
+                data: movement,
+                success: callback
+            });
+        }
     },
 
     categories: {
         
-        add: function(){
-            
+        add: function(category, callback){
+            $.ajax({
+                type: "POST",
+                url: ApiConstants.url + ApiConstants.endPoints.categories + 'add',
+                data: category,  
+                success: callback
+
+            });
         },
-        get: function(){},
+
+        get: function(callback){
+            $.ajax({
+                type:'GET',
+                url:ApiConstants.url + ApiConstants.endPoints.categories + 'get',
+                success: callback
+            });
+        },
+
         delete: function(){},
-        update: function(){}
+
+        update: function(category, callback){
+            $.ajax({
+                type: "POST",
+                url: ApiConstants.url + ApiConstants.endPoints.categories + 'update',
+                data: category,  
+                success: callback
+
+            });
+        }
     }
 
 }

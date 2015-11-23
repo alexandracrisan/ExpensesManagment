@@ -124,6 +124,14 @@
   }
 }
 
-.form-inline .description-field {
-  width: 50%;
+.movement-btn {
+  margin: 10px 0px 10px 10px;
+}
+
+.mov-btn-container {
+  margin-right: 0px;
+}
+
+.mov-textarea {
+  padding-bottom: 12px;
 }
