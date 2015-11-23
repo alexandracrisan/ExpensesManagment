@@ -12,13 +12,9 @@ var _movements = [];
 function _addItem(finance){
 
 	var data = ApiCalls.movements.add(finance);
-
-
 }
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
-
-	 
 
     emitChange: function () {
         this.emit(CHANGE_EVENT);

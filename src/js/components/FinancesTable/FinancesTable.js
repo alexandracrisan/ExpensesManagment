@@ -38,7 +38,7 @@ var FinancesTable = React.createClass({
 				<tbody>
 					{
 						this.state.finances.map(function(finance) {
-							return(<ExpenseRow expense={finance} key={finance.id}/>)
+							return(<ExpenseRow expense={finance} keygulp={finance.id}/>)
 						})
 					}
 

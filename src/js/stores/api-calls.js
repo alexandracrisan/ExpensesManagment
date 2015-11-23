@@ -35,6 +35,6 @@ var ApiCalls = {
         update: function(){}
     }
 
-}
+};
 
 module.exports = ApiCalls;
