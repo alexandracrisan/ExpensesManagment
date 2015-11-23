@@ -12,7 +12,7 @@ var LoginForm = React.createClass({
     return{
       username: '',
       password: '',
-      error: false
+      //error: false
     }
   },
 
@@ -93,7 +93,7 @@ var LoginForm = React.createClass({
 
                 </form>
               </div>  
-              
+
             </div>
           </div>
         </div>

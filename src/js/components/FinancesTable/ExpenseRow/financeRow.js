@@ -5,11 +5,11 @@
 var React = require('react'),
     FinanceStore = require('../../../stores/finances-store.js'),
     CheckBox = require('../../Common/checkBox.js'),
-    InlineEdit = require('react-inline-edit');
+    InlineEdit = require('react-inline-edit'),
+    FinanceAction = require('../../../actions/finances-actions.js');
 
 
 var ExpenseRow = React.createClass({
-
 
     getInitialState: function() {
       return {
@@ -64,6 +64,7 @@ var ExpenseRow = React.createClass({
                 tags: this.state.tags
             };
             console.log(finance);
+            FinanceAction.editFinance(finance);
         }
 
     },
