@@ -28,18 +28,6 @@ var ExpenseRow = React.createClass({
       }
     },
 
-    //componentWillMount: function(){
-    //    FinanceStore.addChangeListener(this._onChange)
-    //},
-    //
-    //componentWillUnmount: function(){
-    //    FinanceStore.removeChangeListener(this._onChange);
-    //},
-
-    //_onChange: function(){
-    //    this.setState(this.getExpenseList());
-    //},
-
     determinateValueCredit: function() {
         var currentExpense = this.state.expense;
         if(currentExpense.amount < 0) {
@@ -71,8 +59,7 @@ var ExpenseRow = React.createClass({
                 amount: this.state.amount,
                 from: this.state.from,
                 to: this.state.to,
-                created: this.state.created,
-                updated: this.state.updated,
+                date: this.state.date,
                 typeid: this.state.typeid,
                 tags: this.state.tags
             };
@@ -107,13 +94,8 @@ var ExpenseRow = React.createClass({
         this.setState({editing: true});
     },
 
-    handleCreated: function(event){
-        this.setState({created: event.target.value});
-        this.setState({editing: true});
-    },
-
-    handleUpdated: function(event){
-        this.setState({updated: event.target.value});
+    handleDate: function(event){
+        this.setState({date: event.target.value});
         this.setState({editing: true});
     },
 
@@ -153,10 +135,7 @@ var ExpenseRow = React.createClass({
                     <input type="text" defaultValue={currentExpense.to} onChange={this.handleTo}/>
                 </td>
                 <td>
-                    <input type="text" defaultValue={currentExpense.created} onChange={this.handleCreated}/>
-                </td>
-                <td>
-                    <input type="text" defaultValue={currentExpense.updated} onChange={this.handleUpdated}/>
+                    <input type="text" defaultValue={currentExpense.date} onChange={this.handleDate}/>
                 </td>
                 <td>
                     <input type="text" defaultValue={currentExpense.typeid} onChange={this.handleTypeid}/>

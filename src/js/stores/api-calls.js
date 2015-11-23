@@ -67,6 +67,6 @@ var ApiCalls = {
         }
     }
 
-}
+};
 
 module.exports = ApiCalls;
