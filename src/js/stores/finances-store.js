@@ -7,11 +7,18 @@ var AppDispatcher = require('../dispatchers/app.dispatcher.js'),
 
 var CHANGE_EVENT = 'change';
 var _movements = [];
+var _categories=[];
 
-
-function _addItem(finance){
+function _addMovementItem(finance){
 
 	var data = ApiCalls.movements.add(finance);
+
+}
+
+function _addCategoryItem(finance){
+
+  var data = ApiCalls.categories.add(finance);
+
 }
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
@@ -29,9 +36,7 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
         			FinanceStore.emitChange();
         		}
         		else {console.log(response);}
-        	});
-        
-        
+        	});        
     },
 
     getData: function(){
@@ -73,6 +78,5 @@ FinanceStore.dispatchToken = AppDispatcher.register(function(action){
     }
 
 });
-
 
 module.exports = FinanceStore;

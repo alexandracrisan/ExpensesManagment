@@ -23,26 +23,32 @@ var mockUsersList = [
 ];
 
 function _addUser(user) {
+
 	mockUsersList.push({
 		id: mockUsersList.length,
 		username: user.username,
 		password: user.password
 	});
+
 	console.log(mockUsersList);
 };
 
 var LoginStore = assign({}, EventEmitter.prototype, {
+
 	emitChange: function () {
 		this.emit(CHANGE_EVENT);
 	},
+
 	addChangeListener: function(callback){
 		this.on(CHANGE_EVENT, callback)
 	},
+
 	removeChangeListener: function(callback){
 		this.removeListener(CHANGE_EVENT, callback)
 	},
+
 	getMockData: function() {
-        return mockUsersList;
+    return mockUsersList;
   }
 });
 
