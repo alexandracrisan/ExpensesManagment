@@ -22,7 +22,14 @@ var ApiCalls = {
             });
         },
 
-        delete: function(id){},
+        delete: function(id, callback){
+            $.ajax({
+                type:'POST',
+                url:ApiConstants.url + ApiConstants.endPoints.movements + 'delete',
+                data: id,
+                success: callback
+            }); 
+        },
 
         update: function(movement, callback){
             $.ajax({
