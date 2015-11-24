@@ -16,42 +16,40 @@ var ExpenseRow = React.createClass({
           expense: this.props.expense,
           editing: false,
 
-          title: '',
-          description: '',
-          amount: 0,
-          from: 1,
-          to: 1,
-          created: '',
-          updated: '',
-          typeid: 1,
-          tags: ''
+          title: this.props.expense.title,
+          description: this.props.expense.description,
+          amount: this.props.expense.amount,
+          from: this.props.expense.from,
+          to: this.props.expense.to,
+          date: this.props.expense.date,
+          typeid: this.props.expense.type,
+          tags: this.props.expense.tags
       }
     },
 
     determinateValueCredit: function() {
         var currentExpense = this.state.expense;
         if(currentExpense.amount <= 0) {
-            return (<td><input type="text" defaultValue={currentExpense.amount * (-1)} onChange={this.handleCredit}/></td>);
+            return (<td><input type="text" className="input-component" defaultValue={currentExpense.amount * (-1)} onChange={this.handleCredit}/></td>);
         }
         else {
-            return (<td><input type="text" readOnly defaultValue='-'/></td>);
+            return (<td><input type="text" className="input-component" readOnly defaultValue='-'/></td>);
         }
     },
 
     determinateValueDebit: function() {
         var currentExpense = this.state.expense;
         if(currentExpense.amount > 0) {
-            return (<td><input type="text" defaultValue={currentExpense.amount} onChange={this.handleDebit}/></td>);
+            return (<td><input type="text" className="input-component" defaultValue={currentExpense.amount} onChange={this.handleDebit}/></td>);
         }
         else {
-            return (<td><input type="text" readOnly defaultValue='-'/></td>);
+            return (<td><input type="text" className="input-component" readOnly defaultValue='-'/></td>);
         }
     },
 
     handleData: function(event) {
         var code = event.keyCode;
         if(code === 9 && this.state.editing){
-            console.log('you presses tab');
             var finance = {
                 id: this.state.expense.id,
                 title: this.state.title,
@@ -66,7 +64,6 @@ var ExpenseRow = React.createClass({
             console.log(finance);
             FinanceAction.editFinance(finance);
         }
-
     },
 
     handleTitle: function(event){
@@ -120,33 +117,33 @@ var ExpenseRow = React.createClass({
         var currentExpense = this.state.expense;
         return (
             <tr>
-                <td contentEditable="false">
-                    {currentExpense.id}
+                <td>
+                    <input type="text" className="input-id" readOnly defaultValue={currentExpense.id}/>
                 </td>
                 <td>
-                    <input type="text" defaultValue={currentExpense.title} onChange={this.handleTitle}/>
+                    <input type="text" className="input-component" defaultValue={currentExpense.title} onChange={this.handleTitle}/>
                 </td>
                 <td>
-                    <input type="text" defaultValue={currentExpense.description} onChange={this.handleDescription}/>
+                    <input type="text" className="input-component" defaultValue={currentExpense.description} onChange={this.handleDescription}/>
                 </td>
 
                 {this.determinateValueCredit()}
                 {this.determinateValueDebit()}
 
                 <td>
-                    <input type="text" defaultValue={currentExpense.from} onChange={this.handleFrom}/>
+                    <input type="text" className="input-component" defaultValue={currentExpense.from} onChange={this.handleFrom}/>
                 </td>
                 <td>
-                    <input type="text" defaultValue={currentExpense.to} onChange={this.handleTo}/>
+                    <input type="text" className="input-component" defaultValue={currentExpense.to} onChange={this.handleTo}/>
                 </td>
                 <td>
-                    <input type="text" defaultValue={currentExpense.date} onChange={this.handleDate}/>
+                    <input type="text" className="input-date" defaultValue={currentExpense.date} onChange={this.handleDate}/>
                 </td>
                 <td>
-                    <input type="number" defaultValue={currentExpense.type} onChange={this.handleTypeid}/>
+                    <input type="number" className="input-component" defaultValue={currentExpense.type} onChange={this.handleTypeid}/>
                 </td>
                 <td>
-                    <input type="text" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
+                    <input type="text" className="input-component" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
                 </td>
                 
                 <td><CheckBox /></td>
