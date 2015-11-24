@@ -16,6 +16,19 @@ var Action = {
 			type: ActionType.REMOVE_USER,
 			data: data
 		});
+	},
+	addId: function(data){
+		Dispatcher.dispatch({
+			type: ActionType.ADD_ID,
+			data: data
+		});
+	},
+	deleteId: function(data){
+		Dispatcher.dispatch({
+			type: ActionType.REMOVE_ID,
+			data: data
+		});
 	}
+
 };
 module.exports = Action;

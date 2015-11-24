@@ -36,8 +36,8 @@ var LoginForm = React.createClass({
     e.preventDefault();
     
     var userData = {
-      username: this.refs.username.getDOMNode().value,
-      password: this.refs.password.getDOMNode().value
+      username: this.refs.username.value,
+      password: this.refs.password.value
     }
 
     console.log(userData);

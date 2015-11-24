@@ -2,6 +2,7 @@ var React = require('react');
 var TableRow = require('../Table/tableRow.js');
 var Store = require('../store/store.js');
 var Formular = require ('../Table/form.js');
+var Action = require('../action/action.js');
 
 var Tabel = React.createClass({
 	getInitialState: function(){
@@ -25,6 +26,10 @@ var Tabel = React.createClass({
 	_onChange: function(){
 		this.setState(this.getUsers());
 	},
+    deleteUser: function(){
+
+		Action.deleteData();
+	},
 
 
 	render: function(){
@@ -37,6 +42,7 @@ var Tabel = React.createClass({
 						<th>Name</th>
 						<th>Prenume</th>
 						<th>Varsta</th>
+						<th><button onClick={this.deleteUser}>delete</button></th>
 					</thead>
 					<tbody>						
 						{this.getUsers().users.map(function(user){
