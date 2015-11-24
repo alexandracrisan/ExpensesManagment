@@ -9,17 +9,17 @@ var CHANGE_EVENT = 'change';
 var _movements = [];
 var _categories=[];
 
-function _addMovementItem(finance){
+// function _addMovementItem(finance){
 
-	var data = ApiCalls.movements.add(finance);
+// 	var data = ApiCalls.movements.add(finance);
 
-}
+// }
 
-function _addCategoryItem(finance){
+// function _addCategoryItem(finance){
 
-  var data = ApiCalls.categories.add(finance);
+//   var data = ApiCalls.categories.add(finance);
 
-}
+// }
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
 
