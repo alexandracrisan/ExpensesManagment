@@ -17,7 +17,7 @@ var TableHead = React.createClass({
 							<th>Typeid</th>
 							<th>Tags</th>
 							<th>
-								<button className="btn btn-default btn-sm all-space">
+								<button className="input-component btn btn-default btn-sm all-space">
 									<i className="glyphicon glyphicon-trash"></i> <strong>Delete</strong>
 								</button>
 							</th>
