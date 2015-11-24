@@ -9,16 +9,17 @@ var CHANGE_EVENT = 'change';
 var _movements = [];
 var _categories=[];
 
-function _addMovementItem(finance){
+// function _addMovementItem(finance){
 
-	var data = ApiCalls.movements.add(finance);
+// 	var data = ApiCalls.movements.add(finance);
 
-}
+// }
 
-function _addCategoryItem(finance){
+// function _addCategoryItem(finance){
 
-  var data = ApiCalls._categories.add(finance);
-}
+//   var data = ApiCalls.categories.add(finance);
+
+// }
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
 
@@ -29,13 +30,13 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     refreshData: function() {
        
        ApiCalls.movements.get(function(response){
-        		if(response.result){
-        			_movements = response.data;
-        			console.log(_movements);
-        			FinanceStore.emitChange();
-        		}
-        		else {console.log(response);}
-        	});        
+            if(response.result){
+                _movements = response.data;
+                console.log(_movements);
+                FinanceStore.emitChange();
+            }
+            else {console.log(response);}
+        });
     },
 
     getData: function(){
@@ -46,14 +47,14 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     addMovement: function(movement){
 
     	ApiCalls.movements.add(movement, function(response){
-        		if(response.result){
-        			
-        			FinanceStore.refreshData();
-        		}
-        		else {
-        			console.log(response);
-        		}
-        	});
+            if(response.result){
+
+                FinanceStore.refreshData();
+            }
+            else {
+                console.log(response);
+            }
+        });
     },
 
     editMovement: function(movement){
@@ -69,6 +70,7 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
         });
     },
 
+
     addChangeListener: function(callback) {
         this.on(CHANGE_EVENT, callback);
     },
@@ -82,13 +84,13 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
 FinanceStore.dispatchToken = AppDispatcher.register(function(action){
 
     switch(action.type){
-      case FinanceConstants.ActionTypes.ADD_FINANCE:
-          FinanceStore.addMovement(action.data); 
-          break;
-      case FinanceConstants.ActionTypes.EDIT_FINANCE:
-          FinanceStore.editMovement(action.data);
-          break;
-      default:
+        case FinanceConstants.ActionTypes.ADD_FINANCE:
+           FinanceStore.addMovement(action.data);
+           break;
+        case FinanceConstants.ActionTypes.EDIT_FINANCE:
+            FinanceStore.editMovement(action.data);
+            break;
+        default:
     }
 
 });

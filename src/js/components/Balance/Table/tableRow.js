@@ -1,5 +1,6 @@
 var React = require('react');
 var Action = require('../action/action.js');
+var CheckBox = require('../Table/checkbox.js');
 
 var TableRow = React.createClass({
 	getInitialState: function() {
@@ -20,6 +21,7 @@ var TableRow = React.createClass({
 				<td>{currentUser.nume}</td>
 				<td>{currentUser.prenume}</td>
 				<td>{currentUser.varsta}</td>	
+				<td><CheckBox currentUser={currentUser.id}/></td>	
 				<td><button onClick={this.deleteUser}>Delete</button></td>						
 			</tr>
 		);
