@@ -63,6 +63,7 @@ var ExpenseRow = React.createClass({
             };
             console.log(finance);
             FinanceAction.editFinance(finance);
+            alert('Row edited');
         }
     },
 
