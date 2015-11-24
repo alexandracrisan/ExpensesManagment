@@ -8,6 +8,7 @@ var AppDispatcher = require('../dispatchers/app.dispatcher.js'),
 var CHANGE_EVENT = 'change';
 var _movements = [];
 var _categories=[];
+var idArray= [];
 
 // function _addMovementItem(finance){
 
@@ -20,6 +21,16 @@ var _categories=[];
 //   var data = ApiCalls.categories.add(finance);
 
 // }
+
+function addId(id){
+    idArray.push(id);
+    console.log(idArray);
+}
+function deletedId(id){
+    var index = idArray.indexOf(id);
+    idArray.splice(index,1);
+    console.log(idArray);
+}
 
 var FinanceStore = assign({}, EventEmitter.prototype, {
 
@@ -70,6 +81,22 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
         });
     },
 
+    deleteData: function(id){
+        console.log(id);
+        ApiCalls.movements.delete(id, function(response){
+            if(response.result){
+                FinanceStore.emitChange();
+            }
+            else {console.log(response);}
+        });
+    },
+
+    deleteUser: function(){
+        for(var i=0; i<idArray.length; i++){
+            this.deleteData(idArray[i]);
+            console.log(idArray[i] + 'fd');
+        }
+    },
 
     addChangeListener: function(callback) {
         this.on(CHANGE_EVENT, callback);
@@ -89,6 +116,14 @@ FinanceStore.dispatchToken = AppDispatcher.register(function(action){
            break;
         case FinanceConstants.ActionTypes.EDIT_FINANCE:
             FinanceStore.editMovement(action.data);
+            break;
+        case FinanceConstants.ActionTypes.ADD_ID:
+            addId(action.data);
+            FinanceStore.emitChange();
+            break;
+        case FinanceConstants.ActionTypes.REMOVE_ID:
+            deletedId(action.data);
+            FinanceStore.emitChange();
             break;
         default:
     }
