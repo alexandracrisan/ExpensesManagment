@@ -14,6 +14,7 @@ var ExpenseRow = React.createClass({
     getInitialState: function() {
       return {
           expense: this.props.expense,
+
           editing: false,
 
           title: '',
@@ -164,7 +165,7 @@ var ExpenseRow = React.createClass({
                 <td>
                     <input type="text" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
                 </td>
-                
+
                 <td><CheckBox /></td>
             </tr>
 
