@@ -4,6 +4,7 @@ var Dispatcher = require('../dispatchers/app.dispatcher.js');
 var Constants = require('../constants/constants.js');
 
 var CHANGE_EVENT = "change";
+var idArray= [];
 
 var users = [{
     id: 1,
@@ -29,14 +30,28 @@ function insertUser (data){
 		varsta:data.varsta
 	});
 }
-function deletetUser(data){
-	users.splice(data-1, 1);	
-	console.log(users);
-	console.log(data);
+function deletetUser(){
+    for (var i=0 ; i<idArray.length; i++){
+   
+    	users.splice(idArray[i]-1, 1);
+        idArray.splice(idArray[i]-1, 1);	
+    	console.log(users);
+    	
+    }
+}
+function addId(id){
+        idArray.push(id);
+        console.log(idArray);
+}
+function deletedId(id){
+        var index = idArray.indexOf(id);
+        idArray.splice(index,1);
+        console.log(idArray);
 }
 
-
 var Store = assign({}, EventEmitter.prototype, {
+
+
 	emitChange: function () {
         this.emit(CHANGE_EVENT);
     },
@@ -51,6 +66,19 @@ var Store = assign({}, EventEmitter.prototype, {
 
     removeChangeListener: function(callback) {
         this.on(CHANGE_EVENT,callback)
+    },
+    deleteData: function(id){
+        ApiCalls.movements.delete(function(response){
+            if(response.result){               
+                FinanceStore.emitChange();
+            }
+            else {console.log(response);}
+        });
+    },
+    deleteUser: function(){
+        for(var i=0; i<idArray.length; i++){
+            deleteData(idArray[i]);
+        }
     }
 });
 
@@ -65,6 +93,14 @@ Store.dispatchToken = Dispatcher.register(function(action){
 			deletetUser(action.data);
 			Store.emitChange();			
 	        break;
+        case Constants.ActionTypes.ADD_ID:
+            addId(action.data);
+            Store.emitChange();         
+            break;
+        case Constants.ActionTypes.REMOVE_ID:
+            deletedId(action.data);
+            Store.emitChange();         
+            break;
 	    default:
 	}
 });

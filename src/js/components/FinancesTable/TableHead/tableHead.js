@@ -1,10 +1,15 @@
-var React = require('react');
+var React = require('react'),
+	FinanceStore = require('../../../stores/finances-store.js');
 	
 var TableHead = React.createClass({
- 
+
+	deleteUser: function(){
+
+		FinanceStore.deleteUser();
+	},
+
 	render: function(){
 		return (
-				<form action='#' method='post'>
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -18,13 +23,12 @@ var TableHead = React.createClass({
 							<th>Typeid</th>
 							<th>Tags</th>
 							<th>
-								<button className="btn btn-default btn-sm all-space">
+								<button onClick={this.deleteUser} className="input-component btn btn-default btn-sm all-space">
 									<i className="glyphicon glyphicon-trash"></i> <strong>Delete</strong>
 								</button>
 							</th>
 						</tr>
 					</thead>
-				</form>
 		);
 	}
 });
