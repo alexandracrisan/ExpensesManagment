@@ -40,7 +40,7 @@ var LoginStore = assign({}, EventEmitter.prototype, {
 		this.emit(CHANGE_EVENT);
 	},
 
-	// userLogin: function() {
+	// userLogin: function(user) {
 	// 	ApiCalls.users.get(function(response){
 	// 		if(response.result){
 	// 			_users = response.data;
@@ -76,6 +76,7 @@ LoginStore.dispatchToken = AppDispatcher.register(function(action) {
 	switch(action.type) {
 		case LoginConstants.ActionTypes.LOGIN_USER:
 			_addUser(action.user);
+			//userLogin(action.user);
 			LoginStore.emitChange();
 			break;
 		default:

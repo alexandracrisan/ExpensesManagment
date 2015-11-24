@@ -49,3 +49,8 @@ ul li {
 th, td {
 	text-align: center;
 }
+.modall {
+   width: 20%;
+   height: 30%;
+   margin-left: 40%;
+}

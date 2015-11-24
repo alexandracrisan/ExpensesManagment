@@ -8,13 +8,13 @@ var AddCategoryModal = require('../../components/Modal/addCategoryModal.js');
 
 var Header = React.createClass({
 
-    render: function(){
-        return (
-            <div>
-                <AddCategoryModal /> 
-            </div>
-        );
-    }
+  render: function(){
+    return (
+      <div>
+          <AddCategoryModal /> 
+      </div>
+    );
+  }
 });
 
 module.exports = Header;
