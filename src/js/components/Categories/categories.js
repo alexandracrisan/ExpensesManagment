@@ -11,40 +11,55 @@ var React = require('react'),
 var Dashboard = React.createClass({
 
   getInitialState: function() {
+
     return {
-      categories:  CategoryStore.getCategories()
+      categories:  CategoryStore.getData()
     }
+
   },
 
-  componentWillMount: function(){
+  componentWillMount: function() {
+
     CategoryStore.addChangeListener(this._onChange)
+
   },
 
-  componentWillUnmount: function(){
+  // componentDidMount: function() {
+  //   CategoryStore.refreshData();
+  // },
+
+  componentWillUnmount: function() {
+
     CategoryStore.removeChangeListener(this._onChange);
+
   },
 
-  _onChange: function(){
-    this.setState({categories: CategoryStore.getCategories()});
+  _onChange: function() {
+
+    this.setState({categories: CategoryStore.getData()});
+
   },
 
    render: function() {
+
        return (
-           <div>
-             <Header />
-             <div>
-                <SidebarBox/>
-                <DeleteButton />
-                <br></br>
-                {this.state.categories.map(function(category) {
-                  return(<CategoryItem category={category} key={category.nr}/>)
-                
-                  })
-                }
-             </div>
-           </div>
+        <div>
+          <Header />
+          <div>
+            <SidebarBox/>
+            <DeleteButton />
+            <br></br>
+            {this.state.categories.map(function(category) {
+              return(<CategoryItem category={category} key={category.id}/>)
+              
+              })
+            }
+          </div>
+        </div>
        );
+
    }
+   
 });
 
 module.exports = Dashboard;
