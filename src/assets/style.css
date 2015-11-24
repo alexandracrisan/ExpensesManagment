@@ -49,3 +49,24 @@ ul li {
 th, td {
 	text-align: center;
 }
+
+.input-component {
+	border: none;
+	width: 100px;
+}
+
+.input-date {
+	border: none;
+	width: 140px;
+}
+
+.input-id {
+	border: none;
+	width: 15px;
+}
+
+.modall {
+   width: 20%;
+   height: 30%;
+   margin-left: 40%;
+}

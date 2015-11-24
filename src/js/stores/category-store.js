@@ -6,54 +6,57 @@ var Dispatcher = require('../dispatchers/app.dispatcher.js'),
 	EventEmitter = require('events').EventEmitter,
     assign = require('react/lib/Object.assign'),
     CategoryConstants = require('../constants/category-constants.js');
+    ApiCalls = require('../stores/api-calls.js');
     
 
 var CHANGE_EVENT = 'change';
 
+var _categories = [];
+
 var mockCategoryList = [{
-    nr: 1,
-    category: 'Taxes',
-    type: 'Expense'
+    id: 1,
+    title: 'Taxes',
+    type: 0
 }, {
-    nr: 2,
-    category: 'Meal',
-    type: 'Expense'
+    id: 2,
+    title: 'Meal',
+    type: 0
 
 }, {
-    nr: 3,
-    category: 'Pension',
-   type:  'Income'
+    id: 3,
+    title: 'Pension',
+    type:  1
 }, {
-    nr: 4,
-    category: 'Salary',
-    type: 'Income'
+    id: 4,
+    title: 'Salary',
+    type: 1
 }, {
-    nr: 5,
-    category: 'Gas',
-    type: 'Expense'
+    id: 5,
+    title: 'Gas',
+    type: 2
 }, {
-    nr: 6,
-    category: 'Meal',
-    type: 'Expense'
+    id: 6,
+    title: 'Meal',
+    type: 2
 
 }, {
-    nr: 7,
-    category: 'Pension',
-   type:  'Income'
+    id: 7,
+    title: 'Pension',
+   type:  1
 }, {
-    nr: 8,
-    category: 'Salary',
-    type: 'Income'
+    id: 8,
+    title: 'Salary',
+    type: 1
 }, {
-    nr: 9,
-    category: 'Gas',
-    type: 'Income'
+    id: 9,
+    title: 'Gas',
+    type: 0
  }];
 
 function _addCategory(data) {
 
 	mockCategoryList.push({
-		category: data.category,
+		title: data.title,
 		type: data.type
 	});
 
@@ -63,21 +66,47 @@ function _addCategory(data) {
 var CategoryStore = assign({}, EventEmitter.prototype, {
 
 	emitChange: function() {
+
 		this.emit(CHANGE_EVENT);
+
 	},
 
-	getCategories: function() {
+	getData: function() {
        // var data = ApiCalls.getData()
 		return mockCategoryList;
 	},
 
 	addChangeListener: function(callback) {
+
 		this.on(CHANGE_EVENT, callback);
 	},
 
 	removeChangeListener: function(callback) {
+
 		this.removeListener(CHANGE_EVENT, callback);
-	}
+	},
+
+    refreshData: function() {
+
+      ApiCalls.categories.get(function(response) {
+
+        if(response.result) {
+            _categories = response.data;
+            console.log(_categories);
+            CategoryStore.emitChange();
+        }
+        else {
+            console.log(response);
+          }
+      });
+
+    },
+
+    getCategories: function() {
+
+        return _categories;
+    }
+
 });
 
 CategoryStore.dispatchToken = Dispatcher.register(function(action) {
@@ -88,6 +117,7 @@ CategoryStore.dispatchToken = Dispatcher.register(function(action) {
 			CategoryStore.emitChange();
 			break;
 	}
+
 });
 
 module.exports = CategoryStore;
