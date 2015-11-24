@@ -64,3 +64,9 @@ th, td {
 	border: none;
 	width: 10px;
 }
+
+.modall {
+   width: 20%;
+   height: 30%;
+   margin-left: 40%;
+}
