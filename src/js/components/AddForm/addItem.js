@@ -18,13 +18,13 @@ var AddItem = React.createClass({
 
 		var data = {
 			amount: this.state.sum,
-			title: this.refs.title.getDOMNode().value,
-			date: this.refs.dateCreated.getDOMNode().value,
-			from: this.refs.from.getDOMNode().value,
-			to: this.refs.to.getDOMNode().value,
-			description:this.refs.description.getDOMNode().value,
+			title: this.refs.title.value,
+			date: this.refs.dateCreated.value,
+			from: this.refs.from.value,
+			to: this.refs.to.value,
+			description:this.refs.description.value,
 			type: 1,
-			tags: this.refs.tags.getDOMNode().value
+			tags: this.refs.tags.value
 		};
 
 		FinanceAction.dataLoaded(data);
