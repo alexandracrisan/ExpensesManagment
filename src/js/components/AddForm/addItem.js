@@ -1,30 +1,49 @@
 var React = require('react');
 var FinanceAction = require('../../actions/finances-actions.js');
 var CategoriesStore = require('../../stores/category-store.js');
+var OptionContent = require('../../components/AddForm/option.js');
 
 var AddItem = React.createClass({
 
 	getInitialState: function(){
-
+		console.log(CategoriesStore.getCategories());
 		return {
 			categoryArr: CategoriesStore.getCategories(),
-			//getCategories();
-			category: '',
-			sum: ''
+			category: {
+				title: '',
+				type: ''
+			},
+			amount: ''
 		};
 	},
 
 	handleData: function(){
 
+
+		console.log(this.state.category);
+
+		var categType,
+				title = this.state.category.split("-", 1),
+				type = this.state.category.substring(title[0].length + 2);
+
+		if(type === "Expense"){
+					categType = 0;
+		}
+		else if(type === "Income"){
+						categType = 1;
+					}
+					else categType = 2;
+
+
 		var data = {
+			title: this.refs.title.value,
+			description:this.refs.description.value,
 			amount: this.state.sum,
-			title: this.refs.title.getDOMNode().value,
-			date: this.refs.dateCreated.getDOMNode().value,
-			from: this.refs.from.getDOMNode().value,
-			to: this.refs.to.getDOMNode().value,
-			description:this.refs.description.getDOMNode().value,
-			type: 1,
-			tags: this.refs.tags.getDOMNode().value
+			from: this.refs.from.value,
+			to: this.refs.to.value,
+			type: categType,
+			tags: this.refs.tags.value,
+			date: this.refs.dateCreated.value	
 		};
 
 		FinanceAction.dataLoaded(data);
@@ -32,7 +51,7 @@ var AddItem = React.createClass({
 
 	handleCategory: function(event){
 
-		this.setState({category: event.target.value});
+		this.setState({category: event.target.value});						
 	},
 
 	handleSum: function(event){
@@ -44,6 +63,10 @@ var AddItem = React.createClass({
 
 		CategoriesStore.addChangeListener(this._onChange);
 	},
+
+	componentDidMount: function() {
+    CategoriesStore.refreshData();
+  },
 
 	componentWillUnmount: function(){
 
@@ -60,7 +83,7 @@ var AddItem = React.createClass({
 		var categoryList = this.state.categoryArr.map(function(item){
 
 			return (category = {
-				name: item.category,
+				title: item.title,
 				type: item.type
 			});
 		});
@@ -116,11 +139,12 @@ var AddItem = React.createClass({
 					      		<label>Select category</label>
 					      		<select className="form-control" value={this.state.category} onChange={this.handleCategory} >
 				            	{categoryList.map(function(category){
-				            		return (
-				            			<option>{category.name} - {category.type}</option>
+				            		return (				          			
+				            				<OptionContent category={category}></OptionContent>			            			
 			  	          		);
 			    	        	})}	            	
 	          	  		</select> 
+
 	            		</div>
 	            		<div className="form-group">
 		            		<label>Enter description</label>

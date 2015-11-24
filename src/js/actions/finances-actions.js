@@ -19,6 +19,20 @@ var FinanceActions = {
 			type: ActionTypes.EDIT_FINANCE,
 			data: data
 		});
+	},
+
+	addId: function(data){
+		Dispatcher.dispatch({
+			type: ActionTypes.ADD_ID,
+			data: data
+		});
+	},
+
+	deleteId: function(data){
+		Dispatcher.dispatch({
+			type: ActionTypes.REMOVE_ID,
+			data: data
+		});
 	}
 };
 

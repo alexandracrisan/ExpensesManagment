@@ -63,6 +63,7 @@ var ExpenseRow = React.createClass({
             };
             console.log(finance);
             FinanceAction.editFinance(finance);
+            alert('Row edited');
         }
     },
 
@@ -146,7 +147,7 @@ var ExpenseRow = React.createClass({
                     <input type="text" className="input-component" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
                 </td>
                 
-                <td><CheckBox /></td>
+                <td><CheckBox currentUser={currentExpense.id}/></td>
             </tr>
 
         );
