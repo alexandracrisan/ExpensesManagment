@@ -5,9 +5,29 @@ var React = require('react'),
     Header = require('../../components/Header/header.js'),
     SidebarBox = require('../../components/Sidebar/SidebarBox.js'),
     DeleteButton = require('./deleteButton.js'),
-    CategoryList = require('./categoryList.js');
+    CategoryItem = require('./categoryItem.js');
+ var CategoryStore = require('../../stores/category-store.js');
 
 var Dashboard = React.createClass({
+
+  getInitialState: function() {
+    return {
+      categories:  CategoryStore.getCategories()
+    }
+  },
+
+  componentWillMount: function(){
+    CategoryStore.addChangeListener(this._onChange)
+  },
+
+  componentWillUnmount: function(){
+    CategoryStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function(){
+    this.setState({categories: CategoryStore.getCategories()});
+  },
+
    render: function() {
        return (
            <div>
@@ -16,8 +36,11 @@ var Dashboard = React.createClass({
                 <SidebarBox/>
                 <DeleteButton />
                 <br></br>
-                <CategoryList />
+                {this.state.categories.map(function(category) {
+                  return(<CategoryItem category={category} key={category.nr}/>)
                 
+                  })
+                }
              </div>
            </div>
        );

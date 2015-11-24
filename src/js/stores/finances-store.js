@@ -56,6 +56,19 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
         	});
     },
 
+    editMovement: function(movement){
+
+        ApiCalls.movements.update(movement, function(response){
+            if(response.result){
+
+                FinanceStore.refreshData();
+            }
+            else {
+                console.log(response);
+            }
+        });
+    },
+
     addChangeListener: function(callback) {
         this.on(CHANGE_EVENT, callback);
     },
@@ -69,11 +82,13 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
 FinanceStore.dispatchToken = AppDispatcher.register(function(action){
 
     switch(action.type){
-       case FinanceConstants.ActionTypes.ADD_FINANCE:
-           FinanceStore.addMovement(action.data);
-           
-           break;
-       default:
+      case FinanceConstants.ActionTypes.ADD_FINANCE:
+          FinanceStore.addMovement(action.data); 
+          break;
+      case FinanceConstants.ActionTypes.EDIT_FINANCE:
+          FinanceStore.editMovement(action.data);
+          break;
+      default:
     }
 
 });
