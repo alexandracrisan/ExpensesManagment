@@ -10,7 +10,7 @@ var CheckBox = React.createClass({
     getInitialState: function(){
         return{
             checked: false,
-            id: this.props.currentId
+            id: this.props.currentUser
         }
 
     },

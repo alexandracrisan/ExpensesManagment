@@ -1,8 +1,9 @@
 var React = require('react');
 var OptionContent = require('../../components/common/option.js');
 
-//Owner of OptionContent
-//iterates through a list of categories that comes from its owner component
+/*Owner of OptionContent
+  iterates through a list of categories that comes from its owner component
+*/
 var Dropdown = React.createClass({
 
 	render: function () {

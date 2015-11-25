@@ -1,5 +1,8 @@
 var React = require('react');
 
+/*ownee of Dropdown component
+  renders an option with a category title and type
+*/
 var Option = React.createClass({
 
 	determineType: function(){
