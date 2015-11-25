@@ -147,7 +147,7 @@ var ExpenseRow = React.createClass({
                     <input type="text" className="input-component" defaultValue={currentExpense.tags} onChange={this.handleTags} onKeyDown={this.handleData}/>
                 </td>
                 
-                <td><CheckBox currentUser={currentExpense.id}/></td>
+                <td><CheckBox currentId={currentExpense.id}/></td>
             </tr>
 
         );
