@@ -3,7 +3,7 @@ var ApiConstants = {
 	endPoints: {
     	categories: 'categories/',
     	movements: 'movements/',
-    	login: 'login'
+    	users: 'users/'
 	}
 };
 
