@@ -89,7 +89,7 @@ var CategoryList = React.createClass({
 
  		return (
 				<div className="form-inline">
-					<CheckBox />
+					<CheckBox id={this.categories.id}/>
 					<input className="form-control" type="text" defaultValue = {this.state.title} onChange={this.handleCategory}/>
           {this.determinateType()}            
 				</div>
