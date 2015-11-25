@@ -10,18 +10,6 @@ var _movements = [];
 var _categories=[];
 var idArray= [];
 
-// function _addMovementItem(finance){
-
-// 	var data = ApiCalls.movements.add(finance);
-
-// }
-
-// function _addCategoryItem(finance){
-
-//   var data = ApiCalls.categories.add(finance);
-
-// }
-
 function addId(id){
     idArray.push(id);
     console.log(idArray);
