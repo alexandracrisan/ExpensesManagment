@@ -2,10 +2,8 @@ var React = require('react');
 
 var Option = React.createClass({
 
-
 	determineType: function(){
 
-		//console.log(this.props.category.type);
 		if(this.props.category.type === 0){
 			return 'Expense';
 		}

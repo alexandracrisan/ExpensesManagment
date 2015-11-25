@@ -80,13 +80,13 @@ var AddItem = React.createClass({
 
 	render: function() {
 		
-		var categoryList = this.state.categoryArr.map(function(item){
+		// var categoryList = this.state.categoryArr.map(function(item){
 
-			return (category = {
-				title: item.title,
-				type: item.type
-			});
-		});
+		// 	return (category = {
+		// 		title: item.title,
+		// 		type: item.type
+		// 	});
+		// });
 
 		return (
 			<div id="page-content-wrapper">
@@ -137,7 +137,7 @@ var AddItem = React.createClass({
 				      	<div className="col-lg-4">
 				      		<div className="form-group">
 					      		<label>Select category</label>					     
-	          	 			<Dropdown category={this.state.category} handle={this.handleCategory} categoryList={categoryList}></Dropdown>
+	          	 			<Dropdown category={this.state.category} handle={this.handleCategory} categoryArr={this.state.categoryArr}></Dropdown>
 	            		</div>
 	            		<div className="form-group">
 		            		<label>Enter description</label>
