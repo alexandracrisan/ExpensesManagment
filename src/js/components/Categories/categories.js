@@ -13,7 +13,7 @@ var Dashboard = React.createClass({
   getInitialState: function() {
 
     return {
-      categories:  CategoryStore.getData()
+      categories:  CategoryStore.getCategories()
     }
 
   },
@@ -22,11 +22,12 @@ var Dashboard = React.createClass({
 
     CategoryStore.addChangeListener(this._onChange)
 
+
   },
 
-  // componentDidMount: function() {
-  //   CategoryStore.refreshData();
-  // },
+  componentDidMount: function() {
+    CategoryStore.refreshData();
+  },
 
   componentWillUnmount: function() {
 
@@ -36,12 +37,12 @@ var Dashboard = React.createClass({
 
   _onChange: function() {
 
-    this.setState({categories: CategoryStore.getData()});
+    this.setState({categories: CategoryStore.getCategories()});
 
   },
 
    render: function() {
-
+    
        return (
         <div>
           <Header />
@@ -59,7 +60,7 @@ var Dashboard = React.createClass({
        );
 
    }
-   
+
 });
 
 module.exports = Dashboard;

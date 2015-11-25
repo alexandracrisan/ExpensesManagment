@@ -82,7 +82,6 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     },
 
     deleteData: function(id){
-        console.log(id);
         ApiCalls.movements.delete(id, function(response){
             if(response.result){
                 FinanceStore.emitChange();
@@ -94,7 +93,6 @@ var FinanceStore = assign({}, EventEmitter.prototype, {
     deleteUser: function(){
         for(var i=0; i<idArray.length; i++){
             this.deleteData(idArray[i]);
-            console.log(idArray[i] + 'fd');
         }
     },
 

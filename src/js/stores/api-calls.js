@@ -23,7 +23,6 @@ var ApiCalls = {
         },
 
         delete: function(id, callback){
-            console.log(id)
             $.ajax({
                 type:'POST',
                 url:ApiConstants.url + ApiConstants.endPoints.movements + 'delete',
@@ -82,7 +81,7 @@ var ApiCalls = {
         get: function(callback){
             $.ajax({
                 type:'GET',
-                url:ApiConstants.url + ApiConstants.endPoints.login,
+                url:ApiConstants.url + ApiConstants.endPoints.users + 'login',
                 success: callback
             });
         }
