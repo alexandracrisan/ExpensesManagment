@@ -82,6 +82,7 @@ var CategoryList = React.createClass({
 			  </select>
 			);
  		}
+ 		
  	},
 
  	render: function() {
