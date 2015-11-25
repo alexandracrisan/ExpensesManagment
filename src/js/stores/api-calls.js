@@ -23,7 +23,6 @@ var ApiCalls = {
         },
 
         delete: function(id, callback){
-            console.log(id)
             $.ajax({
                 type:'POST',
                 url:ApiConstants.url + ApiConstants.endPoints.movements + 'delete',
