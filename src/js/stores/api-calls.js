@@ -81,7 +81,7 @@ var ApiCalls = {
         get: function(callback){
             $.ajax({
                 type:'GET',
-                url:ApiConstants.url + ApiConstants.endPoints.login,
+                url:ApiConstants.url + ApiConstants.endPoints.users + 'login',
                 success: callback
             });
         }

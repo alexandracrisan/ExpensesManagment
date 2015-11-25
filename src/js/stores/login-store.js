@@ -76,7 +76,7 @@ LoginStore.dispatchToken = AppDispatcher.register(function(action) {
 	switch(action.type) {
 		case LoginConstants.ActionTypes.LOGIN_USER:
 			_addUser(action.user);
-			//userLogin(action.user);
+			//userLogin(actio.user);
 			LoginStore.emitChange();
 			break;
 		default:
