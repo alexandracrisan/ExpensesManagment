@@ -1,12 +1,12 @@
 var React = require('react');
 var FinanceAction = require('../../actions/finances-actions.js');
 var CategoriesStore = require('../../stores/category-store.js');
-var OptionContent = require('../../components/AddForm/option.js');
+var Dropdown = require('../../components/common/dropdown.js');
 
 var AddItem = React.createClass({
 
 	getInitialState: function(){
-		console.log(CategoriesStore.getCategories());
+		
 		return {
 			categoryArr: CategoriesStore.getCategories(),
 			category: {
@@ -136,15 +136,8 @@ var AddItem = React.createClass({
 				      	</div>
 				      	<div className="col-lg-4">
 				      		<div className="form-group">
-					      		<label>Select category</label>
-					      		<select className="form-control" value={this.state.category} onChange={this.handleCategory} >
-				            	{categoryList.map(function(category){
-				            		return (				          			
-				            				<OptionContent category={category}></OptionContent>			            			
-			  	          		);
-			    	        	})}	            	
-	          	  		</select> 
-
+					      		<label>Select category</label>					     
+	          	 			<Dropdown category={this.state.category} handle={this.handleCategory} categoryList={categoryList}></Dropdown>
 	            		</div>
 	            		<div className="form-group">
 		            		<label>Enter description</label>
